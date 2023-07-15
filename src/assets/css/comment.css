@@ -1,0 +1,34 @@
+.cm-im{
+    border-radius: 100%;
+    height: 37px;
+    aspect-ratio: 1/1;
+    padding: 10px;
+    object-fit: cover;
+}
+.cm-bx{
+    text-align: start;
+    display: inline-block;
+    margin-top: 10px;
+    /* background-color: red; */
+}
+.cm-us{
+    size: 1rem;
+    font-weight: 600;
+}
+.cm-in{
+    outline: none;
+    background-color: black;
+    border: none;
+    padding-left: 10px;
+    color: white;
+}
+.cm-cb{
+    font-weight: 100;
+    font-size:0.8rem;
+    color: skyblue;
+}
+.cm-cb:hover{
+    color: rgb(9, 144, 198);
+    cursor: pointer;
+    
+}

@@ -1,0 +1,61 @@
+:root{
+    --form-width:200px;
+    --col1:blue;
+}
+.lg-cnt{
+    width: 100%;
+    padding-block: 100px;
+}
+.lg-wd1{
+    width: var(--form-width);
+}
+.lg-ft1{
+    font-weight: 550;
+}
+.lg-cn1{
+    width: 1000px;
+    height: 600px;
+    /* border: 1px solid blue; */
+}
+
+.lg-bx1{
+    height: 400px;
+    font-weight: 500;
+    /* font-size: 0.8em; */
+
+    border-radius: 10px;
+    gap: 10px;
+}
+.lg-bx2{
+    height: 130px;
+    margin-top: 10px;
+    border-radius: 10px;
+    
+    
+}
+.lg-btn{
+    width: var( --form-width );
+    background-color:  rgb(31, 206, 31);
+    color: white;
+    padding-block: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+
+}
+
+
+.lg-logo{
+    height: 100px
+}
+.lg-in{
+    padding: 6px 10px ;
+    border: 1px solid black;
+    
+}
+.lg-in:focus{
+    outline: none;
+    border: 2px solid black;
+    padding: 5px 10px;
+
+}
