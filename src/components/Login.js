@@ -12,7 +12,7 @@ export default function Login() {
 
   const uri=useSelector(state=> state.uri)
 const login=()=>{
-  const url="http://localhost:8000/login/"
+  const url=process.env.REACT_APP_BACKEND_URL+"/login/"
   axios.post(url,
     {
       "username":username,
@@ -51,12 +51,14 @@ const login=()=>{
             <input type="text " className='w100 lg-in br-rd4'  
             
             onChange={(e)=>setUsername(e.target.value)}
+            value={username}
             />
             </div>
             <div className='flexVC lg-wd1'>
               <div className='w100 textS '>Password</div>
             <input type="text " className='w100 lg-in br-rd4'
             onChange={(e)=>setPassword(e.target.value)}
+            value={password}
               />
             </div>
             <button className='lg-btn lg-ft1 br-rd4' onClick={login}>

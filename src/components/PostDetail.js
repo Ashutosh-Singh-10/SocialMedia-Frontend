@@ -6,18 +6,53 @@ import { useEffect } from "react";
 import axios from "axios";
 import Comment from "./Comment";
 export default function PostDetail() {
+
+  const getCookie=(cname)=> {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   const { postId } = useParams();
   const [data, setData] = useState({});
   const [comments, setComments] = useState([]);
   const [comment,setComment]=useState("fdjj");
-  const url = "http://localhost:8000";
+  const url = process.env.REACT_APP_BACKEND_URL;
   const [liked,setLiked]=useState(0)
+  const token=getCookie("access")
 
   useEffect(() => {
-    const url = "http://localhost:8000/feeds/id/" + postId;
-    const url2 = "http://localhost:8000/comments/all";
+    const url1 = url+"/feeds/id/" + postId;
+    const url2 = url+"/comments/all";
     axios
-      .get(url)
+      .get(url1)
       .then((res) => {
         setData(res.data);
         console.log(res.data)
@@ -35,8 +70,7 @@ export default function PostDetail() {
   }, []);
 
   const addComment=()=>{
-    const url3 = "http://localhost:8000/comments/add";
-    const token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg5MjIzOTk3LCJpYXQiOjE2ODkxMzc1OTcsImp0aSI6IjVhNTlkMzYwODQ3MzQyYzI5M2QzMjJmNTQwMmRhZTMwIiwidXNlcl9pZCI6MX0.krXDcMYwLgp0HaacdtYMlEIbwJ2fs2Lc6Z85-dy060g"
+    const url3 = url+"/comments/add";
     console.log("Bearer"+token)
     axios
     .post(url3, {
@@ -67,19 +101,18 @@ export default function PostDetail() {
 
   }
   const likePost=()=>{
-    let url;
+    let url4;
     if(liked==0)
     {
-      url="http://localhost:8000/feeds/like";
+      url4=url+"/feeds/like";
     }
     else
     {
-      url="http://localhost:8000/feeds/unlike";
+      url4=url+"/feeds/unlike";
       
     }
-        const token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg5NjcxMTMwLCJpYXQiOjE2ODk1ODQ3MzAsImp0aSI6IjllYTI1MTg1OTlkZTQ4YzM5ZGVmODMwNjdkOWFjZDdhIiwidXNlcl9pZCI6MX0.SIASatDOMBjaPVL1FirRyCYYY3Tx9gYuY1eZlEK0VO8"
         axios
-        .post(url, {
+        .post(url4, {
           postid: postId,          
         },
         {

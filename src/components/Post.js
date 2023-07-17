@@ -3,7 +3,7 @@ import "../assets/css/post.css"
 import { Link } from 'react-router-dom'
 export default function Post(props) {
   // console.log(props.data)  
-  const url="http://localhost:8000"
+  const url=process.env.REACT_APP_BACKEND_URL
 // console.log(props.data.useravatar)  
 
   return (

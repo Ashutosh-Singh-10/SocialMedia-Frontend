@@ -2,7 +2,7 @@ import React from 'react'
 import "../assets/css/comment.css"
 export default function Comment(props) {
 console.log(props)
-const url="http://localhost:8000"
+const url=process.env.REACT_APP_BACKEND_URL
   return (
     <div className='w100 myFlex'>
         <div className='w15 '>

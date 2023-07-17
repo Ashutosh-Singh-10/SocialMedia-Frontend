@@ -11,7 +11,7 @@ export default class Home extends Component {
   }
   getPosts=()=>{
 console.log(this.state.page)
-    let url = process.env.REACT_APP_BACKEND_URL;
+    let url = process.env.REACT_APP_BACKEND_URL+  "/feeds/page";
 
     console.log("something ");
     

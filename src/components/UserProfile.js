@@ -11,12 +11,12 @@ import React, { Component } from 'react'
 export default class UserProfile extends Component {
     
     
-    url="http://localhost:8000"
     constructor()
     {
         super();
-    
+        
         this.state={
+            url:process.env.REACT_APP_BACKEND_URL,
             posts:[],
             user:[]
         }
@@ -27,8 +27,8 @@ export default class UserProfile extends Component {
         // console.log(this.props)
         let username = window.location.pathname.split('/').pop()
         console.log(username)
-        const url="http://localhost:8000/profile/userfeeds"
-        const url2="http://localhost:8000/profile/userprofile"
+        const url1=this.state.url+"/profile/userfeeds"
+        const url2=this.state.url+"/profile/userprofile"
         
         axios.post(url2,
             {
@@ -42,7 +42,7 @@ export default class UserProfile extends Component {
                 })
                 console.log(this.state)
       })
-        axios.post(url,
+        axios.post(url1,
             {
                 "username":username
             }
@@ -63,7 +63,7 @@ export default class UserProfile extends Component {
             <div className="uf-pr myFlex">
                 <div className='w40'>
                     <br />
-                    <img src={`${this.url}${this.state.user.avatar}`} className='uf-pf-im'/> 
+                    <img src={`${this.state.url}${this.state.user.avatar}`} className='uf-pf-im'/> 
 
                 {/* <img src={require("../assets/images/gal.webp")} className='uf-pf-img' alt="" /> */}
                 <br />
@@ -107,7 +107,7 @@ export default class UserProfile extends Component {
 
                     <Link to={`/post/${element.id}`} className='uf-cd flexCenter' key={id} >
                             <div className='uf-hover flexCenter'>{element.likes} likes</div>
-                            <img src={`${this.url}${element.avatar}`} className='uf-im'/> 
+                            <img src={`${this.state.url}${element.avatar}`} className='uf-im'/> 
                     </Link>
                 );
             })}
