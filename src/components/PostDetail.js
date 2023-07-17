@@ -11,6 +11,7 @@ export default function PostDetail() {
   const [comments, setComments] = useState([]);
   const [comment,setComment]=useState("fdjj");
   const url = "http://localhost:8000";
+  const [liked,setLiked]=useState(0)
 
   useEffect(() => {
     const url = "http://localhost:8000/feeds/id/" + postId;
@@ -65,6 +66,43 @@ export default function PostDetail() {
 
 
   }
+  const likePost=()=>{
+    let url;
+    if(liked==0)
+    {
+      url="http://localhost:8000/feeds/like";
+    }
+    else
+    {
+      url="http://localhost:8000/feeds/unlike";
+      
+    }
+        const token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg5NjcxMTMwLCJpYXQiOjE2ODk1ODQ3MzAsImp0aSI6IjllYTI1MTg1OTlkZTQ4YzM5ZGVmODMwNjdkOWFjZDdhIiwidXNlcl9pZCI6MX0.SIASatDOMBjaPVL1FirRyCYYY3Tx9gYuY1eZlEK0VO8"
+        axios
+        .post(url, {
+          postid: postId,          
+        },
+        {
+          headers:{
+            Authorization: "Bearer "+token
+    
+          },
+        }
+       
+        ).then((res)=>{
+         
+          console.log(res)
+          if(res.data)
+          {
+
+            setLiked(res.data.liked)
+          }
+          
+        }
+
+        )
+
+  }
 
   return (
     <div className="pp-cnt  flexCenter">
@@ -98,7 +136,7 @@ export default function PostDetail() {
             })}
           </div>
           <div className="h15 pp-bd-b pp-bx2">
-            <div className="h33">^^</div>
+            <div className="h33"><button onClick={likePost}>{liked==1?"unlike":"like"} </button></div>
             <div className="h33 flexV pp-d1">
               {data.likes} Likes&emsp;
               {data.comments} Comments
