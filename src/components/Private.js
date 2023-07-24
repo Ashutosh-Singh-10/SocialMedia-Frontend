@@ -4,25 +4,12 @@ import {actionCreators} from '../state/index'
 import { bindActionCreators } from 'redux';
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
+import Cook from "../utilities/GetCookie.js";
 
 export default function Private() {
 
-  const getCookie=(cname)=> {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
-  const access=getCookie("access")
+
+  const access=Cook("access")
   console.log(access)
   const dispatch=useDispatch();
   const {setUri}=bindActionCreators(actionCreators,dispatch);

@@ -14,4 +14,5 @@ function Cook(cname) {
     return "";
   
 }
+export default Cook;
 

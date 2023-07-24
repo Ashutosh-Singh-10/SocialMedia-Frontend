@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import Comment from "./Comment";
-import {Cook} from "../utilities/GetCookie.js";
+import Cook from "../utilities/GetCookie.js";
 export default function PostDetail() {
  
   const { postId } = useParams();
@@ -14,9 +14,8 @@ export default function PostDetail() {
   const [comment,setComment]=useState("fdjj");
   const url = process.env.REACT_APP_BACKEND_URL;
   const [liked,setLiked]=useState(0)
-  // const token=""
-  // const cook=new GetCookie();
-  const token=Cook("access");
+  
+  let token=Cook("access");
   console.log(token)
 
   useEffect(() => {
