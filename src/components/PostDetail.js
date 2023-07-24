@@ -5,48 +5,19 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import Comment from "./Comment";
+import {Cook} from "../utilities/GetCookie.js";
 export default function PostDetail() {
-
-  const getCookie=(cname)=> {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+ 
   const { postId } = useParams();
   const [data, setData] = useState({});
   const [comments, setComments] = useState([]);
   const [comment,setComment]=useState("fdjj");
   const url = process.env.REACT_APP_BACKEND_URL;
   const [liked,setLiked]=useState(0)
-  const token=getCookie("access")
+  // const token=""
+  // const cook=new GetCookie();
+  const token=Cook("access");
+  console.log(token)
 
   useEffect(() => {
     const url1 = url+"/feeds/id/" + postId;
