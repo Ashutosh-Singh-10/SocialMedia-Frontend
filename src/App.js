@@ -36,6 +36,7 @@ function App() {
             <Route path="/post/:postId" element={<PostDetail />} />
 
             <Route path='/login' element={<Login />} />
+            <Route path='/signin' element={<Signin />} />
             <Route path='/post' element={<Post />} />
             {/* <Route path='' element={<UserProfile/>}/> */}
 
