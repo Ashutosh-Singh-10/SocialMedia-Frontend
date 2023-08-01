@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
+// import { ReactQueryDevtools } from 'react-query/devtools'
 import Signin from './components/Signin';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
@@ -44,7 +44,7 @@ function App() {
         </Router>
         {/* <RevokeAccess/> */}
       </div>
-      <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
+      {/* <ReactQueryDevtools initialIsOpen={false} position='bottom-right' /> */}
     </QueryClientProvider>
   );
 }
