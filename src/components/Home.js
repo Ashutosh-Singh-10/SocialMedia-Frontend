@@ -10,6 +10,7 @@ export default class Home extends Component {
     this.state={page:0,posts:[]}
   }
   getPosts=()=>{
+    console.log("ho gya load")
 console.log(this.state.page)
     let url = process.env.REACT_APP_BACKEND_URL+  "/feeds/page";
 

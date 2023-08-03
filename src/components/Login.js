@@ -24,7 +24,7 @@ const login=()=>{
   console.log(res)
   const cookies = new Cookies();
   // cookies.set('accesstoken', res.data.access);
-  cookies.set('refresh', res.data.refresh);
+  cookies.set('refresh', res.data.refresh,{httpOnly:true});
   cookies.set('access', res.data.access);
   window.location=uri
     }).catch((res)=>{console.log(res)})
