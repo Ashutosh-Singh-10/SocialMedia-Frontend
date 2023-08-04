@@ -11,6 +11,8 @@ import Post from './components/Post'
 import RevokeAccess from './utilities/RevokeAccess';
 import UsersProfile from './components/UsersProfile';
 import PostDetail from './components/PostDetail';
+import UploadPosts from './components/UploadPosts';
+import Layout from './components/Layout';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -22,21 +24,23 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App ">
-        <Navbar />
+
         <Router>
           <Routes>
-            <Route element={<Private />} >
+            <Route path='/' element={<Private><Layout /></Private>} >
 
-              <Route path='' element={<Home />} />
-
+              <Route index element={<Home />} />
+              <Route path='/post' element={<Post />} />
+              <Route path='*' element={<div style={{ color: "white" }}>Page Not Found</div>} />
+              <Route path="/users/:userId" element={<UsersProfile />} />
+              <Route path='/uploadPost' element={<UploadPosts />} />
+              <Route path="/post/:postId" element={<PostDetail />} />
             </Route>
             {/* <Route path="/users/:userId" element={<UserProfile />} /> */}
-            <Route path="/users/:userId" element={<UsersProfile />} />
 
-            <Route path="/post/:postId" element={<PostDetail />} />
 
             <Route path='/login' element={<Login />} />
-            <Route path='/post' element={<Post />} />
+
             {/* <Route path='' element={<UserProfile/>}/> */}
 
           </Routes>

@@ -25,61 +25,68 @@
     max-height: 100%;   
 }
  */
-body{
+body {
     background-color: black;
 }
-.pp-cnt{
+
+.pp-cnt {
     color: white;
     position: absolute;
-    background-color:  rgba(199, 195, 195, 0.123);
+    background-color: rgba(199, 195, 195, 0.123);
     top: 0px;
     left: 0px;
     width: 100%;
     height: 100%;
     z-index: 5;
 }
-.pp-bx{
+
+.pp-bx {
     width: 1200px;
     background-color: black;
     /* border: 1px solid red; */
-    
+
 }
-.pp-im2{
+
+.pp-im2 {
     width: 60%;
     height: 100%;
     object-fit: contain;
     background-color: black;
     border-right: 1px solid grey;
-    
+
 }
-.pp-bd-b{
+
+.pp-bd-b {
     border-bottom: 1px solid grey;
 }
-.pp-im3{
-  
+
+.pp-im3 {
+
     margin: 2% 20px;
     aspect-ratio: 1/1;
     object-fit: cover;
     border-radius: 100%;
-  }
-  
-  .pp-ul{
+}
+
+.pp-ul {
     color: white;
     text-decoration: none;
     font-weight: 650;
     font-size: 1.3rem;
-  }
-  
+}
 
-  .pp-d1{
+
+.pp-d1 {
     font-weight: 500;
     font-size: 1rem;
-  }
-  .pp-bx2{
+}
+
+.pp-bx2 {
     padding-left: 20px;
-  }
-  .pp-f1{
+}
+
+.pp-f1 {
     font-size: 0.85rem;
     font-weight: 400;
     font-style: italic;
-  }
+}
