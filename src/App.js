@@ -31,8 +31,10 @@ function App() {
 
         <Router>
           <Routes>
+            {/* <Route index element={<HomeLeft />} /> */}
             <Route path='/' element={<Private><Layout /></Private>} >
               <Route index element={<Home />} />
+              {/* <Route index element={<HomeLeft/>} /> */}
               <Route path='/post' element={<Post />} />
               <Route path="/users/:userId" element={<UsersProfile />} />
               <Route path='/uploadPost' element={<UploadPosts />} />
@@ -46,7 +48,6 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/signin' element={<Signin />} />
             <Route path='/post' element={<Post />} />
-            <Route path='/homeleft' element={<HomeLeft />} />
             <Route path='/homeright' element={<HomeRight />} />
             {/* <Route path='' element={<UserProfile/>}/> */}
 

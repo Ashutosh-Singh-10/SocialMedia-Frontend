@@ -1,7 +1,7 @@
     .hr-mbx{
         z-index: 50;
             width: 300px;
-            position: absolute;
+            /* position: absolute; */
             left: 0px;
             top: 0px; 
             overflow: hidden;
