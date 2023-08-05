@@ -1,0 +1,50 @@
+    .hr-mbx{
+        z-index: 50;
+            width: 300px;
+            position: absolute;
+            left: 0px;
+            top: 0px; 
+            overflow: hidden;
+        }
+        .hr-mcn1{
+            margin-top: 10px;
+            border-radius: 4px  ;
+            z-index: 100;
+            background-color: white;
+            position: sticky;
+            left:50px;
+            top: 20px;
+        }
+        
+        .hr-cn1{
+            padding-block: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            
+            text-align: start;
+            /* padding-left: 100px; */
+        }
+    
+        .hr-cn2{
+            display: flex;
+            align-items: center;
+            border-top: 1px solid gray;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            /* background-color: red; */
+            /* height: 400px; */
+        }
+        .hr-img{
+            border-radius: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            height: 30px;
+            margin:10px  20px ;
+            border: 1px solid black;
+            cursor: pointer;
+            
+        }
+
+    
+

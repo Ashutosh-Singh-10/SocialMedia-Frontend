@@ -11,6 +11,8 @@ import Post from './components/Post'
 import RevokeAccess from './utilities/RevokeAccess';
 import UsersProfile from './components/UsersProfile';
 import PostDetail from './components/PostDetail';
+import HomeLeft from './components/HomeLeft';
+import HomeRight from './components/HomeRight';
 import UploadPosts from './components/UploadPosts';
 import Layout from './components/Layout';
 const queryClient = new QueryClient({
@@ -24,6 +26,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App ">
+        <Navbar />
+        <RevokeAccess />
 
         <Router>
           <Routes>
@@ -40,6 +44,9 @@ function App() {
 
             <Route path='/login' element={<Login />} />
             <Route path='/signin' element={<Signin />} />
+            <Route path='/post' element={<Post />} />
+            <Route path='/homeleft' element={<HomeLeft />} />
+            <Route path='/homeright' element={<HomeRight />} />
             {/* <Route path='' element={<UserProfile/>}/> */}
 
           </Routes>
@@ -47,6 +54,7 @@ function App() {
         {/* <RevokeAccess/> */}
       </div>
       {/* <ReactQueryDevtools initialIsOpen={false} position='bottom-right' /> */}
+
     </QueryClientProvider>
   );
 }
