@@ -28,19 +28,18 @@ function App() {
         <Router>
           <Routes>
             <Route path='/' element={<Private><Layout /></Private>} >
-
               <Route index element={<Home />} />
               <Route path='/post' element={<Post />} />
-              <Route path='*' element={<div style={{ color: "white" }}>Page Not Found</div>} />
               <Route path="/users/:userId" element={<UsersProfile />} />
               <Route path='/uploadPost' element={<UploadPosts />} />
               <Route path="/post/:postId" element={<PostDetail />} />
+              <Route path='*' element={<div style={{ color: "white" }}>Page Not Found</div>} />
             </Route>
             {/* <Route path="/users/:userId" element={<UserProfile />} /> */}
 
 
             <Route path='/login' element={<Login />} />
-
+            <Route path='/signin' element={<Signin />} />
             {/* <Route path='' element={<UserProfile/>}/> */}
 
           </Routes>

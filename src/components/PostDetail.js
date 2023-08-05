@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../assets/css/postdetail.css";
 import "../assets/css/comment.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import Comment from "./Comment";
@@ -15,6 +15,7 @@ export default function PostDetail() {
   const url = process.env.REACT_APP_BACKEND_URL;
   const [liked,setLiked]=useState(0)
   
+  const navigate = useNavigate(); 
   let token=Cook("access");
   console.log(token)
 
@@ -134,6 +135,7 @@ export default function PostDetail() {
                 </div>
               </div>
             </div>
+            <button onClick={()=>navigate(-1)}>back</button>
             {comments.map((element, id) => {
               return <Comment data={element} key={id} />;
             })}
