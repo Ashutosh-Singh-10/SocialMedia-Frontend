@@ -1,0 +1,11 @@
+.searchPopUp {
+    /* visibility: hidden; */
+    /* opacity: 0; */
+    position: fixed;
+    top: 400px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(252, 251, 251, 0.7);
+    transition: opacity 500ms;
+}

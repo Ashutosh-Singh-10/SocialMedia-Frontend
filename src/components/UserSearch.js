@@ -1,11 +1,13 @@
 import React from 'react'
-
+import '../assets/css/userSearch.css'
 const UserSearch = () => {
     return (
         <>
-            <div className='SearchField'>
-                <input type='text' placeholder='Search' />
-            </div>
+            <section className='searchPopUp'>
+                <div className='SearchField'>
+                    <input type='text' placeholder='Search' />
+                </div>
+            </section>
         </>
     )
 }
