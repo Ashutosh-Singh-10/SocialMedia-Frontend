@@ -3,7 +3,7 @@
     height: 10dvh;
     color: white;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     /* border: 1px solid white; */
 }

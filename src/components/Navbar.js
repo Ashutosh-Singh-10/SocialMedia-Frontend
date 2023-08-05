@@ -20,7 +20,7 @@ export default function Navbar() {
           </li>
           <li>
             <AiOutlineSearch />
-            <NavLink to='/search'>Search</NavLink>
+            <NavLink to='/userSearch'>Search</NavLink>
           </li>
           <li>
             <MdExplore />

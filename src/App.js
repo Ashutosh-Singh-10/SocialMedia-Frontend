@@ -15,6 +15,7 @@ import HomeLeft from './components/HomeLeft';
 import HomeRight from './components/HomeRight';
 import UploadPosts from './components/UploadPosts';
 import Layout from './components/Layout';
+import UserSearch from './components/UserSearch';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -26,7 +27,6 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App ">
-        <Navbar />
         <RevokeAccess />
 
         <Router>
@@ -36,6 +36,7 @@ function App() {
               <Route path='/post' element={<Post />} />
               <Route path="/users/:userId" element={<UsersProfile />} />
               <Route path='/uploadPost' element={<UploadPosts />} />
+              <Route path='/userSearch' element={<UserSearch />} />
               <Route path="/post/:postId" element={<PostDetail />} />
               <Route path='*' element={<div style={{ color: "white" }}>Page Not Found</div>} />
             </Route>
