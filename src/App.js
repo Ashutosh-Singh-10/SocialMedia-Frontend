@@ -11,6 +11,8 @@ import Post from './components/Post'
 import RevokeAccess from './utilities/RevokeAccess';
 import UsersProfile from './components/UsersProfile';
 import PostDetail from './components/PostDetail';
+import HomeLeft from './components/HomeLeft';
+import HomeRight from './components/HomeRight';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -23,6 +25,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div className="App ">
         <Navbar />
+        <RevokeAccess/>
         <Router>
           <Routes>
             <Route element={<Private />} >
@@ -38,6 +41,8 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/signin' element={<Signin />} />
             <Route path='/post' element={<Post />} />
+            <Route path='/homeleft' element={<HomeLeft/>} />
+            <Route path='/homeright' element={<HomeRight/>} />
             {/* <Route path='' element={<UserProfile/>}/> */}
 
           </Routes>
@@ -45,7 +50,8 @@ function App() {
         {/* <RevokeAccess/> */}
       </div>
       {/* <ReactQueryDevtools initialIsOpen={false} position='bottom-right' /> */}
-    </QueryClientProvider>
+   
+       </QueryClientProvider>
   );
 }
 
