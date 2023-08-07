@@ -7,7 +7,7 @@ export default function RevokeAccess() {
     
 
 
-const [x,setX]=useState(100)
+const [x,setX]=useState(100000)
     const getAccess=()=>{
       const url=process.env.REACT_APP_BACKEND_URL+ "/login/refresh"
 
@@ -27,7 +27,7 @@ const [x,setX]=useState(100)
   
     }).catch((err)=>{
       console.log(err)
-      setX(11000);
+      setX(110000);
    
          
 
