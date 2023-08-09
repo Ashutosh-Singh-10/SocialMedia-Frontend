@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import "../assets/css/navbar.css"
-import { NavLink } from 'react-router-dom'
+import { NavLink, ScrollRestoration } from 'react-router-dom'
 import { AiFillHome, AiOutlineSearch } from 'react-icons/ai'
 import { MdExplore } from 'react-icons/md'
 import { CgProfile } from 'react-icons/cg'
@@ -16,11 +16,11 @@ export default function Navbar() {
         <ul>
           <li>
             <AiFillHome />
-            <NavLink to='/'>Home</NavLink>
+            <NavLink to='/' preventScrollReset>Home</NavLink>
           </li>
           <li>
             <AiOutlineSearch />
-            <NavLink to='/userSearch'>Search</NavLink>
+            <NavLink to='/userSearch' preventScrollReset>Search</NavLink>
           </li>
           <li>
             <MdExplore />
@@ -28,8 +28,10 @@ export default function Navbar() {
           </li>
           <li>
             <CgProfile />
-            <NavLink to='/users/Ashu'>Profile</NavLink>
+            <NavLink to='/users/Ashu' preventScrollReset>Profile</NavLink>
           </li>
+          {/* <li><NavLink to={'/users/Jo'} preventScrollReset>Jo</NavLink></li> */}
+          <li><NavLink to={'/logout'} replace>Logout</NavLink></li>
         </ul>
       </nav>
     </header>

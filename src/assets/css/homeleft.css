@@ -1,28 +1,33 @@
-.hl-mbx{
-z-index: 50;
+.hl-mbx {
+    z-index: 50;
     width: 300px;
     /* position: absolute; */
     left: 0px;
-    top: 0px; 
+    top: 0px;
     /* background-color: blue; */
-    overflow: hidden;
+    /* overflow: hidden; */
+    /* position: fixed; */
 }
-.hl-mcn1{
+
+.hl-mcn1 {
     background-color: white;
     border-radius: 4px;
     padding-bottom: 20px;
+    border: 2px solid red;
 }
-.hl-mcn2{
+
+.hl-mcn2 {
     margin-top: 10px;
-    border-radius: 4px  ;
+    border-radius: 4px;
     z-index: 100;
     background-color: white;
     position: sticky;
-    left:50px;
+    left: 50px;
     top: 20px;
     /* padding-block: 20px;      */
 }
-.hl-img{
+
+.hl-img {
     border-radius: 100%;
     aspect-ratio: 1/1;
     object-fit: cover;
@@ -30,31 +35,37 @@ z-index: 50;
     margin: 20px;
     border: 5px solid black;
     cursor: pointer;
-    
+
 }
-.hl-l-bd{
+
+.hl-l-bd {
     border-left: 1px solid grey;
 }
-.hl-f1{
+
+.hl-f1 {
     font-weight: 600;
     font-size: 1.2rem;
 }
-.hl-f2{
+
+.hl-f2 {
     font-weight: 400;
     font-size: 0.9rem;
     color: rgb(96, 94, 94);
 }
-.hl-bx1{
+
+.hl-bx1 {
     padding-block: 10px;
 }
-.hl-bx2{
+
+.hl-bx2 {
     padding-block: 10px;
     font-size: 1rem;
     font-weight: 600;
     /* background-color: black; */
     border-top: 1px solid rgb(185, 185, 185);
 }
-.hl-bx2:hover{
+
+.hl-bx2:hover {
     background-color: rgb(191, 191, 191);
     cursor: pointer;
     border-bottom-left-radius: 4px;
