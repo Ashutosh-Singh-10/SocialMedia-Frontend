@@ -4,12 +4,12 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import Cookies from 'universal-cookie';
 import axios from "axios"
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 export default function Login() {
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-
+  const navigate = useNavigate();
 
   const uri = useSelector(state => state.uri)
   const login = () => {
@@ -28,7 +28,8 @@ export default function Login() {
       cookies.set('refresh', res.data.refresh);
       cookies.set('access', res.data.access);
       console.log(uri);
-      window.location = uri
+      // window.location = uri
+      navigate(uri, { replace: true });
 
       // <Navigate to={`${uri}`} replace={true} />
     }).catch((res) => { console.log(res) })
