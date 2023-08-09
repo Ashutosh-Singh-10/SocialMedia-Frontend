@@ -28,9 +28,9 @@ export default function Login() {
       cookies.set('refresh', res.data.refresh);
       cookies.set('access', res.data.access);
       console.log(uri);
-      // window.location = uri
+      window.location = uri
 
-      <Navigate to={uri.toString()} replace={true} />
+      // <Navigate to={`${uri}`} replace={true} />
     }).catch((res) => { console.log(res) })
   }
 
