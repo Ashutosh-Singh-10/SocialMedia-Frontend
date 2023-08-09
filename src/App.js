@@ -17,6 +17,7 @@ import UploadPosts from './components/UploadPosts';
 import Layout from './components/Layout';
 import UserSearch from './components/UserSearch';
 import Create from './components/Create';
+import HomePage from './components/HomePage';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -32,10 +33,11 @@ function App() {
 
         <Router>
           <Routes>
-            
+
             {/* <Route index element={<HomeLeft />} /> */}
             <Route path='/' element={<Private><Layout /></Private>} >
-              <Route index element={<Home />} />
+              {/* <Route index element={<Home />} /> */}
+              <Route index element={<HomePage />} />
               {/* <Route index element={<HomeLeft/>} /> */}
               <Route path='/post' element={<Post />} />
               <Route path="/users/:userId" element={<UsersProfile />} />
@@ -45,13 +47,13 @@ function App() {
               <Route path='*' element={<div style={{ color: "white" }}>Page Not Found</div>} />
             </Route>
             {/* <Route path="/users/:userId" element={<UserProfile />} /> */}
- 
- 
+
+
 
             <Route path='/login' element={<Login />} />
-            <Route path='/create' element={<Create/>} />
+            <Route path='/create' element={<Create />} />
             <Route path='/signin' element={<Signin />} />
-            <Route path='/post' element={<Post />} />
+            {/* <Route path='/post' element={<Post />} /> */}
             <Route path='/homeright' element={<HomeRight />} />
             {/* <Route path='' element={<UserProfile/>}/> */}
 

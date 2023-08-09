@@ -5,6 +5,7 @@ export default function Post(props) {
   // console.log(props.data)  
   const url = process.env.REACT_APP_BACKEND_URL
   // console.log(props.data.useravatar)
+  console.log('ja')
   return (
     <div className='ps-cnt flexV'>
       <div className='flexCenter ps-m1'>

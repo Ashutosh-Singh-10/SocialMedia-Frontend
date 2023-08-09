@@ -4,6 +4,7 @@ import "../assets/css/userprofile.css"
 import { Link, useParams } from 'react-router-dom'
 import axios from "axios"
 import Post from './Post';
+import { ThreeCircles } from 'react-loader-spinner'
 const UsersProfile = () => {
     const url = process.env.REACT_APP_BACKEND_URL;
     const { userId } = useParams();
@@ -51,7 +52,7 @@ const UsersProfile = () => {
     // const onScroll = (e) => {
     //     console.log(e.target.documentElement.scrollTop)
     // }
-    const { data: userData } = useQuery(`${userId}`, () => {
+    const { data: userData, isLoading: userLoading } = useQuery(`${userId}`, () => {
         // const url1 = url + "/profile/userfeeds"
         // console.log('Jai');
         const url2 = url + "/profile/userprofile"
@@ -62,16 +63,45 @@ const UsersProfile = () => {
         )
     }, {
         cacheTime: 86400000,
+        // refetchInterval: 2000
+        refetchOnWindowFocus: false,
     });
-    const { data: userPosts } = useQuery('userPosts', () => {
+    const userName = userData?.data?.id;
+    // console.log(userData?.data);
+    const { data: userPosts, isLoading: postLoading, isFetching } = useQuery(['userPosts', userId], () => {
         const url1 = url + "/profile/userfeeds"
         return axios.post(url1,
             {
                 "username": userId
             }
         )
-    })
+    },
+        {
+            cacheTime: 86400000,
+            // refetchInterval: 2000,
+            refetchOnWindowFocus: false,
+            enabled: !!userName,
+        })
     // console.log(user);
+    if (userLoading) {
+        return (<div className='loader'>
+            <ThreeCircles
+                height="100"
+                width="100"
+                // color="#4fa94d"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                ariaLabel="three-circles-rotating"
+                outerCircleColor="black"
+                innerCircleColor="black"
+                middleCircleColor="black"
+            />
+
+        </div>
+
+        )
+    }
     return (
 
         <div className='flexVC'>
@@ -117,7 +147,21 @@ const UsersProfile = () => {
                 {/* <button  onClick={getPosts}>get the data</button> */}
                 <hr className='w100' />
                 <div className="uf-cn">
-                    {userPosts?.data.map((element, id) => {
+                    {(postLoading) ? <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }} >
+                        <ThreeCircles
+                            height="100"
+                            width="100"
+                            // color="#4fa94d"
+                            wrapperStyle={{}}
+                            wrapperClass=""
+                            visible={true}
+                            ariaLabel="three-circles-rotating"
+                            outerCircleColor="black"
+                            innerCircleColor="black"
+                            middleCircleColor="black"
+                        />
+
+                    </div> : userPosts?.data.map((element, id) => {
                         return (
 
                             // <Post data={element} i={id} key={id} className="bd-pst"/>       
@@ -128,6 +172,7 @@ const UsersProfile = () => {
                             </Link>
                         );
                     })}
+
 
 
 

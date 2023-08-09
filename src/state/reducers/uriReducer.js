@@ -1,13 +1,11 @@
-const reducer =(state="/home",action)=>{
+const reducer = (state = "/", action) => {
 
-if(action.type==='setUri')
-{
-    return action.payload
-}
-else
-{
-    return state;
-}
+    if (action.type === 'setUri') {
+        return action.payload
+    }
+    else {
+        return state;
+    }
 
 }
 

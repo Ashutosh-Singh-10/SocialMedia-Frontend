@@ -21,7 +21,8 @@ console.log(this.state.page)
           page:this.state.page
         }
       ).then((res) => {
-        let li=this.state.posts
+        let li = this.state.posts
+        // console.log(res.data);
         li=li.concat(res.data)
         this.setState({posts:li,page:this.state.page+1})
     
@@ -30,7 +31,8 @@ console.log(this.state.page)
       }
       componentDidMount(){
         this.getPosts()  
-      }
+  }
+  
       
 
 
@@ -83,9 +85,9 @@ console.log(this.state.page)
         >
 
       <div className='flexVC'>
-        {this.state.posts.map((element,id) => {
+              {this.state.posts.map((element, id) => {
+          console.log(element)
           return (
-            
             <Post data={element} i={id} key={id} className="bd-pst"/>       
             );
           })}
