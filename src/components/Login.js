@@ -12,7 +12,9 @@ export default function Login() {
   const navigate = useNavigate();
 
   const uri = useSelector(state => state.uri)
-  const login = () => {
+  const login = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     const url = process.env.REACT_APP_BACKEND_URL + "/login/"
     axios.post(url,
       {
@@ -46,7 +48,7 @@ export default function Login() {
           <img src={require('../assets/images/loginlogo.png')} className="imgFull" alt="" />
         </div>
         <div className='w35 flexVC '>
-          <div className='lg-bx1 flexVC borderBlack w100'>
+          <form className='lg-bx1 flexVC borderBlack w100' onSubmit={login}>
             <div className="lg-logo">
               Social Network
             </div>
@@ -66,11 +68,11 @@ export default function Login() {
                 value={password}
               />
             </div>
-            <button className='lg-btn lg-ft1 br-rd4' onClick={login}>
+            <button className='lg-btn lg-ft1 br-rd4'>
               Login</button>
 
 
-          </div>
+          </form>
           <div className='flexCenter lg-bx2 w100 borderBlack'
           >
             Don't have account?

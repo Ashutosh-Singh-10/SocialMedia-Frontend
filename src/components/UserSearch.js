@@ -4,11 +4,12 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 import useDebounce from '../hooks/useDebounce';
 import { Link } from 'react-router-dom';
-const UserSearch = ({ isVisible, setVisible }) => {
+const UserSearch = ({ isVisible, setVisible, buttonref }) => {
     const ref = useRef();
+    // console.log(SearchPopRef);
     useEffect(() => {
         const handler = (e) => {
-            if (!ref.current.contains(e.target)) {
+            if (!ref.current.contains(e.target) && !buttonref.current.contains(e.target)) {
                 setVisible(false);
             }
         }
@@ -44,7 +45,7 @@ const UserSearch = ({ isVisible, setVisible }) => {
     }
 
     return (
-        <>{<section className='searchPopUp' style={{ opacity: isVisible ? '1' : '0' }} >
+        <>{<section className='searchPopUp' style={{ opacity: isVisible ? '1' : '0', visibility: isVisible ? 'visible' : 'hidden' }} >
             <div className='search'>
                 <div className='SearchField' style={{ transform: isVisible ? 'translateY(0px)' : 'translateY(-1000px)' }} ref={ref} >
                     <input type='text' value={searchText} onChange={handleSearch} placeholder='Search' />
@@ -65,7 +66,7 @@ const UserSearch = ({ isVisible, setVisible }) => {
                 </div>
             </div>
 
-        </section>}
+        </section >}
 
         </>
     )

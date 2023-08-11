@@ -20,7 +20,15 @@ export default function Navbar() {
       setSearchPop(false);
     }
   }
-
+  // const buttonClickCheck = (e) => {
+  //   if (!SearchPopRef.current.contains(e.target)) {
+  //     return true;
+  //   }
+  //   else {
+  //     return false;
+  //   }
+  // }
+  console.log(SearchPopRef)
   // useEffect(() => {
   //   const listener = (event) => {
   //     // Do nothing if clicking ref's element or descendent elements
@@ -46,10 +54,10 @@ export default function Navbar() {
             <AiFillHome />
             <NavLink to='/' preventScrollReset>Home</NavLink>
           </li>
-          <li>
+          <li ref={SearchPopRef} >
             <AiOutlineSearch />
             {/* <NavLink to='/userSearch' preventScrollReset>Search</NavLink> */}
-            <button onClick={handleClick}>Search</button>
+            <button onClick={handleClick} >Search</button>
 
           </li>
           <li>
@@ -65,7 +73,7 @@ export default function Navbar() {
         </ul>
 
       </nav>
-      <UserSearch isVisible={searchPop} setVisible={setSearchPop} />
+      <UserSearch isVisible={searchPop} setVisible={setSearchPop} buttonref={SearchPopRef} />
     </header>
 
   )
