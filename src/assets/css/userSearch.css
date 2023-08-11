@@ -19,6 +19,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .SearchField input {
@@ -31,4 +32,53 @@
     border-radius: 5px;
     outline: none;
     padding-left: 10px;
+}
+
+.searchResult {
+    margin-top: 1px;
+    padding: 5px;
+    width: 350px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+.searchUserLink {
+    padding: 5px;
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+    border-bottom: 2px solid rgb(142, 142, 142);
+    padding: 10px 0;
+    text-decoration: none;
+}
+
+.searchUserPic {
+    margin-left: 15px;
+    height: 3rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+
+.searchUserName {
+    /* border: 1px solid red; */
+    width: 70%;
+    text-align: left;
+    /* line-height: 1; */
+    display: flex;
+    flex-direction: column;
+    color: black;
+}
+
+.searchUserName h3 {
+    /* border: 1px solid red; */
+    margin: 0;
+    font-weight: 400;
+}
+
+.searchUserName h4 {
+    margin: 0;
+    font-weight: 400;
+    color: rgb(142, 142, 142);
 }

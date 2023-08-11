@@ -1,28 +1,33 @@
-.ps-f{
+.ps-f {
     font-size: 0.8rem;
     font-weight: 700;
 }
-.ps-m1{
+
+.ps-m1 {
     margin-block: 5px;
 }
-.ps-m2{
+
+.ps-m2 {
     margin: 5px;
 }
-.ps-cnt{
+
+.ps-cnt {
     width: 500px;
     color: white;
     border-bottom: 1px solid rgba(128, 128, 128, 0.248);
     margin-top: 40px;
     padding-bottom: 10px;
-/* background-color: red; */
-/* height: 900px; */
+    /* background-color: red; */
+    /* height: 900px; */
 }
-.ps-us-im{
+
+.ps-us-im {
     border-radius: 100%;
     height: 40px;
     width: 40px;
 }
-.ps-im{
+
+.ps-im {
     width: 100%;
     max-height: 600px;
     min-height: 450px;
