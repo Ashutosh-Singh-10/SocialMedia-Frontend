@@ -1,13 +1,41 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../assets/css/navbar.css"
 import { NavLink, ScrollRestoration } from 'react-router-dom'
 import { AiFillHome, AiOutlineSearch } from 'react-icons/ai'
 import { MdExplore } from 'react-icons/md'
 import { CgProfile } from 'react-icons/cg'
+import UserSearch from './UserSearch'
+import { useRef } from 'react'
+
 export default function Navbar() {
-  useEffect(() => {
-    console.log("jai")
-  })
+  const [searchPop, setSearchPop] = useState(false);
+  const SearchPopRef = useRef();
+  const handleClick = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (!searchPop) {
+      setSearchPop(true);
+    }
+    else {
+      setSearchPop(false);
+    }
+  }
+
+  // useEffect(() => {
+  //   const listener = (event) => {
+  //     // Do nothing if clicking ref's element or descendent elements
+  //     if (!ref.current || ref.current.contains(event.target)) {
+  //       return;
+  //     }
+  //     handler(event);
+  //   };
+  //   document.addEventListener("mousedown", listener);
+  //   document.addEventListener("touchstart", listener);
+  //   return () => {
+  //     document.removeEventListener("mousedown", listener);
+  //     document.removeEventListener("touchstart", listener);
+  //   };
+  // })
   return (
     <header className='navbar'>
       <div className='brand-name'>
@@ -20,7 +48,9 @@ export default function Navbar() {
           </li>
           <li>
             <AiOutlineSearch />
-            <NavLink to='/userSearch' preventScrollReset>Search</NavLink>
+            {/* <NavLink to='/userSearch' preventScrollReset>Search</NavLink> */}
+            <button onClick={handleClick}>Search</button>
+
           </li>
           <li>
             <MdExplore />
@@ -33,7 +63,9 @@ export default function Navbar() {
           {/* <li><NavLink to={'/users/Jo'} preventScrollReset>Jo</NavLink></li> */}
           <li><NavLink to={'/logout'} replace>Logout</NavLink></li>
         </ul>
+
       </nav>
+      <UserSearch isVisible={searchPop} setVisible={setSearchPop} />
     </header>
 
   )

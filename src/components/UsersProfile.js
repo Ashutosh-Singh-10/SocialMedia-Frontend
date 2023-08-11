@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { useQuery } from 'react-query'
+import React, { Fragment, useEffect, useRef, useState } from 'react'
+import { useInfiniteQuery, useQuery } from 'react-query'
 import "../assets/css/userprofile.css"
 import { Link, useParams } from 'react-router-dom'
 import axios from "axios"
@@ -9,6 +9,7 @@ const UsersProfile = () => {
     const url = process.env.REACT_APP_BACKEND_URL;
     const { userId } = useParams();
     console.log(userId);
+    const [isNextPage, setIsNextPage] = useState(1);
     // const getUserProfileData = async () => {
     //     const url1 = url + "/profile/userfeeds"
     //     const url2 = url + "/profile/userprofile"
@@ -64,25 +65,63 @@ const UsersProfile = () => {
     }, {
         cacheTime: 86400000,
         // refetchInterval: 2000
-        refetchOnWindowFocus: false,
+        // refetchOnWindowFocus: false,
     });
     const userName = userData?.data?.id;
     // console.log(userData?.data);
-    const { data: userPosts, isLoading: postLoading, isFetching } = useQuery(['userPosts', userId], () => {
+    const { data: userPosts, isLoading: postLoading, isFetching, fetchNextPage, hasNextPage } = useInfiniteQuery(['userPosts', userId], async ({ pageParam = 0 }) => {
         const url1 = url + "/profile/userfeeds"
-        return axios.post(url1,
+        // let url1 = process.env.REACT_APP_BACKEND_URL + "/feeds/page";
+
+        const res = await axios.post(url1,
             {
-                "username": userId
+                "username": userId,
+                "page": pageParam
             }
         )
+        // console.log(res.data)
+        setIsNextPage(res.data.remaining)
+        console.log(isNextPage);
+        return res.data;
     },
         {
-            cacheTime: 86400000,
+            // cacheTime: 86400000,
             // refetchInterval: 2000,
-            refetchOnWindowFocus: false,
-            enabled: !!userName,
+            // refetchOnWindowFocus: false,
+            // enabled: !!userName,
+            getNextPageParam: (_lastPage, pages) => {
+                if (isNextPage === 1) {
+                    console.log(isNextPage)
+                    return pages.length;
+                }
+                else {
+                    return undefined
+                }
+                // console.log(pages.length);
+                // return pages.length + 1;
+
+            }
         })
-    // console.log(user);
+    // console.log(userPosts?.pages);
+    useEffect(() => {
+        const onScroll = (e) => {
+            const { scrollHeight, scrollTop, clientHeight } = e.target.scrollingElement;
+            // console.log(scrollTop);
+            if (scrollHeight - scrollTop <= clientHeight * 1.5) {
+                // console.log("ja")
+                if (hasNextPage) {
+                    // console.log("azad")
+                    fetchNextPage();
+                }
+            }
+        }
+        // const scrollPost = document.querySelector('.scrollPost');
+        document.addEventListener('scroll', onScroll);
+        return () => {
+            document.removeEventListener('scroll', onScroll);
+        }
+    })
+
     if (userLoading) {
         return (<div className='loader'>
             <ThreeCircles
@@ -161,15 +200,24 @@ const UsersProfile = () => {
                             middleCircleColor="black"
                         />
 
-                    </div> : userPosts?.data.map((element, id) => {
+                    </div> : userPosts?.pages?.map((page, pageId) => {
+                        // console.log(page)
                         return (
+                            <Fragment key={pageId}>{
+                                // console.log(page.data.feeds)
+                                page?.feeds?.map((element, id) => {
+                                    return (
+                                        <Link to={`/post/${element.id}`} className='uf-cd flexCenter' key={id} >
+                                            <div className='uf-hover flexCenter'>{element.likes} likes</div>
+                                            <img src={`${url}${element.avatar}`} className='uf-im' />
+                                        </Link>
+                                    )
 
+                                })}
+                            </Fragment>
                             // <Post data={element} i={id} key={id} className="bd-pst"/>       
 
-                            <Link to={`/post/${element.id}`} className='uf-cd flexCenter' key={id} >
-                                <div className='uf-hover flexCenter'>{element.likes} likes</div>
-                                <img src={`${url}${element.avatar}`} className='uf-im' />
-                            </Link>
+
                         );
                     })}
 

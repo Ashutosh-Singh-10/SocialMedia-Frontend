@@ -34,7 +34,8 @@ const getPosts = async ({ pageParam = 0 }) => {
 const HomePage = () => {
     const { data, hasNextPage, fetchNextPage, isFetching } = useInfiniteQuery('InfinitePosts', getPosts, {
         getNextPageParam: (_lastPage, pages) => {
-            return pages.length + 1;
+
+            return pages.length;
         }
     })
     useEffect(() => {
