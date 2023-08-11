@@ -5,6 +5,15 @@ import { useQuery } from 'react-query';
 import useDebounce from '../hooks/useDebounce';
 import { Link } from 'react-router-dom';
 const UserSearch = ({ isVisible, setVisible }) => {
+    const ref = useRef();
+    useEffect(() => {
+        const handler = (e) => {
+            if (!ref.current.contains(e.target)) {
+                setVisible(false);
+            }
+        }
+        document.addEventListener('mousedown', handler);
+    })
     const url = process.env.REACT_APP_BACKEND_URL
     const url1 = url + "/profile/search";
     const [searchText, setSearchText] = useState('');
@@ -29,27 +38,33 @@ const UserSearch = ({ isVisible, setVisible }) => {
         setSearchText(e.target.value);
         // search();
     }
-
+    const handleLinkClick = (e) => {
+        e.stopPropagation();
+        setVisible(false);
+    }
 
     return (
-        <>{isVisible && <section className='searchPopUp'  >
-            <div className='SearchField' >
-                <input type='text' value={searchText} onChange={handleSearch} placeholder='Search' />
-                <div className='searchResult'>
-                    {data?.data.map((element, id) => {
-                        return (<><Link to={`/users/${element.username}`} className='searchUserLink'>
-                            <img src={`${url}${element.avatar}`} className='searchUserPic' />
-                            <div className='searchUserName'>
-                                <h3 className='h1'>{element.username.slice(0, 20)}</h3>
-                                <h4>{element.first_name + " " + element.last_name}</h4>
-                            </div>
+        <>{<section className='searchPopUp' style={{ opacity: isVisible ? '1' : '0' }} >
+            <div className='search'>
+                <div className='SearchField' style={{ transform: isVisible ? 'translateY(0px)' : 'translateY(-1000px)' }} ref={ref} >
+                    <input type='text' value={searchText} onChange={handleSearch} placeholder='Search' />
+                    <div className='searchResult'>
+                        {data?.data.map((element, id) => {
+                            return (<><Link to={`/users/${element.username}`} className='searchUserLink' onClick={handleLinkClick}>
+                                <img src={`${url}${element.avatar}`} className='searchUserPic' />
+                                <div className='searchUserName'>
+                                    <h3 className='h1'>{element.username.slice(0, 20)}</h3>
+                                    <h4>{element.first_name + " " + element.last_name}</h4>
+                                </div>
 
-                        </Link>
-                        </>)
-                    })}
+                            </Link>
+                            </>)
+                        })}
 
+                    </div>
                 </div>
             </div>
+
         </section>}
 
         </>

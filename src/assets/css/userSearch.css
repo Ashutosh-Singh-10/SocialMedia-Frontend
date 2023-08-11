@@ -6,20 +6,33 @@
     height: 100dvh;
     position: absolute;
     top: 6dvh;
+    opacity: 0;
     /* bottom: 0;
     left: 0;
     right: 0; */
     background: rgba(0, 0, 0, 0.7);
-    transition: opacity 500ms;
+    transition: all 0.8s;
     /* border: 1px solid red; */
+    /* display: flex;
+    justify-content: center; */
+    /* align-items: center; */
+}
+
+.search {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
 }
 
 .SearchField {
+    width: 350px;
     /* border: 1px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    transition: all 0.8s;
+    transform: translateY(-1000px);
 }
 
 .SearchField input {
@@ -35,7 +48,7 @@
 }
 
 .searchResult {
-    margin-top: 1px;
+    margin-top: 3px;
     padding: 5px;
     width: 350px;
     background: white;
