@@ -7,9 +7,11 @@
     /* background-color: blue; */
     /* overflow: hidden; */
     /* position: fixed; */
+    border: 1px solid red;
 }
 
 .hl-mcn1 {
+    position: sticky;
     background-color: white;
     border-radius: 4px;
     padding-bottom: 20px;

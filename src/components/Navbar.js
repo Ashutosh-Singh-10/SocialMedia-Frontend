@@ -28,7 +28,7 @@ export default function Navbar() {
   //     return false;
   //   }
   // }
-  console.log(SearchPopRef)
+  // console.log(SearchPopRef)
   // useEffect(() => {
   //   const listener = (event) => {
   //     // Do nothing if clicking ref's element or descendent elements

@@ -5,6 +5,7 @@ import { useQuery } from 'react-query';
 import useDebounce from '../hooks/useDebounce';
 import { Link } from 'react-router-dom';
 const UserSearch = ({ isVisible, setVisible, buttonref }) => {
+    // const bgRef = useRef();
     const ref = useRef();
     // console.log(SearchPopRef);
     useEffect(() => {
@@ -14,6 +15,9 @@ const UserSearch = ({ isVisible, setVisible, buttonref }) => {
             }
         }
         document.addEventListener('mousedown', handler);
+        return () => {
+            document?.removeEventListener('mousedown', handler);
+        }
     })
     const url = process.env.REACT_APP_BACKEND_URL
     const url1 = url + "/profile/search";
@@ -45,13 +49,13 @@ const UserSearch = ({ isVisible, setVisible, buttonref }) => {
     }
 
     return (
-        <>{<section className='searchPopUp' style={{ opacity: isVisible ? '1' : '0', visibility: isVisible ? 'visible' : 'hidden' }} >
+        <>{<section className='searchPopUp' style={{ opacity: isVisible ? '1' : '0', visibility: isVisible ? 'visible' : 'hidden' }}>
             <div className='search'>
                 <div className='SearchField' style={{ transform: isVisible ? 'translateY(0px)' : 'translateY(-1000px)' }} ref={ref} >
                     <input type='text' value={searchText} onChange={handleSearch} placeholder='Search' />
                     <div className='searchResult'>
                         {data?.data.map((element, id) => {
-                            return (<><Link to={`/users/${element.username}`} className='searchUserLink' onClick={handleLinkClick}>
+                            return (<Link to={`/users/${element.username}`} className='searchUserLink' onClick={handleLinkClick} key={id}>
                                 <img src={`${url}${element.avatar}`} className='searchUserPic' />
                                 <div className='searchUserName'>
                                     <h3 className='h1'>{element.username.slice(0, 20)}</h3>
@@ -59,7 +63,7 @@ const UserSearch = ({ isVisible, setVisible, buttonref }) => {
                                 </div>
 
                             </Link>
-                            </>)
+                            )
                         })}
 
                     </div>

@@ -85,10 +85,10 @@ const UsersProfile = () => {
         return res.data;
     },
         {
-            // cacheTime: 86400000,
+            cacheTime: 86400000,
             // refetchInterval: 2000,
             // refetchOnWindowFocus: false,
-            // enabled: !!userName,
+            enabled: !!userName,
             getNextPageParam: (_lastPage, pages) => {
                 if (isNextPage === 1) {
                     console.log(isNextPage)
