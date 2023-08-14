@@ -17,6 +17,7 @@ export default function PostDetail() {
   const url = process.env.REACT_APP_BACKEND_URL;
   // const [liked, setLiked] = useState(0)
   const [isNextPage, setIsNextPage] = useState(1);
+
   const ref = useRef();
   const postdetailRef = useRef();
   const backButtonRef = useRef();
@@ -187,6 +188,7 @@ export default function PostDetail() {
 
   // }
 
+
   return (
     <div className="pp-cnt  flexCenter" ref={postDetailBgRef}>
 
@@ -226,7 +228,9 @@ export default function PostDetail() {
                     // console.log(page.data.feeds)
                     page?.comments?.map((element, id) => {
                       return (
-                        <Comment data={element} key={id} />
+                        <>
+                          <Comment data={element} key={id} />
+                        </>
                       )
 
                     })}

@@ -6,8 +6,10 @@ import { useState } from 'react'
 import { Fragment } from 'react'
 import CommentReply from './CommentReply'
 export default function Comment(props) {
-  // console.log(props)
+  console.log(props)
   const [isNextPage, setIsNextPage] = useState(1);
+  const [replyVisible, setReplyVisible] = useState(false);
+  const [replyInput, setReplyInput] = useState(false);
   const url = process.env.REACT_APP_BACKEND_URL
   const { data: commentReplyData, isLoading: commentsReplyLoading, isFetching, fetchNextPage, hasNextPage } = useInfiniteQuery(['commentsReply', props.data.id], async ({ pageParam = 0 }) => {
     // const url1 = url + "/profile/userfeeds"
@@ -43,6 +45,15 @@ export default function Comment(props) {
 
       }
     })
+  const handleReplyShow = (e) => {
+    e.stopPropagation();
+    setReplyVisible(!replyVisible);
+  }
+  const handleReply = (e) => {
+    e.stopPropagation();
+    setReplyInput(!replyInput);
+  }
+
   return (
     <div className='w100 myFlex'>
       <div className='w15 imageBox'>
@@ -59,20 +70,32 @@ export default function Comment(props) {
           <span>
             {props.data.likes}
           </span>
+          <button onClick={handleReply}>reply</button>
+          <button onClick={handleReplyShow}>view reply({props.data.replies})</button>
           <div>
-            {commentReplyData?.pages?.map((page, pageId) => {
-              // console.log(page);
+
+            {replyVisible && commentReplyData?.pages?.map((page, pageId) => {
+              console.log(page);
               return (
                 <Fragment key={pageId}>
                   {
                     page?.commentsReply?.map((element, id) => {
-                      return <CommentReply replyElement={element} key={id} />
+                      return (<>
+                        {/* <h1>jai</h1> */}
+                        <CommentReply replyElement={element} key={id} />
+
+                      </>)
                     })
                   }
                 </Fragment>
               )
             })}
           </div>
+          {replyInput && <div>
+            <input type='text' placeholder='reply' />
+          </div>
+          }
+
         </div>
       </div>
 

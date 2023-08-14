@@ -42,6 +42,7 @@ const UserSearch = ({ isVisible, setVisible, buttonref }) => {
         e.stopPropagation();
         setSearchText(e.target.value);
         // search();
+
     }
     const handleLinkClick = (e) => {
         e.stopPropagation();
