@@ -13,9 +13,9 @@ export default function PostDetail() {
   const { postId } = useParams();
   // const [data, setData] = useState({});
   // const [comments, setComments] = useState([]);
-  // const [comment, setComment] = useState("fdjj");
+  const [comment, setComment] = useState("");
   const url = process.env.REACT_APP_BACKEND_URL;
-  // const [liked, setLiked] = useState(0)
+  const [liked, setLiked] = useState(0)
   const [isNextPage, setIsNextPage] = useState(1);
 
   const ref = useRef();
@@ -24,7 +24,7 @@ export default function PostDetail() {
   const postDetailBgRef = useRef();
   const navigate = useNavigate();
   let token = Cook("access");
-  console.log(token);
+  // console.log(token);
   const handleClick = (e) => {
     e.stopPropagation();
     navigate(-1);
@@ -71,7 +71,7 @@ export default function PostDetail() {
 
       }
     })
-  console.log(postComments?.pages)
+  // console.log(postComments?.pages)
 
   useEffect(() => {
     const onScroll = (e) => {
@@ -123,70 +123,76 @@ export default function PostDetail() {
   //   return () => { };
   // }, []);
 
-  // const addComment = () => {
-  //   const url3 = url + "/comments/add";
-  //   console.log("Bearer" + token)
-  //   axios
-  //     .post(url3, {
-  //       commentPost: postId,
-  //       entry: comment
+  const addComment = () => {
+    const url3 = url + "/comments/add";
+    console.log("Bearer" + token)
+    console.log(postId);
+    console.log(comment);
+    axios.post(url3, {
+      commentPost: postId,
+      entry: comment
 
-  //     },
-  //       {
-  //         headers: {
-  //           Authorization: "Bearer " + token
+    },
+      {
+        headers: {
+          Authorization: "Bearer " + token
 
-  //         },
-  //       }
+        },
+      }
 
-  //     )
-  //     .then((res) => {
-  //       console.log(typeof (res.data))
-  //       console.log("the data is", res.data)
-  //       let data = [res.data];
-  //       console.log(data)
-  //       // setComments(data.concat(comments))
-  //       // console.log(comments)
+    )
+      // console.log(res);
+      .then((res) => {
+        console.log(typeof (res.data))
+        console.log("the data is", res.data)
+        setComment('');
+        // let data = [res.data];
+        // console.lsog(data)
+        // setComments(data.concat(comments))
+        // console.log(comments)
 
-  //       // setComments(res.data);
-  //     })
-  //     .catch((err) => { });
+        // setComments(res.data);
+      })
+      .catch((err) => { console.log(err) });
 
 
-  // }
-  // const likePost = () => {
-  //   let url4;
-  //   if (liked == 0) {
-  //     url4 = url + "/feeds/like";
-  //   }
-  //   else {
-  //     url4 = url + "/feeds/unlike";
+  }
+  const likePost = () => {
+    let url4;
+    if (liked == 0) {
+      url4 = url + "/feeds/like";
+    }
+    else {
+      url4 = url + "/feeds/unlike";
 
-  //   }
-  //   axios
-  //     .post(url4, {
-  //       postid: postId,
-  //     },
-  //       {
-  //         headers: {
-  //           Authorization: "Bearer " + token
+    }
+    console.log(url4)
+    axios
+      .post(url4, {
+        postid: postId,
+      },
+        {
+          headers: {
+            Authorization: "Bearer " + token
 
-  //         },
-  //       }
+          },
+        }
 
-  //     ).then((res) => {
+      ).then((res) => {
 
-  //       console.log(res)
-  //       if (res.data) {
+        console.log(res)
+        if (res.data) {
 
-  //         setLiked(res.data.liked)
-  //       }
+          setLiked(res.data.liked)
+        }
+        console.log(liked)
 
-  //     }
+      }
 
-  //     )
 
-  // }
+      )
+
+  }
 
 
   return (
@@ -222,7 +228,7 @@ export default function PostDetail() {
               return <Comment data={element} key={id} />;
             })} */
               postComments?.pages?.map((page, pageId) => {
-                console.log(page)
+                // console.log(page)
                 return (
                   <Fragment key={pageId}>{
                     // console.log(page.data.feeds)
@@ -254,7 +260,7 @@ export default function PostDetail() {
             />}
           </div>
           <div className="h15 pp-bd-b pp-bx2">
-            {/* <div className="h33"><button onClick={likePost}>{liked == 1 ? "unlike" : "like"} </button></div> */}
+            <div className="h33"><button onClick={likePost}>{liked == 1 ? "unlike" : "like"} </button></div>
             <div className="h33 flexV pp-d1">
               {postData?.data.likes} Likes&emsp;
               {postData?.data.comments} Comments
@@ -265,7 +271,7 @@ export default function PostDetail() {
             {/* <div className="myFlex">3days ago</div> */}
           </div>
           <div className="h5 flexCenter">
-            {/* <input className="w85 h90 cm-in"
+            <input className="w85 h90 cm-in"
               onChange={(e) => { setComment(e.target.value) }}
               value={comment}
               placeholder="Add a comment" />
@@ -274,7 +280,7 @@ export default function PostDetail() {
               comment
 
 
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

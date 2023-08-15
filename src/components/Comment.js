@@ -91,10 +91,10 @@ export default function Comment(props) {
               )
             })}
           </div>
-          {replyInput && <div>
+          {/* {replyInput && <div>
             <input type='text' placeholder='reply' />
           </div>
-          }
+          } */}
 
         </div>
       </div>
