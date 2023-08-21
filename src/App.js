@@ -22,7 +22,9 @@ const queryClient = new QueryClient();
 const RouteJSX = (
   <>
     {/* <Route index element={<HomeLeft />} /> */}
-    <Route path='/' element={<Private><Layout /></Private>} >
+    <Route path='/' element={<Private>
+      <Layout />
+      </Private>} >
 
       {/* <Route index element={<Home />} /> */}
       <Route index element={<HomePage />} />
@@ -54,19 +56,19 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App ">
-        <RevokeAccess />
 
         {/* <Router>
 
-          <Routes>
+<Routes>
 
-          </Routes>
-        </Router> */}
+</Routes>
+</Router> */}
         {/* <RevokeAccess/> */}
         <RouterProvider router={router} />
       </div>
       {/* <ReactQueryDevtools initialIsOpen={false} position='bottom-right' /> */}
 
+<RevokeAccess />
     </QueryClientProvider>
   );
 }

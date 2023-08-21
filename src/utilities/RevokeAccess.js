@@ -59,7 +59,7 @@ const [x,setX]=useState(100000)
 
   return (
     <div>
-the timer is        {timer}
+{/* the timer is        {timer} */}
     </div>
 )
 }

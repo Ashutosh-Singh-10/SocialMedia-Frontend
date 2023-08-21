@@ -1,0 +1,121 @@
+:root{
+ --cl1:rgb(28, 28, 28);
+ --c2:black
+}
+.hpr-mbx {
+    color: white;
+    /* position: sticky; */
+    top: 0px;
+    height:100dvh ;
+    position: sticky;
+    /* z-index: 100; */
+    /* width: 1200px; */
+    /* position: absolute; */
+    /* left: 100px;
+    top: 100px; */
+
+    /* border: 5px solid green; */
+    /* height: 100%;    */
+    /* position: absolute; */
+    /* padding-top: 50px; */
+    background-color: var(--cl1);
+    border-radius: 10px;
+    /* width: 300px; */
+    /* overflow: hidden; */
+    /* position: fixed; */
+}
+
+.hpr-mcn1 {
+    background-color: var(--cl1);
+    border-radius: 4px;
+    padding-bottom: 20px;
+    /* border: 2px solid red; */
+}
+
+.hpr-mcn2 {
+    margin-top: 10px;
+    border-radius: 4px;
+    z-index: 100;
+    background-color: var(--c1);
+    position: sticky;
+    left: 50px;
+    top: 20px;
+    /* padding-block: 20px;      */
+}
+
+.hpr-img {
+    /* border-radius: 100%; */
+    border-radius: 10px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    height: 200px;
+    margin: 20px;
+    border: 3px solid black;
+    cursor: pointer;
+
+}
+
+.hpr-l-bd {
+    border-left: 1px solid grey;
+}
+
+.hpr-f1 {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.hpr-f2 {
+    font-weight: 400;
+    font-size: 0.9rem;
+    /* color: rgb(96, 94, 94); */
+    color: white;
+}
+
+.hpr-bx1 {
+    padding-block: 10px;
+}
+
+.hpr-bx2 {
+    padding-block: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    /* background-color: black; */
+    border-top: 1px solid rgb(185, 185, 185);
+}
+
+.hpr-bx2:hover {
+    background-color: rgb(191, 191, 191);
+    cursor: pointer;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+
+
+.hpr-btn{
+    border-radius: 4px;
+    margin-left: 10px;
+    font-size: 0.9em;
+    border:none;
+    background-color: #1fbc34;
+    color: white;
+    font-weight: 550;
+    padding: 6px 15px;
+    cursor: pointer;
+}
+.hpr-btn2{
+    border-radius: 4px;
+    margin-left: 10px;
+    font-size: 0.9em;
+    border:none;
+    
+    background-color: white;
+    color: black;
+    font-weight: 550;
+    padding: 6px 15px;
+    cursor: pointer;
+}
+.hpr-btn:hover{ 
+    background-color: #fff;
+    background-color: #28e841;
+}
