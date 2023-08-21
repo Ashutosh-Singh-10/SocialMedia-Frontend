@@ -211,7 +211,7 @@ const UsersProfile = () => {
             
         <img src={`${userData?.data.avatar}`}  className="hpr-img" alt="" />
         </div>
-        <div className='hpr-f1'>{userData?.data.username}
+        <div className='hpr-f1'>{userData?.data.username} {userData?.data?.degree} +
            <button className='hpr-btn' onClick={startFollowing }style={{display:userData?.data.isFollowing?"none":"block"}}>Follow</button>
            <button className='hpr-btn2' onClick={stopFollowing} style={{display:userData?.data.isFollowing?"block":"none"}}>Following</button>
         </div>
