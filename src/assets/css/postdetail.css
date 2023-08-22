@@ -137,3 +137,77 @@
 .closeButton:after {
     transform: rotate(-45deg);
 }
+
+.replyShowBox {
+    border-bottom: 1px solid gray;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+
+    /* padding-bottom: 1px; */
+}
+
+.replyShowBox button {
+    /* border: 1px solid red; */
+    background: transparent;
+    border: none;
+    width: 10px;
+    height: 20px;
+    cursor: pointer;
+    /* margin-right: 10px; */
+    opacity: 0.6;
+    /* border: 1px solid red; */
+    position: relative;
+}
+
+.replyShowBox button:hover {
+    opacity: 1;
+}
+
+.replyShowBox button:before,
+.replyShowBox button:after {
+    position: absolute;
+    top: 0;
+    content: ' ';
+    height: 20px;
+    width: 2px;
+    background-color: white;
+}
+
+.replyShowBox button:before {
+    transform: rotate(45deg);
+}
+
+.replyShowBox button:after {
+    transform: rotate(-45deg);
+}
+
+
+.AddCommentBox {
+    flex-direction: column;
+    /* border-bottom: 1px solid gray; */
+    /* border: 2px solid green; */
+}
+
+.AddCommentBox input {
+    /* border: 1px solid red; */
+    height: 40px;
+    font-size: 1.05rem;
+}
+
+.AddCommentBox button.flexCenter {
+    color: black;
+    font-size: 0.8rem;
+    padding: 5px 5px;
+}
+
+.AddCommentBox button.flexCenter:disabled {
+    color: white;
+    /* font-size: 1rem; */
+}
+
+/* .replyShowBox {
+    height: 20%;
+} */

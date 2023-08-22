@@ -13,11 +13,15 @@ export default function PostDetail() {
   const { postId } = useParams();
   // const [data, setData] = useState({});
   // const [comments, setComments] = useState([]);
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState('');
+  const [noComment, setNoComment] = useState(0);
   const url = process.env.REACT_APP_BACKEND_URL;
   const [liked, setLiked] = useState(0)
   const [isNextPage, setIsNextPage] = useState(1);
-
+  const [replyInput, setReplyInput] = useState(false);
+  const [replyUserData, setReplyUserData] = useState({});
+  const [commentId, setCommentId] = useState(null);
+  // const [refetch, setRefetch] = useState(null);
   const ref = useRef();
   const postdetailRef = useRef();
   const backButtonRef = useRef();
@@ -36,8 +40,9 @@ export default function PostDetail() {
     cacheTime: 86400000
   })
   // console.log(postData?.data);
+  // setNoComment(postData?.data?.comments);
 
-  const { data: postComments, isLoading: commentsLoading, isFetching, fetchNextPage, hasNextPage } = useInfiniteQuery(['comments', postId], async ({ pageParam = 0 }) => {
+  const { data: postComments, isLoading: commentsLoading, isFetching, fetchNextPage, hasNextPage, refetch: refetchComment } = useInfiniteQuery(['comments', postId], async ({ pageParam = 0 }) => {
     // const url1 = url + "/profile/userfeeds"
     // let url1 = process.env.REACT_APP_BACKEND_URL + "/feeds/page";
     const url2 = url + "/comments/all";
@@ -56,7 +61,7 @@ export default function PostDetail() {
     {
       // cacheTime: 86400000,
       // refetchInterval: 2000,
-      // refetchOnWindowFocus: false,
+      refetchOnWindowFocus: false,
       // enabled: !!userName,
       getNextPageParam: (_lastPage, pages) => {
         if (isNextPage === 1) {
@@ -145,7 +150,10 @@ export default function PostDetail() {
       .then((res) => {
         console.log(typeof (res.data))
         console.log("the data is", res.data)
+
         setComment('');
+        setNoComment(noComment => noComment + 1);
+        refetchComment();
         // let data = [res.data];
         // console.lsog(data)
         // setComments(data.concat(comments))
@@ -193,6 +201,33 @@ export default function PostDetail() {
       )
 
   }
+  const addReply = (e) => {
+    e.stopPropagation();
+    const url5 = url + "/comments/addreply";
+    axios.post(url5, {
+      commentOn: commentId,
+      entry: comment
+
+    },
+      {
+        headers: {
+          Authorization: "Bearer " + token
+
+        },
+      }
+
+    )
+      .then((res) => {
+        console.log(res)
+        setComment('');
+        refetchComment();
+      })
+
+  }
+  const handleCloseReply = (e) => {
+    e.stopPropagation();
+    setReplyInput(!replyInput);
+  }
 
 
   return (
@@ -228,15 +263,14 @@ export default function PostDetail() {
               return <Comment data={element} key={id} />;
             })} */
               postComments?.pages?.map((page, pageId) => {
-                // console.log(page)
+                console.log(page)
                 return (
-                  <Fragment key={pageId}>{
+                  <Fragment key={pageId} >{
                     // console.log(page.data.feeds)
                     page?.comments?.map((element, id) => {
                       return (
-                        <>
-                          <Comment data={element} key={id} />
-                        </>
+                        <Comment data={element} setReplyInput={setReplyInput} replyInput={replyInput} setReplyUserData={setReplyUserData} setCommentId={setCommentId} key={id} />
+
                       )
 
                     })}
@@ -259,28 +293,36 @@ export default function PostDetail() {
               middleCircleColor="white"
             />}
           </div>
-          <div className="h15 pp-bd-b pp-bx2">
+          <div className="h10 pp-bd-b pp-bx2">
             <div className="h33"><button onClick={likePost}>{liked == 1 ? "unlike" : "like"} </button></div>
             <div className="h33 flexV pp-d1">
-              {postData?.data.likes} Likes&emsp;
-              {postData?.data.comments} Comments
+              {liked} Likes&emsp;
+              {noComment} Comments
               <br />
               <div className="w100 myFlex pp-f1">
                 3 days ago</div>
             </div>
             {/* <div className="myFlex">3days ago</div> */}
           </div>
-          <div className="h5 flexCenter">
-            <input className="w85 h90 cm-in"
-              onChange={(e) => { setComment(e.target.value) }}
-              value={comment}
-              placeholder="Add a comment" />
-
-            <div className=" w15 flexCenter cm-cb" onClick={addComment}>
-              comment
-
-
+          <div className=" AddCommentBox">
+            <div className="h5 replyShowBox">
+              {replyInput &&
+                <><div>Replying To {replyUserData.username} </div> <button onClick={handleCloseReply}></button></>}
             </div>
+
+            <div className=" flexCenter ">
+              <input className="w85 h90 cm-in"
+                onChange={(e) => { setComment(e.target.value) }}
+                value={comment}
+                placeholder={replyInput ? 'Add a Reply' : ' Add a Comment'} />
+
+              <button className=" w15 flexCenter cm-cb" onClick={replyInput ? addReply : addComment} disabled={(comment === '') ? true : false}>
+                {replyInput ? 'Reply' : 'Comment'}
+
+
+              </button>
+            </div>
+
           </div>
         </div>
       </div>

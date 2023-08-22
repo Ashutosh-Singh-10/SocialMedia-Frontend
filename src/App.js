@@ -18,6 +18,7 @@ import Layout from './components/Layout';
 import UserSearch from './components/UserSearch';
 import Create from './components/Create';
 import HomePage from './components/HomePage';
+import Logout from './components/Logout';
 const queryClient = new QueryClient();
 const RouteJSX = (
   <>
@@ -39,6 +40,7 @@ const RouteJSX = (
 
 
     <Route path='/login' element={<Login />} />
+    <Route path='/logout' element={<Logout />} />
     <Route path='/create' element={<Create />} />
     <Route path='/signin' element={<Signin />} />
     {/* <Route path='/post' element={<Post />} /> */}

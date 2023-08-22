@@ -9,9 +9,9 @@ export default function Comment(props) {
   console.log(props)
   const [isNextPage, setIsNextPage] = useState(1);
   const [replyVisible, setReplyVisible] = useState(false);
-  const [replyInput, setReplyInput] = useState(false);
+
   const url = process.env.REACT_APP_BACKEND_URL
-  const { data: commentReplyData, isLoading: commentsReplyLoading, isFetching, fetchNextPage, hasNextPage } = useInfiniteQuery(['commentsReply', props.data.id], async ({ pageParam = 0 }) => {
+  const { data: commentReplyData, isLoading: commentsReplyLoading, isFetching, fetchNextPage, hasNextPage, refetch: replyRefetch } = useInfiniteQuery(['commentsReply', props.data.id], async ({ pageParam = 0 }) => {
     // const url1 = url + "/profile/userfeeds"
     // let url1 = process.env.REACT_APP_BACKEND_URL + "/feeds/page";
     const url2 = url + "/comments/getreply";
@@ -30,7 +30,7 @@ export default function Comment(props) {
     {
       // cacheTime: 86400000,
       // refetchInterval: 2000,
-      // refetchOnWindowFocus: false,
+      refetchOnWindowFocus: false,
       // enabled: !!userName,
       getNextPageParam: (_lastPage, pages) => {
         if (isNextPage === 1) {
@@ -47,11 +47,25 @@ export default function Comment(props) {
     })
   const handleReplyShow = (e) => {
     e.stopPropagation();
-    setReplyVisible(!replyVisible);
+    if (replyVisible) {
+      setReplyVisible(false);
+    }
+    else {
+      replyRefetch();
+      setReplyVisible(true);
+    }
+
+
   }
   const handleReply = (e) => {
     e.stopPropagation();
-    setReplyInput(!replyInput);
+    props.setReplyInput(true);
+    props.setCommentId(props.data.id)
+    props.setReplyUserData({ username: props.data.username, entry: props.data.entry });
+  }
+  const handleClick = (e) => {
+    e.stopPropagation();
+    fetchNextPage();
   }
 
   return (
@@ -62,17 +76,25 @@ export default function Comment(props) {
       </div>
       <div className='w85'>
         <div className='cm-bx w100'>
-          <span className='cm-us'>{props.data.username}</span>
-          {/* <br /> */}
-          <span className='comment'>
-            {props.data.entry}
-          </span>
-          <span>
-            {props.data.likes}
-          </span>
-          <button onClick={handleReply}>reply</button>
-          <button onClick={handleReplyShow}>view reply({props.data.replies})</button>
-          <div>
+          <div className='commentBxLike'>
+            <div className='usernameCm'>
+              <span className='cm-us'>{props.data.username}</span>
+              {/* <br /> */}
+              <span className='comment'>
+                {props.data.entry}
+              </span>
+            </div>
+
+            {/* <span className='commentLikes'>
+              {props.data.likes}
+            </span> */}
+          </div>
+          <div className='replyButton'>
+            <button onClick={handleReply} >Reply</button>
+            <button onClick={handleReplyShow}>{replyVisible ? 'Hide Reply' : 'View Reply'}({props.data.replies})</button>
+          </div>
+
+          <div className='replies' >
 
             {replyVisible && commentReplyData?.pages?.map((page, pageId) => {
               console.log(page);
@@ -87,10 +109,15 @@ export default function Comment(props) {
                       </>)
                     })
                   }
+                  {
+                    hasNextPage && <button className='viewMoreReply' onClick={handleClick}>View More</button>
+                  }
                 </Fragment>
               )
             })}
+
           </div>
+
           {/* {replyInput && <div>
             <input type='text' placeholder='reply' />
           </div>

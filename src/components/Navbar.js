@@ -6,9 +6,12 @@ import { MdExplore } from 'react-icons/md'
 import { CgProfile } from 'react-icons/cg'
 import UserSearch from './UserSearch'
 import { useRef } from 'react'
+import ProfileDropDown from './ProfileDropDown'
 
 export default function Navbar() {
   const [searchPop, setSearchPop] = useState(false);
+  const [profileDropDown, setProfileDropDown] = useState(false);
+  const profileDropDownRef = useRef();
   const SearchPopRef = useRef();
   const handleClick = (e) => {
     e.stopPropagation();
@@ -19,6 +22,11 @@ export default function Navbar() {
     else {
       setSearchPop(false);
     }
+  }
+  const handlDropDown = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setProfileDropDown(!profileDropDown);
   }
   // const buttonClickCheck = (e) => {
   //   if (!SearchPopRef.current.contains(e.target)) {
@@ -64,9 +72,10 @@ export default function Navbar() {
             <MdExplore />
             <NavLink to='/explore'>Explore</NavLink>
           </li>
-          <li>
+          <li ref={profileDropDownRef}>
             <CgProfile />
-            <NavLink to='/users/Ashu' preventScrollReset>Profile</NavLink>
+            <button onClick={handlDropDown} >Profile</button>
+            <ProfileDropDown dropDownVisible={profileDropDown} setDropDownVisible={setProfileDropDown} profileDropDownRef={profileDropDownRef} />
           </li>
           {/* <li><NavLink to={'/users/Jo'} preventScrollReset>Jo</NavLink></li> */}
           <li><NavLink to={'/logout'} replace>Logout</NavLink></li>

@@ -1,0 +1,61 @@
+.profileDropDown {
+    width: 20%;
+    height: 50dvh;
+    position: absolute;
+    top: 6.3dvh;
+    background: white;
+}
+
+.userProfileOption {
+    width: 100%;
+    height: 20%;
+    /* border: 1px solid red; */
+    margin-top: 15px;
+    /* margin: 10px 0 0 20px; */
+    /* padding: 10px 0 0 20px; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.userImage {
+    /* background-color: rgb(0, 166, 255); */
+    /* display: inline-block; */
+    border-radius: 50%;
+    border: 1px solid green;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.userImage img {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+}
+
+.userName h1 {
+    font-size: 1.5rem;
+}
+
+.settingOption {
+    border: 1px solid red;
+    height: 75%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.settingOption button {
+    border: 1px solid green;
+    height: 30%;
+    width: 30%;
+    /* background-color: green; */
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+}

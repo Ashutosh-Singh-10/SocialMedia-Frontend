@@ -16,12 +16,19 @@
     flex-direction: column;
     align-items: flex-start;
     line-height: 1.5; */
-    border: 1px solid red;
+    /* border: 1px solid red; */
+    /* border-bottom: 1px solid white;*/
+    /* border-top: 1px solid white; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px 0;
 }
 
 .cm-us {
+    /* border: 1px solid green; */
     font-size: 1rem;
-    font-weight: 300;
+    font-weight: 600;
 }
 
 .cm-in {
@@ -44,11 +51,60 @@
 
 }
 
-.imageBox {
+
+.commentBxLike {
+    /* background-color: red; */
     /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.commentLikes {
+    margin-right: 10px;
+}
+
+.usernameCm {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* font-weight: 500; */
 }
 
 .comment {
     font-size: 1.1rem;
-    font-weight: 500;
+    font-weight: 300;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    /* margin-left: 20px; */
+    text-align: start;
+    /* border: 1px solid red; */
+    /* border: 1px solid blue; */
+}
+
+.cm-bx button {
+    background: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+
+}
+
+.replies {
+    width: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+button.viewMoreReply {
+    /* background-color: red; */
+    /* cursor: pointer; */
+    margin-left: 60px;
+    font-size: 0.85rem;
+
 }
