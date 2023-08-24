@@ -35,7 +35,18 @@ export default function PostDetail() {
   }
   const { data: postData, refetch: refetchPostData } = useQuery(['post', postId], async () => {
     const url1 = url + "/feeds/id/" + postId;
-    return axios.get(url1);
+    return axios.post(url1,
+      {
+        "username": "kkjkdjk"
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + token
+
+        },
+      })
+
+
   }, {
     cacheTime: 86400000
   })
@@ -236,7 +247,7 @@ export default function PostDetail() {
     <div className="pp-cnt  flexCenter" ref={postDetailBgRef}>
 
       <div className="pp-bx w80 h90 myFlex" ref={postdetailRef}>
-        <img src={`${url}${postData?.data.avatar}`} className="pp-im2" alt="" />
+        <img src={`${postData?.data.avatar}`} className="pp-im2" alt="" />
         <div className="w40 h100">
           <div className="h8 myFlex pp-bd-b">
             <img className="pp-im3" src={`${url}/media/${postData?.data.useravatar}`} />
