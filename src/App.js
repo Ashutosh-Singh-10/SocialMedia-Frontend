@@ -19,13 +19,14 @@ import UserSearch from './components/UserSearch';
 import Create from './components/Create';
 import HomePage from './components/HomePage';
 import Logout from './components/Logout';
+import EditUserProfile from './components/EditUserProfile';
 const queryClient = new QueryClient();
 const RouteJSX = (
   <>
     {/* <Route index element={<HomeLeft />} /> */}
     <Route path='/' element={<Private>
       <Layout />
-      </Private>} >
+    </Private>} >
 
       {/* <Route index element={<Home />} /> */}
       <Route index element={<HomePage />} />
@@ -39,8 +40,7 @@ const RouteJSX = (
     </Route>
     {/* <Route path="/users/:userId" element={<UserProfile />} /> */}
 
-
-
+    <Route path='/editUserDetail' element={<EditUserProfile />} />
     <Route path='/login' element={<Login />} />
     <Route path='/logout' element={<Logout />} />
     <Route path='/create' element={<Create />} />
@@ -70,7 +70,7 @@ function App() {
       </div>
       {/* <ReactQueryDevtools initialIsOpen={false} position='bottom-right' /> */}
 
-<RevokeAccess />
+      <RevokeAccess />
     </QueryClientProvider>
   );
 }

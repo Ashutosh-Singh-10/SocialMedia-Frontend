@@ -16,7 +16,7 @@ export default function PostDetail() {
   const [comment, setComment] = useState('');
   const [noComment, setNoComment] = useState(0);
   const url = process.env.REACT_APP_BACKEND_URL;
-  const [liked, setLiked] = useState(0)
+  const [liked, setLiked] = useState(true);
   const [isNextPage, setIsNextPage] = useState(1);
   const [replyInput, setReplyInput] = useState(false);
   const [replyUserData, setReplyUserData] = useState({});
@@ -33,13 +33,13 @@ export default function PostDetail() {
     e.stopPropagation();
     navigate(-1);
   }
-  const { data: postData } = useQuery(['post', postId], async () => {
+  const { data: postData, refetch: refetchPostData } = useQuery(['post', postId], async () => {
     const url1 = url + "/feeds/id/" + postId;
     return axios.get(url1);
   }, {
     cacheTime: 86400000
   })
-  // console.log(postData?.data);
+  console.log(postData?.data);
   // setNoComment(postData?.data?.comments);
 
   const { data: postComments, isLoading: commentsLoading, isFetching, fetchNextPage, hasNextPage, refetch: refetchComment } = useInfiniteQuery(['comments', postId], async ({ pageParam = 0 }) => {
@@ -152,7 +152,8 @@ export default function PostDetail() {
         console.log("the data is", res.data)
 
         setComment('');
-        setNoComment(noComment => noComment + 1);
+        // setNoComment(noComment => noComment + 1);
+        refetchPostData();
         refetchComment();
         // let data = [res.data];
         // console.lsog(data)
@@ -167,7 +168,7 @@ export default function PostDetail() {
   }
   const likePost = () => {
     let url4;
-    if (liked == 0) {
+    if (liked) {
       url4 = url + "/feeds/like";
     }
     else {
@@ -189,11 +190,12 @@ export default function PostDetail() {
       ).then((res) => {
 
         console.log(res)
-        if (res.data) {
-
-          setLiked(res.data.liked)
-        }
-        console.log(liked)
+        setLiked(!liked);
+        refetchPostData();
+        // if (res.data) {
+        // setLiked(res.data.liked)
+        // }
+        // console.log(liked)
 
       }
 
@@ -294,11 +296,15 @@ export default function PostDetail() {
             />}
           </div>
           <div className="h10 pp-bd-b pp-bx2">
-            <div className="h33"><button onClick={likePost}>{liked == 1 ? "unlike" : "like"} </button></div>
+            {/* <div className="h33"></div> */}
             <div className="h33 flexV pp-d1">
-              {liked} Likes&emsp;
-              {noComment} Comments
-              <br />
+              <div className="postNumberOfLikeAndComment">
+                <button onClick={likePost}>{postData?.data?.likes} Likes </button>
+                {/* Likes&emsp; */}
+                {postData?.data?.comments} Comments
+                <br />
+              </div>
+
               <div className="w100 myFlex pp-f1">
                 3 days ago</div>
             </div>
