@@ -43,6 +43,86 @@ export default function Signin() {
 
   }
   return (
+
+    <div className='flexCenter pabsolute lg-cnt'>
+
+    <div className=' flexCenter lg-cn1'>
+ 
+      <div className='w35 flexVC '>
+        <form className='lg-bx1 flexVC borderBlack w100' 
+        // onSubmit={login}
+        style={{display:isOtpSent===false?"flex":"none"}}
+        >
+          <div className="lg-logo">
+            Social Network
+          </div>
+          <div className='flexVC lg-wd1' >
+            <div className='w100 textS'
+            >Enter username</div>
+            <input type="text " className='w100 lg-in br-rd4'
+
+              // onChange={(e) => setUsername(e.target.value)}
+              // value={username}
+            />
+          </div>
+          <div className='flexVC lg-wd1' >
+            <div className='w100 textS'
+            >Enter Email</div>
+            <input type="text " className='w100 lg-in br-rd4'
+
+              // onChange={(e) => setUsername(e.target.value)}
+              // value={username}
+            />
+          </div>
+          <div className='flexVC lg-wd1'>
+            <div className='w100 textS '>Password</div>
+            <input type="text " className='w100 lg-in br-rd4'
+              // onChange={(e) => setPassword(e.target.value)}
+              // value={password}
+            />
+          </div>
+          <button className='lg-btn lg-ft1 br-rd4'>
+            Generate OTP</button>
+
+
+        </form>
+        <form className='lg-bx1 flexVC borderBlack w100' 
+        // onSubmit={login}
+        style={{display:isOtpSent===true?"flex":"none"}}
+        >
+          <div className="lg-logo">
+            Social Network
+          </div>
+          <div className='flexVC lg-wd1' >
+            <div className='w100 textS'
+            >Enter OTP</div>
+            <input type="number " className='w100 lg-in br-rd4'
+
+              // onChange={(e) => setUsername(e.target.value)}
+              // value={username}
+            />
+          </div>
+          
+
+          <button className='lg-btn lg-ft1 br-rd4'>
+            Generate OTP</button>
+
+
+        </form>
+        <div className='flexCenter lg-bx2 w100 borderBlack'
+        >
+          Already have  account?
+
+        </div>
+      </div>
+      <div className='w65 h100'>
+        <img src={require('../assets/images/loginlogo.png')} className="imgFull" alt="" />
+      </div>
+    </div>
+
+
+
+
     <div>
     < div style={{backgroundColor:"white",display:isOtpSent===false?"block":"none"}}>
       <input type="email" placeholder='email' value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
@@ -66,5 +146,8 @@ export default function Signin() {
 
     
     </div>
+
+  </div>
+   
   )
 }
