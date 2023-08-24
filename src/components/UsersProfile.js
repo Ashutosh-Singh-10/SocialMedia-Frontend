@@ -13,7 +13,7 @@ const UsersProfile = () => {
     const { userId } = useParams();
     console.log(userId);
     const [isNextPage, setIsNextPage] = useState(1);
-    let token=Cook("access");  
+    let token = Cook("access");
     // const getUserProfileData = async () => {
     //     const url1 = url + "/profile/userfeeds"
     //     const url2 = url + "/profile/userprofile"
@@ -57,68 +57,70 @@ const UsersProfile = () => {
     // const onScroll = (e) => {
     //     console.log(e.target.documentElement.scrollTop)
     // }
-    const startFollowing=()=>{
+    const startFollowing = () => {
         const url2 = url + "/follow/startFollowing"
         axios.post(url2,
             {
                 "username": userId,
-                
+
             },
             {
                 headers: {
-                Authorization: "Bearer "+token
-                
-            },
-        }
-        
-        
-        ).then((res)=>{
-            console.log(res)
+                    Authorization: "Bearer " + token
+
+                },
+            }
+
+
+        ).then((res) => {
+            console.log(res);
+            refetchUserData();
             console.log("ho gya follow")
-        }).catch((err)=>{
+        }).catch((err) => {
             console.log(err);
-            
+
         })
     }
-    const stopFollowing=()=>{
+    const stopFollowing = () => {
         const url2 = url + "/follow/unfollow"
         axios.post(url2,
             {
                 "leader": userId,
-                
+
             },
             {
                 headers: {
-                    Authorization: "Bearer "+token
-                    
+                    Authorization: "Bearer " + token
+
                 },
             }
-            
-            
-            ).then((res)=>{
-                console.log(res)
-                console.log("ho gya unfollow")
-            }).catch((err)=>{
-                console.log(err);
-            })
-        }
-        const { data: userData, isLoading: userLoading } = useQuery(`${userId}`, () => {
-            // const url1 = url + "/profile/userfeeds"
-            // console.log('Jai');
-            const url2 = url + "/profile/userprofile"
-            return axios.post(url2,
+
+
+        ).then((res) => {
+            console.log(res)
+            refetchUserData();
+            console.log("ho gya unfollow")
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+    const { data: userData, isLoading: userLoading, refetch: refetchUserData } = useQuery(`${userId}`, () => {
+        // const url1 = url + "/profile/userfeeds"
+        // console.log('Jai');
+        const url2 = url + "/profile/userprofile"
+        return axios.post(url2,
             {
                 "username": userId,
-                
+
             },
             {
-            headers: {
-                Authorization: "Bearer "+token
-        
-              },
-                }
+                headers: {
+                    Authorization: "Bearer " + token
 
-            
+                },
+            }
+
+
         )
     }, {
         cacheTime: 86400000,
@@ -126,7 +128,7 @@ const UsersProfile = () => {
         // refetchOnWindowFocus: false,
     });
     const userName = userData?.data?.id;
-    console.log(userData?.data);    
+    console.log(userData?.data);
     const { data: userPosts, isLoading: postLoading, isFetching, fetchNextPage, hasNextPage } = useInfiniteQuery(['userPosts', userId], async ({ pageParam = 0 }) => {
         const url1 = url + "/profile/userfeeds"
         // let url1 = process.env.REACT_APP_BACKEND_URL + "/feeds/page";
@@ -204,40 +206,40 @@ const UsersProfile = () => {
         <div className='flexVC'>
             <div className='uf-cnt'>
 
-            <div className='hpr-mbx w30'>
-      <div className="hpr-mcn1 flexVC">
-        <br /><br /><br /><br />
-        <div className='flexCenter'>
-            
-        <img src={`${userData?.data.avatar}`}  className="hpr-img" alt="" />
-        </div>
-        <div className='hpr-f1'>{userData?.data.username} {userData?.data?.degree} +
-           <button className='hpr-btn' onClick={startFollowing }style={{display:userData?.data.isFollowing?"none":"block"}}>Follow</button>
-           <button className='hpr-btn2' onClick={stopFollowing} style={{display:userData?.data.isFollowing?"block":"none"}}>Following</button>
-        </div>
-        <hr className='w90'/>
-        <div className='w85 hpr-f2'> 
-        {userData?.data.first_name}
-        {userData?.data.last_name}
-        </div>
+                <div className='hpr-mbx w30'>
+                    <div className="hpr-mcn1 flexVC">
+                        <br /><br /><br /><br />
+                        <div className='flexCenter'>
 
-      </div>
-      <div className="hpr-mcn2 flexVC w100">
-        <div className="flexCenter w100 hpr-f2 hpr-bx1">
+                            <img src={`${userData?.data.avatar}`} className="hpr-img" alt="" />
+                        </div>
+                        <div className='hpr-f1'>{userData?.data.username} {userData?.data?.degree} +
+                            <button className='hpr-btn' onClick={startFollowing} style={{ display: userData?.data.isFollowing ? "none" : "block" }}>Follow</button>
+                            <button className='hpr-btn2' onClick={stopFollowing} style={{ display: userData?.data.isFollowing ? "block" : "none" }}>Following</button>
+                        </div>
+                        <hr className='w90' />
+                        <div className='w85 hpr-f2'>
+                            {userData?.data.first_name}
+                            {userData?.data.last_name}
+                        </div>
 
-        <div className="w33 ">{userData?.data.feeds} Posts</div>
+                    </div>
+                    <div className="hpr-mcn2 flexVC w100">
+                        <div className="flexCenter w100 hpr-f2 hpr-bx1">
 
-        <div className="w33 hpr-l-bd">{userData?.data.leader}         Followers</div>
-        <div className="w33 hpr-l-bd">{userData?.data.follower} Following</div>
-          
-        </div>
-        <div className="flexCenter w100 hpr-bx2">
-          My Save
-          
-          </div>
-      </div>
+                            <div className="w33 ">{userData?.data.feeds} Posts</div>
 
-    </div>
+                            <div className="w33 hpr-l-bd">{userData?.data.leader}         Followers</div>
+                            <div className="w33 hpr-l-bd">{userData?.data.follower} Following</div>
+
+                        </div>
+                        <div className="flexCenter w100 hpr-bx2">
+                            My Save
+
+                        </div>
+                    </div>
+
+                </div>
                 {/* <div className="uf-pr myFlex">
                     <div className='w40'>
                         <br />
@@ -275,9 +277,9 @@ const UsersProfile = () => {
 
                     </div>
                 </div> */}
-                
+
                 {/* <button  onClick={getPosts}>get the data</button> */}
-                
+
                 <div className="uf-cn w80">
 
                     {(postLoading) ? <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }} >
@@ -295,7 +297,7 @@ const UsersProfile = () => {
                         />
 
                     </div> : userPosts?.pages?.map((page, pageId) => {
-                        
+
                         // console.log(page)
                         return (
                             <Fragment key={pageId}>{

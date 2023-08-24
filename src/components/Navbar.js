@@ -78,7 +78,7 @@ export default function Navbar() {
             <ProfileDropDown dropDownVisible={profileDropDown} setDropDownVisible={setProfileDropDown} profileDropDownRef={profileDropDownRef} />
           </li>
           {/* <li><NavLink to={'/users/Jo'} preventScrollReset>Jo</NavLink></li> */}
-          <li><NavLink to={'/logout'} replace>Logout</NavLink></li>
+          {/* <li><NavLink to={'/logout'} replace>Logout</NavLink></li> */}
         </ul>
 
       </nav>

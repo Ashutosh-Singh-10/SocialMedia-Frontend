@@ -4,8 +4,8 @@ import Cookies from 'universal-cookie';
 
 const Logout = () => {
     const cookies = new Cookies();
-    cookies.remove('access');
-    cookies.remove('refresh');
+    cookies.remove('access', { path: '/' });
+    cookies.remove('refresh', { path: '/' });
     return (
         <Navigate to='/login' replace={true} />
     )

@@ -49,9 +49,10 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-
+    background-color: var(--cl1);
     /* padding-top: 50px; */
     padding-top: 6.2dvh;
+    margin-left: 2px;
 
 }
 

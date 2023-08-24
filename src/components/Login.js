@@ -27,8 +27,8 @@ export default function Login() {
       console.log(res)
       const cookies = new Cookies();
       // cookies.set('accesstoken', res.data.access);
-      cookies.set('refresh', res.data.refresh);
-      cookies.set('access', res.data.access);
+      cookies.set('refresh', res.data.refresh, { path: '/' });
+      cookies.set('access', res.data.access, { path: '/' });
       console.log(uri);
       // window.location = uri
       navigate(uri, { replace: true });
