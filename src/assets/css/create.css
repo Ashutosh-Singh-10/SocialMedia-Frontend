@@ -1,0 +1,78 @@
+:root{
+    --c7: #3ace30;
+    --c8:red;
+    --c9:black;
+}
+.cr-mcn{
+    background-color: var(--c9);
+    color: white;
+}
+.cr-f1{
+    font-weight: 600;
+    font-size: 1.2rem;
+
+}
+.cr-bt1{
+
+ 
+    color: white;
+    background-color: var(--c7);
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 8px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    
+    
+}
+.cr-im1{
+    margin: 10px 10px ;
+    height: 50px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 2px;
+}
+.cr-in1{
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    height: 50%;
+    resize: none;
+    color: grey;
+    background-color: black;
+    font-size: 1rem;
+    font-weight: 100;
+    border-radius: 4px;
+    padding: 4px 2px;
+}
+.cr-cn1{
+    border-left: 2px solid grey;
+}
+.cr-in1:focus{
+    outline: none;
+    color: white;
+
+}
+.cr-cr-bt{
+    color: white;
+    background-color: var(--c7);
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    padding-block: 8px; 
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+.cr-bk-bt{
+    color: white;
+    background-color: var(--c8);
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 8px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+}
