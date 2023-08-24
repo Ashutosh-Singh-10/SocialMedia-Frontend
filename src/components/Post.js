@@ -19,7 +19,7 @@ export default function Post(props) {
         </Link>
 
       </div>
-      <img src={`${url}${props.data.avatar}`} className="ps-im " alt="" />
+      <img src={`${props.data.avatar}`} className="ps-im " alt="" />
       <div className='myFlex ps-f ps-m2'>
         {props.data.likes} Likes &emsp;{props.data.comments} Comments
       </div>
