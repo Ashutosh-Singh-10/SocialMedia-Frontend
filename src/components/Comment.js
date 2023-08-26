@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "../assets/css/comment.css"
 import { useInfiniteQuery } from 'react-query'
 import axios from 'axios'
@@ -8,6 +8,7 @@ import CommentReply from './CommentReply'
 import { Link } from 'react-router-dom'
 export default function Comment(props) {
   console.log(props)
+
   const [isNextPage, setIsNextPage] = useState(1);
   const [replyVisible, setReplyVisible] = useState(false);
 
@@ -46,6 +47,20 @@ export default function Comment(props) {
 
       }
     })
+  // props.replyFetch = () => {
+
+  // }
+  // const reply = () => {
+  //   return replyRefetch();
+  // }
+  // useEffect(() => {
+  //   props.replyFetch(reply());
+  // }, [])
+  if (props.btnClick) {
+    console.log('button clicked')
+    replyRefetch();
+    props.setBtnClicked(false);
+  }
   const handleReplyShow = (e) => {
     e.stopPropagation();
     if (replyVisible) {
@@ -110,12 +125,13 @@ export default function Comment(props) {
                       </>)
                     })
                   }
-                  {
-                    hasNextPage && <button className='viewMoreReply' onClick={handleClick}>View More</button>
-                  }
+
                 </Fragment>
               )
             })}
+            {
+              hasNextPage && <button className='viewMoreReply' onClick={handleClick} style={{ display: !replyVisible && 'none' }}>View More</button>
+            }
 
           </div>
 
