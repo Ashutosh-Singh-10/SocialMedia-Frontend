@@ -2,9 +2,9 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios';
 export default function Signin() {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [username, setUsername] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
   const [message,setMessage]=useState("")
   const [otp,setOtp]=useState(0)
   const [isOtpSent,setIsOtpSent]=useState(false);
@@ -18,14 +18,16 @@ export default function Signin() {
     })
     .then((res) => {
       setIsOtpSent(true)
+      console.log(res)
     }).catch((err)=>{
-
+      console.log(err)
     })
 
   }
   const createUser=()=>{
     const url=process.env.REACT_APP_BACKEND_URL+"/login/createuser"
-    console.log("otp generation started")
+    console.log("user creation started")
+    // console.log("otp generation started")
     axios
     .post(url,{
       "email":email,
@@ -35,8 +37,10 @@ export default function Signin() {
 
     })
     .then((res) => {
-
+console.log("user ban gya h ")
+console.log(res)
     }).catch((err)=>{
+      console.log("user nahi bna")
       console.log(err)
     })
 
@@ -49,7 +53,7 @@ export default function Signin() {
     <div className=' flexCenter lg-cn1'>
  
       <div className='w35 flexVC '>
-        <form className='lg-bx1 flexVC borderBlack w100' 
+        <div className='lg-bx1 flexVC borderBlack w100' 
         // onSubmit={login}
         style={{display:isOtpSent===false?"flex":"none"}}
         >
@@ -60,7 +64,7 @@ export default function Signin() {
             <div className='w100 textS'
             >Enter username</div>
             <input type="text " className='w100 lg-in br-rd4'
-
+            value={username} onChange={(e)=>{setUsername(e.target.value)}}
               // onChange={(e) => setUsername(e.target.value)}
               // value={username}
             />
@@ -69,6 +73,7 @@ export default function Signin() {
             <div className='w100 textS'
             >Enter Email</div>
             <input type="text " className='w100 lg-in br-rd4'
+            value={email} onChange={(e)=>{setEmail(e.target.value)}}
 
               // onChange={(e) => setUsername(e.target.value)}
               // value={username}
@@ -77,16 +82,17 @@ export default function Signin() {
           <div className='flexVC lg-wd1'>
             <div className='w100 textS '>Password</div>
             <input type="text " className='w100 lg-in br-rd4'
+            value={password} onChange={(e)=>{setPassword(e.target.value)}}
               // onChange={(e) => setPassword(e.target.value)}
               // value={password}
             />
           </div>
-          <button className='lg-btn lg-ft1 br-rd4'>
+          <button className='lg-btn lg-ft1 br-rd4' onClick={sendOtp}>
             Generate OTP</button>
 
 
-        </form>
-        <form className='lg-bx1 flexVC borderBlack w100' 
+        </div>
+        <div className='lg-bx1 flexVC borderBlack w100' 
         // onSubmit={login}
         style={{display:isOtpSent===true?"flex":"none"}}
         >
@@ -97,18 +103,20 @@ export default function Signin() {
             <div className='w100 textS'
             >Enter OTP</div>
             <input type="number " className='w100 lg-in br-rd4'
-
+            value={otp} onChange={(e)=>{setOtp(e.target.value)}}
               // onChange={(e) => setUsername(e.target.value)}
               // value={username}
             />
           </div>
           
 
-          <button className='lg-btn lg-ft1 br-rd4'>
-            Generate OTP</button>
+          <button className='lg-btn lg-ft1 br-rd4'
+          onClick={createUser}
+          >
+            Create User</button>
 
 
-        </form>
+        </div>
         <div className='flexCenter lg-bx2 w100 borderBlack'
         >
           Already have  account?
@@ -123,10 +131,10 @@ export default function Signin() {
 
 
 
-    <div>
+    {/* <div>
     < div style={{backgroundColor:"white",display:isOtpSent===false?"block":"none"}}>
       <input type="email" placeholder='email' value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
-      <input type="username" placeholder='username'value={username} onChange={(e)=>{setUsername(e.target.value)}}/>
+      <input type="username" placeholder='username' value={username} onChange={(e)=>{setUsername(e.target.value)}}/>
       <input type="password" placeholder='password'value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
       <br />
       <button onClick={sendOtp}>
@@ -145,7 +153,7 @@ export default function Signin() {
       </div>
 
     
-    </div>
+    </div> */}
 
   </div>
    
