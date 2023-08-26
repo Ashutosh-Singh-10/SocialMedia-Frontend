@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { Fragment } from 'react'
 import CommentReply from './CommentReply'
+import { Link } from 'react-router-dom'
 export default function Comment(props) {
   console.log(props)
   const [isNextPage, setIsNextPage] = useState(1);
@@ -78,7 +79,7 @@ export default function Comment(props) {
         <div className='cm-bx w100'>
           <div className='commentBxLike'>
             <div className='usernameCm'>
-              <span className='cm-us'>{props.data.username}</span>
+              <Link className='cm-us commentUserName' to={`/users/${props.data.username}`}>{props.data.username}</Link>
               {/* <br /> */}
               <span className='comment'>
                 {props.data.entry}

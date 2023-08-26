@@ -224,8 +224,8 @@ const UsersProfile = () => {
                         <div className='hpr-f1'>{userData?.data.username + " " + userData?.data?.degree + '+'}
                             <br />
                             {
-                                (SaveUserId !== userId) ? <><button className='hpr-btn' onClick={startFollowing} style={{ display: userData?.data.isFollowing ? "none" : "block" }}>Follow</button>
-                                    <button className='hpr-btn2' onClick={stopFollowing} style={{ display: userData?.data.isFollowing ? "block" : "none" }}>Following</button></> :
+                                (SaveUserId !== userId) ? <><button className='hpr-btn Middle-btn' onClick={startFollowing} style={{ display: userData?.data.isFollowing ? "none" : "block" }}>Follow</button>
+                                    <button className='hpr-btn2 Middle-btn' onClick={stopFollowing} style={{ display: userData?.data.isFollowing ? "block" : "none" }}>Following</button></> :
                                     <button className='Edit-Button' onClick={handleClickOnEdit} >Edit Profile</button>
                             }
 

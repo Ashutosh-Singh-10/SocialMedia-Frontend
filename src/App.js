@@ -37,7 +37,6 @@ const RouteJSX = (
       <Route path='/userSearch' element={<UserSearch />} />
       <Route path="/post/:postId" element={<PostDetail />} />/
       <Route path='/editUserDetail' element={<EditUserProfile />} />
-
     </Route>
     {/* <Route path="/users/:userId" element={<UserProfile />} /> */}
     <Route path='*' element={<div >Page Not Found</div>} />
