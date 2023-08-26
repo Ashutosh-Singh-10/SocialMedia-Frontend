@@ -35,12 +35,12 @@ const RouteJSX = (
       <Route path="/users/:userId" element={<UsersProfile />} />
       <Route path='/uploadPost' element={<UploadPosts />} />
       <Route path='/userSearch' element={<UserSearch />} />
-      <Route path="/post/:postId" element={<PostDetail />} />
-      <Route path='*' element={<div style={{ color: "white" }}>Page Not Found</div>} />
+      <Route path="/post/:postId" element={<PostDetail />} />/
+      <Route path='/editUserDetail' element={<EditUserProfile />} />
+
     </Route>
     {/* <Route path="/users/:userId" element={<UserProfile />} /> */}
-
-    <Route path='/editUserDetail' element={<EditUserProfile />} />
+    <Route path='*' element={<div >Page Not Found</div>} />
     <Route path='/login' element={<Login />} />
     <Route path='/logout' element={<Logout />} />
     <Route path='/create' element={<Create />} />

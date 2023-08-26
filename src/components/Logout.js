@@ -6,6 +6,7 @@ const Logout = () => {
     const cookies = new Cookies();
     cookies.remove('access', { path: '/' });
     cookies.remove('refresh', { path: '/' });
+    cookies.remove('username', { path: '/' });
     return (
         <Navigate to='/login' replace={true} />
     )

@@ -1,0 +1,175 @@
+.updateForm {
+    width: 100%;
+    height: 100dvh;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--cl1);
+    color: white;
+}
+
+.updateForm form {
+    width: 50%;
+    height: 80dvh;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.userProfilePic {
+    width: 150px;
+    height: 150px;
+    border: 2px solid white;
+    border-radius: 50%;
+    /* display: flex; */
+}
+
+.updateForm form .userProfilePic>.userProfile {
+    width: 20%;
+    height: 15dvh;
+    /* border: 2px solid white; */
+    display: none;
+}
+
+.file-upload img {
+    /* padding: 5px; */
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.file-upload {
+    /* padding: 5px; */
+    width: 150px;
+    height: 150px;
+    border: 2px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.userNameInputs {
+    margin-top: 20px;
+    /* border: 1px solid red; */
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.userNameInputs input {
+    width: 45%;
+    height: 20px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.userNameInputs input:disabled {
+    color: white;
+}
+
+.updateForm form textarea {
+    margin-top: 20px;
+    width: 68.5%;
+    height: 100px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+
+.updateForm form textarea:disabled {
+    color: white;
+}
+
+
+
+.file-upload img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profileUpdateSubmit {
+    margin: 20px;
+    width: 150px;
+    height: 35px;
+    font-size: 1.15rem;
+    color: white;
+    border-radius: 5px;
+    background-color: #3bce30d4;
+    border: none;
+    cursor: pointer;
+}
+
+.profileUpdateSubmit:disabled {
+    background-color: white;
+    color: black;
+}
+
+.updateFormButtons .EditButton {
+    margin: 20px;
+    width: 150px;
+    height: 35px;
+    font-size: 1.15rem;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    background-color: rgba(0, 115, 255, 0.831);
+    border: none;
+    cursor: pointer;
+    /* border: 1px solid red; */
+}
+
+@media screen and (max-width:1100px) {
+    .updateForm form {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width:780px) {
+    .updateForm form {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .updateForm form {
+        width: 100%;
+    }
+
+    .userNameInputs {
+        width: 80%;
+    }
+
+    .updateForm form textarea {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .userNameInputs {
+        display: flex;
+        flex-direction: column;
+        /* border: 1px solid red; */
+        align-items: center;
+        gap: 20px;
+    }
+
+    .userNameInputs input {
+        width: 100%;
+    }
+
+    .updateFormButtons {
+        width: 80%;
+        display: flex;
+        gap: 10px;
+        /* border: 1px solid red; */
+    }
+}
