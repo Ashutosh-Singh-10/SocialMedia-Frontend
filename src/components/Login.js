@@ -48,7 +48,7 @@ export default function Login() {
           <img src={require('../assets/images/loginlogo.png')} className="imgFull" alt="" />
         </div>
         <div className='w35 flexVC '>
-          <form className='lg-bx1 flexVC borderBlack w100' onSubmit={login}>
+          <form className='lg-bx1 flexVC  w100' onSubmit={login}>
             <div className="lg-logo">
               Social Network
             </div>
@@ -73,7 +73,7 @@ export default function Login() {
 
 
           </form>
-          <div className='flexCenter lg-bx2 w100 borderBlack'
+          <div className='flexCenter lg-bx2 w100 '
           >
             Don't have account?
 
