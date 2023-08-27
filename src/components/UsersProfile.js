@@ -1,18 +1,22 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { useInfiniteQuery, useQuery } from 'react-query'
 import "../assets/css/userprofile.css"
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from "axios"
 import Cook from '../utilities/GetCookie';
 
 import Post from './Post';
 import { ThreeCircles } from 'react-loader-spinner'
 import "../assets/css/homeleft2.css"
+import Cookies from 'universal-cookie';
 const UsersProfile = () => {
     const url = process.env.REACT_APP_BACKEND_URL;
     const { userId } = useParams();
     console.log(userId);
+    const navigate = useNavigate();
     const [isNextPage, setIsNextPage] = useState(1);
+    const cookies = new Cookies();
+    const SaveUserId = cookies.get('username', { path: '/' });
     let token = Cook("access");
     // const getUserProfileData = async () => {
     //     const url1 = url + "/profile/userfeeds"
@@ -103,6 +107,10 @@ const UsersProfile = () => {
         }).catch((err) => {
             console.log(err);
         })
+    }
+    const handleClickOnEdit = (e) => {
+        e.stopPropagation();
+        navigate('/editUserDetail');
     }
     const { data: userData, isLoading: userLoading, refetch: refetchUserData } = useQuery(`${userId}`, () => {
         // const url1 = url + "/profile/userfeeds"
@@ -213,24 +221,30 @@ const UsersProfile = () => {
 
                             <img src={`${userData?.data.avatar}`} className="hpr-img" alt="" />
                         </div>
-                        <div className='hpr-f1'>{userData?.data.username} {userData?.data?.degree} +
-                            <button className='hpr-btn' onClick={startFollowing} style={{ display: userData?.data.isFollowing ? "none" : "block" }}>Follow</button>
-                            <button className='hpr-btn2' onClick={stopFollowing} style={{ display: userData?.data.isFollowing ? "block" : "none" }}>Following</button>
+                        <div className='hpr-f1'>{userData?.data.username + " " + userData?.data?.degree + '+'}
+                            <br />
+                            {
+                                (SaveUserId !== userId) ? <><button className='hpr-btn Middle-btn' onClick={startFollowing} style={{ display: userData?.data.isFollowing ? "none" : "block" }}>Follow</button>
+                                    <button className='hpr-btn2 Middle-btn' onClick={stopFollowing} style={{ display: userData?.data.isFollowing ? "block" : "none" }}>Following</button></> :
+                                    <button className='Edit-Button' onClick={handleClickOnEdit} >Edit Profile</button>
+                            }
+
+
                         </div>
                         <hr className='w90' />
                         <div className='w85 hpr-f2'>
-                            {userData?.data.first_name}
-                            {userData?.data.last_name}
+                            {userData?.data?.first_name + ' ' + userData?.data?.last_name}
+                            {/* {userData?.data?.last_name} */}
                         </div>
 
                     </div>
                     <div className="hpr-mcn2 flexVC w100">
                         <div className="flexCenter w100 hpr-f2 hpr-bx1">
 
-                            <div className="w33 ">{userData?.data.feeds} Posts</div>
+                            <div className="w33 ">{userData?.data?.feeds} Posts</div>
 
-                            <div className="w33 hpr-l-bd">{userData?.data.leader}         Followers</div>
-                            <div className="w33 hpr-l-bd">{userData?.data.follower} Following</div>
+                            <div className="w33 hpr-l-bd">{userData?.data?.leader}         Followers</div>
+                            <div className="w33 hpr-l-bd">{userData?.data?.follower} Following</div>
 
                         </div>
                         <div className="flexCenter w100 hpr-bx2">

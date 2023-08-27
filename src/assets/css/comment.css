@@ -108,3 +108,8 @@ button.viewMoreReply {
     font-size: 0.85rem;
 
 }
+
+.commentUserName {
+    text-decoration: none;
+    color: white;
+}

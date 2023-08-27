@@ -29,6 +29,7 @@ export default function Login() {
       // cookies.set('accesstoken', res.data.access);
       cookies.set('refresh', res.data.refresh, { path: '/' });
       cookies.set('access', res.data.access, { path: '/' });
+      cookies.set('username', username, { path: '/' });
       console.log(uri);
       // window.location = uri
       navigate(uri, { replace: true });

@@ -98,3 +98,20 @@
     justify-content: center;
     align-items: center;
 }
+
+.Edit-Button {
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 0.9em;
+    border: none;
+
+    background-color: white;
+    color: black;
+    font-weight: 550;
+    padding: 6px 15px;
+    cursor: pointer;
+}
+
+.Middle-btn {
+    margin-top: 10px;
+}

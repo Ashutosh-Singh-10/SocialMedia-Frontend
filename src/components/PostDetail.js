@@ -21,6 +21,7 @@ export default function PostDetail() {
   const [replyInput, setReplyInput] = useState(false);
   const [replyUserData, setReplyUserData] = useState({});
   const [commentId, setCommentId] = useState(null);
+  const [btnClick, setBtnClicked] = useState(false);
   // const [refetch, setRefetch] = useState(null);
   const ref = useRef();
   const postdetailRef = useRef();
@@ -33,6 +34,15 @@ export default function PostDetail() {
     e.stopPropagation();
     navigate(-1);
   }
+  // function replyFetch(replyfetch) {
+  //   // console.log(replyfetch)
+  //   console.log(typeof replyfetch);
+  //   console.log(replyfetch);
+  //   return replyfetch;
+  // }
+  // const ReplyRefetch = () => {
+  //   replyFetch();
+  // }
   const { data: postData, refetch: refetchPostData } = useQuery(['post', postId], async () => {
     const url1 = url + "/feeds/id/" + postId;
     return axios.post(url1,
@@ -233,6 +243,8 @@ export default function PostDetail() {
       .then((res) => {
         console.log(res)
         setComment('');
+        // ReplyRefetch();
+        setBtnClicked(true);
         refetchComment();
       })
 
@@ -282,7 +294,7 @@ export default function PostDetail() {
                     // console.log(page.data.feeds)
                     page?.comments?.map((element, id) => {
                       return (
-                        <Comment data={element} setReplyInput={setReplyInput} replyInput={replyInput} setReplyUserData={setReplyUserData} setCommentId={setCommentId} key={id} />
+                        <Comment data={element} setReplyInput={setReplyInput} replyInput={replyInput} setReplyUserData={setReplyUserData} setCommentId={setCommentId} btnClick={btnClick} setBtnClicked={setBtnClicked} key={id} />
 
                       )
 
