@@ -31,14 +31,14 @@ const RouteJSX = (
       {/* <Route index element={<Home />} /> */}
       <Route index element={<HomePage />} />
       {/* <Route index element={<HomeLeft/>} /> */}
-      <Route path='/post' element={<Post />} />
-      <Route path="/users/:userId" element={<UsersProfile />} />
-      <Route path='/uploadPost' element={<UploadPosts />} />
-      <Route path='/userSearch' element={<UserSearch />} />
-      <Route path="/post/:postId" element={<PostDetail />} />/
-      <Route path='/editUserDetail' element={<EditUserProfile />} />
+      <Route path='post' element={<Post />} />
+      <Route path="users/:userId" element={<UsersProfile />} />
+      <Route path='uploadPost' element={<UploadPosts />} />
+      <Route path='userSearch' element={<UserSearch />} />
+      <Route path="post/:postId" element={<PostDetail />} />/
+      <Route path='editUserDetail' element={<EditUserProfile />} />
       {/* <Route path='/logout' element={<Logout />} /> */}
-      <Route path='/create' element={<Create />} />
+      <Route path='create' element={<Create />} />
     </Route>
     {/* <Route path="/users/:userId" element={<UserProfile />} /> */}
     <Route path='*' element={<div >Page Not Found</div>} />
