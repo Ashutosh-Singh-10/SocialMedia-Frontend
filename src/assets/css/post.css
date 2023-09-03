@@ -60,8 +60,8 @@
 
 .ps-im {
     width: 100%;
-    max-height: 600px;
-    min-height: 450px;
+    max-height: 65dvh;
+    min-height: 35dvh;
     object-fit: contain;
     background-color: black;
     border: 1px solid rgba(128, 128, 128, 0.321);

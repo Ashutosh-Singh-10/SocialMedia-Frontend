@@ -58,7 +58,7 @@ const likePost = (isLiked, postId) => {
 
             console.log(res)
             // setLiked(!liked);
-            refetchPostData();
+            // refetchPostData();
             // if (res.data) {
             // setLiked(res.data.liked)
             // }
