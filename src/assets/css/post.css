@@ -67,3 +67,8 @@
     border: 1px solid rgba(128, 128, 128, 0.321);
     border-radius: 4px;
 }
+
+.CommentBtn {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}

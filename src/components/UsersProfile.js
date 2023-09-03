@@ -214,7 +214,7 @@ const UsersProfile = () => {
         <div className='flexVC'>
             <div className='uf-cnt'>
 
-                <div className='hpr-mbx w30'>
+                <div className='userInfoBox hpr-mbx w30 '>
                     <div className="hpr-mcn1 flexVC">
                         <br /><br /><br /><br />
                         <div className='flexCenter'>

@@ -10,17 +10,20 @@ import { ThreeCircles } from 'react-loader-spinner'
 
 import { useEffect } from 'react';
 import { Fragment } from 'react';
-
+import Cook from '../utilities/GetCookie';
+const url = process.env.REACT_APP_BACKEND_URL;
+let token = Cook("access");
 // import HomePost from './HomePost';
 const getPosts = async ({ pageParam = 0 }) => {
     // const [position, setPosition] = useState(100)
     console.log("ho gya load")
+
     // console.log(this.state.page)
-    let url = process.env.REACT_APP_BACKEND_URL + "/feeds/page";
+    let url1 = url + "/feeds/page";
 
     console.log("something ");
 
-    const res = await axios.post(url, {
+    const res = await axios.post(url1, {
         page: pageParam
     }
 
@@ -29,6 +32,45 @@ const getPosts = async ({ pageParam = 0 }) => {
     return res.data;
 
 }
+
+const likePost = (isLiked, postId) => {
+    let url4;
+    if (!isLiked) {
+        url4 = url + "/feeds/like";
+    }
+    else {
+        url4 = url + "/feeds/unlike";
+
+    }
+    console.log(url4)
+    axios
+        .post(url4, {
+            postid: postId,
+        },
+            {
+                headers: {
+                    Authorization: "Bearer " + token
+
+                },
+            }
+
+        ).then((res) => {
+
+            console.log(res)
+            // setLiked(!liked);
+            refetchPostData();
+            // if (res.data) {
+            // setLiked(res.data.liked)
+            // }
+            // console.log(liked)
+
+        }
+
+
+        )
+
+}
+
 
 
 const HomePage = () => {

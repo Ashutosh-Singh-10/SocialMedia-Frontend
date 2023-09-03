@@ -1,12 +1,13 @@
 .navbar {
     width: 100%;
     height: 6dvh;
-    color: black;
+    /* color: black; */
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid white;
+    /* background-color: rgb(255, 255, 255); */
+    background-color: rgb(40, 40, 40);
+    /* border: 1px solid white; */
     position: fixed;
     top: 0px;
     z-index: 100;
@@ -18,7 +19,7 @@
     display: flex;
     gap: 30px;
     list-style: none;
-    /* border: 1px solid white; */
+    /* border: 1px solid black; */
 }
 
 .navbar ul li {
@@ -26,20 +27,26 @@
     font-size: 1.5rem;
     justify-content: center;
     align-items: center;
-}
-
-.navbar ul li>button {
-    background-color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-    width: 70px;
-    margin-left: 10px;
     /* border: 1px solid red; */
 }
 
+.navbar ul li>button {
+    background-color: rgb(40, 40, 40);
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    /* width: 70px; */
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    /* flex-direction: column; */
+    /* border: 1px solid red; */
+}
+
+
 .navbar ul li a {
-    color: black;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-size: 1.3rem;
     display: flex;
@@ -49,6 +56,30 @@
     /* border: 1px solid white; */
 }
 
-.active {
+/* .active {
     border-bottom: 2px solid black;
+} */
+@media screen and (max-width:745px) {
+    .navbar ul {
+        /* display: none; */
+        gap: 0px;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .navbar ul {
+        /* display: none; */
+        gap: 50px;
+    }
+
+    .navbarSpan {
+        display: none;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .navbar ul {
+        /* display: none; */
+        gap: 40px;
+    }
 }

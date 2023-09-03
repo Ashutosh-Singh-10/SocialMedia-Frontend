@@ -115,3 +115,15 @@
 .Middle-btn {
     margin-top: 10px;
 }
+
+@media screen and (max-width:1000px) {
+    .uf-cnt {
+        flex-direction: column;
+    }
+
+    .userInfoBox {
+        border: 1px solid red;
+        width: 100%;
+        height: 10dvh;
+    }
+}

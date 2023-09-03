@@ -12,7 +12,9 @@
 .updateForm form {
     width: 50%;
     height: 80dvh;
-    border: 1px solid white;
+    background-color: rgb(40, 40, 40);
+    border-radius: 10px;
+    /* border: 1px solid white; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,7 +24,7 @@
 .userProfilePic {
     width: 150px;
     height: 150px;
-    border: 2px solid white;
+    /* border: 2px solid white; */
     border-radius: 50%;
     /* display: flex; */
 }
@@ -142,6 +144,7 @@
 @media screen and (max-width:650px) {
     .updateForm form {
         width: 100%;
+        border-radius: 0;
     }
 
     .userNameInputs {

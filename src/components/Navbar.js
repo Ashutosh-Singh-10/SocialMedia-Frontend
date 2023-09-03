@@ -59,22 +59,22 @@ export default function Navbar() {
       <nav>
         <ul>
           <li>
-            <AiFillHome />
-            <NavLink to='/' preventScrollReset>Home</NavLink>
+
+            <NavLink to='/' preventScrollReset><AiFillHome style={{ marginRight: '10px' }} /><span className='navbarSpan'>Home</span></NavLink>
           </li>
           <li ref={SearchPopRef} >
-            <AiOutlineSearch />
+
             {/* <NavLink to='/userSearch' preventScrollReset>Search</NavLink> */}
-            <button onClick={handleClick} >Search</button>
+            <button onClick={handleClick} ><AiOutlineSearch style={{ fontSize: '1.5rem', marginRight: '5px' }} /><span className='navbarSpan'>Search</span></button>
 
           </li>
           <li>
-            <MdExplore />
-            <NavLink to='/explore'>Explore</NavLink>
+
+            <NavLink to='/explore'><MdExplore style={{ marginRight: '10px' }} /><span className='navbarSpan'>Explore</span></NavLink>
           </li>
           <li ref={profileDropDownRef}>
-            <CgProfile />
-            <button onClick={handlDropDown} >Profile</button>
+
+            <button onClick={handlDropDown} ><CgProfile style={{ fontSize: '1.5rem', marginRight: '10px' }} /><span className='navbarSpan'>Profile</span></button>
             <ProfileDropDown dropDownVisible={profileDropDown} setDropDownVisible={setProfileDropDown} profileDropDownRef={profileDropDownRef} />
           </li>
           {/* <li><NavLink to={'/users/Jo'} preventScrollReset>Jo</NavLink></li> */}

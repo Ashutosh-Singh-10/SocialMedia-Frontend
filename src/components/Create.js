@@ -4,11 +4,21 @@ import axios from 'axios';
 import Cook from '../utilities/GetCookie';
 import Dropzone from 'react-dropzone'
 import "../assets/css/create.css"
+import Cookies from 'universal-cookie';
+import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 export default function Create() {
 
   const [image, setImage] = useState(null);
   const [imageURL, setImageURL] = useState(null);
   const [desc, setDesc] = useState("")
+
+  const token = Cook("access");
+  const navigate = useNavigate();
+  const url = process.env.REACT_APP_BACKEND_URL;
+  const cookies = new Cookies();
+  const userId = cookies.get('username', { path: '/' });
+
   const onImageChange = (event) => {
     setImage(event.target.files[0])
     // if (event.target.files && event.target.files[0]) {
@@ -34,11 +44,11 @@ export default function Create() {
     console.log(image)
     console.log(desc)
     console.log(typeof (desc))
-    let url = process.env.REACT_APP_BACKEND_URL + "/feeds/createfeed";
+    let url1 = url + "/feeds/createfeed";
 
-    let token = Cook("access");
 
-    axios.post(url, {
+
+    axios.post(url1, {
       "avatar": image,
       "desc": desc
     },
@@ -51,9 +61,34 @@ export default function Create() {
       }
     ).then((res) => {
       console.log(res);
+      navigate(-1);
     }).catch((err) => { console.log(err) })
 
   }
+
+  const { data: userData, isLoading: userLoading, refetch: refetchUserData } = useQuery(`${userId}`, () => {
+    // const url1 = url + "/profile/userfeeds"
+    // console.log('Jai');
+    const url2 = url + "/profile/userprofile"
+    return axios.post(url2,
+      {
+        "username": userId,
+
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + token
+
+        },
+      }
+
+
+    )
+  }, {
+    cacheTime: 86400000,
+    // refetchInterval: 2000
+    // refetchOnWindowFocus: false,
+  });
 
 
 
@@ -66,12 +101,12 @@ export default function Create() {
           <img src={imageURL} className="h100 w60 imgContain" alt="" />
           <div className='w40 h100 flexV cr-cn1'>
             <div className='myFlex alignC'>
-              <img src={require("../assets/images/gal.webp")} className="cr-im1" alt="" />
-              <div className='cr-f1'>Gal_Godot</div>
+              <img src={userData?.data?.avatar} className="cr-im1" alt="" />
+              <div className='cr-f1'>{userData?.data?.username}</div>
 
             </div>
             <hr className='w100' />
-            <textarea onChange={(e) => setDesc(e.target.value)} type="text" className='cr-in1' placeholder='type something' />
+            <textarea onChange={(e) => setDesc(e.target.value)} type="text" className='cr-in1' placeholder='Type Something' />
             <div className='flexVC w100'>
               <br />
               <button className='cr-cr-bt w50' onClick={getPosts}>Create new post</button>

@@ -1,44 +1,50 @@
-:root{
-    --form-width:200px;
-    --col1:blue;
+:root {
+    --form-width: 200px;
+    --col1: blue;
 }
-.lg-cnt{
+
+.lg-cnt {
     width: 100%;
     padding-block: 100px;
     color: white;
 }
-.lg-wd1{
+
+.lg-wd1 {
     width: var(--form-width);
 }
-.lg-ft1{
+
+.lg-ft1 {
     font-weight: 550;
 }
-.lg-cn1{
+
+.lg-cn1 {
     width: 1000px;
     height: 600px;
     /* border: 1px solid blue; */
 }
 
-.lg-bx1{
+.lg-bx1 {
     height: 400px;
     font-weight: 500;
     border: 1px solid white;
     /* font-size: 0.8em; */
-    
+
     border-radius: 10px;
     gap: 10px;
 }
-.lg-bx2{
+
+.lg-bx2 {
     height: 130px;
     margin-top: 10px;
     border-radius: 10px;
     border: 1px solid white;
-    
-    
+
+
 }
-.lg-btn{
-    width: var( --form-width );
-    background-color:  rgb(31, 206, 31);
+
+.lg-btn {
+    width: var(--form-width);
+    background-color: rgb(31, 206, 31);
     color: white;
     padding-block: 10px;
     border: none;
@@ -48,17 +54,28 @@
 }
 
 
-.lg-logo{
+.lg-logo {
     height: 100px
 }
-.lg-in{
-    padding: 6px 10px ;
+
+.lg-in {
+    padding: 6px 10px;
     border: 1px solid white;
-    
+
 }
-.lg-in:focus{
+
+.lg-in:focus {
     outline: none;
     border: 2px solid white;
     padding: 5px 10px;
 
+}
+
+.Link {
+    text-decoration: none;
+    color: white;
+}
+
+.Link:hover {
+    color: red;
 }

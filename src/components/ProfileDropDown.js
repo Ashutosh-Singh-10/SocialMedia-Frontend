@@ -8,6 +8,10 @@ import { useNavigate } from 'react-router-dom';
 import Cook from '../utilities/GetCookie';
 import axios from 'axios';
 import { useQuery } from 'react-query';
+import { actionCreators } from '../state/index'
+import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 // import ProfileDropDown from './ProfileDropDown';
 import Cookies from 'universal-cookie';
 const url = process.env.REACT_APP_BACKEND_URL;
@@ -17,6 +21,8 @@ const ProfileDropDown = ({ dropDownVisible, setDropDownVisible, profileDropDownR
     const navigate = useNavigate();
     const cookies = new Cookies();
     const userId = cookies.get('username', { path: '/' });
+    const dispatch = useDispatch();
+    const { setUri } = bindActionCreators(actionCreators, dispatch);
     useEffect(() => {
         const handler = (e) => {
             if (!ref.current.contains(e.target) && !profileDropDownRef.current.contains(e.target)) {
@@ -54,7 +60,13 @@ const ProfileDropDown = ({ dropDownVisible, setDropDownVisible, profileDropDownR
     console.log(userData)
     const handleLogout = (e) => {
         e.stopPropagation();
-        navigate('/logout');
+        const cookies = new Cookies();
+        cookies.remove('access', { path: '/' });
+        cookies.remove('refresh', { path: '/' });
+        cookies.remove('username', { path: '/' });
+        setUri("/")
+        navigate('/login', { replace: true });
+
     }
     const handleClickOnUserName = (e) => {
         e.stopPropagation();
@@ -66,6 +78,11 @@ const ProfileDropDown = ({ dropDownVisible, setDropDownVisible, profileDropDownR
         setDropDownVisible(false);
         navigate('/editUserDetail')
     }
+    const handleClickOnCreatePost = (e) => {
+        e.stopPropagation();
+        setDropDownVisible(false);
+        navigate('/create');
+    }
     return (
         // <div>ProfileDropDown</div>
         <>
@@ -76,6 +93,7 @@ const ProfileDropDown = ({ dropDownVisible, setDropDownVisible, profileDropDownR
                     </div>
                     <div className='userName'>
                         <h1>{userData?.data?.username}</h1>
+                        <p>{userData?.data?.first_name + ' ' + userData?.data?.last_name}</p>
                     </div>
 
                 </div>
@@ -84,10 +102,12 @@ const ProfileDropDown = ({ dropDownVisible, setDropDownVisible, profileDropDownR
                         <button onClick={handleClickOnEditProfile}><LuEdit2 style={{ fontSize: "2rem", marginBottom: "10px" }} />Edit Profile</button>
                         <button><div style={{ fontSize: "2rem", marginBottom: "8px" }}>{userData?.data?.leader}</div>Followers</button>
                         <button><div style={{ fontSize: "2rem", marginBottom: "8px" }} >{userData?.data?.follower}</div>Following</button>
+                        <button className='firstbutton'><BsSaveFill style={{ fontSize: "2rem", marginBottom: "10px" }} />My Save</button>
+                        <button onClick={handleClickOnCreatePost}>Create Post</button>
                     </div>
 
                     <div className='downButton'>
-                        <button className='firstbutton'><BsSaveFill style={{ fontSize: "2rem", marginRight: "10px" }} />My Save</button>
+
                         <button onClick={handleLogout}><FiLogOut style={{ fontSize: "2rem", marginRight: "10px" }} />Log Out</button>
                     </div>
 

@@ -1,20 +1,24 @@
-:root{
+:root {
     --c7: #3ace30;
-    --c8:red;
-    --c9:black;
+    --c8: red;
+    --c9: rgb(40, 40, 40);
 }
-.cr-mcn{
+
+.cr-mcn {
     background-color: var(--c9);
     color: white;
+    border-radius: 10px;
 }
-.cr-f1{
+
+.cr-f1 {
     font-weight: 600;
     font-size: 1.2rem;
 
 }
-.cr-bt1{
 
- 
+.cr-bt1 {
+
+
     color: white;
     background-color: var(--c7);
     border: none;
@@ -23,50 +27,57 @@
     padding: 8px 30px;
     border-radius: 4px;
     cursor: pointer;
-    
-    
+
+
 }
-.cr-im1{
-    margin: 10px 10px ;
+
+.cr-im1 {
+    margin: 10px 10px;
     height: 50px;
     aspect-ratio: 1/1;
     object-fit: cover;
     border-radius: 2px;
 }
-.cr-in1{
-    width: 100%;
+
+.cr-in1 {
+    width: 95%;
     box-sizing: border-box;
-    -webkit-box-sizing:border-box;
+    -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     height: 50%;
     resize: none;
     color: grey;
-    background-color: black;
+    background-color: rgb(40, 40, 40);
     font-size: 1rem;
     font-weight: 100;
     border-radius: 4px;
-    padding: 4px 2px;
+    padding: 10px;
+    margin: 0 8px;
 }
-.cr-cn1{
+
+.cr-cn1 {
     border-left: 2px solid grey;
 }
-.cr-in1:focus{
+
+.cr-in1:focus {
     outline: none;
     color: white;
 
 }
-.cr-cr-bt{
+
+.cr-cr-bt {
     color: white;
     background-color: var(--c7);
     border: none;
     font-size: 1rem;
     font-weight: 600;
-    padding-block: 8px; 
+    padding-block: 8px;
     border-radius: 5px;
     cursor: pointer;
-    
+
 }
-.cr-bk-bt{
+
+.cr-bk-bt {
     color: white;
     background-color: var(--c8);
     border: none;

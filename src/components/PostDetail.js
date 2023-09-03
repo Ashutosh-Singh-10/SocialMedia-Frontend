@@ -189,7 +189,7 @@ export default function PostDetail() {
   }
   const likePost = () => {
     let url4;
-    if (liked) {
+    if (!postData?.data?.isLiked) {
       url4 = url + "/feeds/like";
     }
     else {
@@ -211,7 +211,7 @@ export default function PostDetail() {
       ).then((res) => {
 
         console.log(res)
-        setLiked(!liked);
+        // setLiked(!liked);
         refetchPostData();
         // if (res.data) {
         // setLiked(res.data.liked)

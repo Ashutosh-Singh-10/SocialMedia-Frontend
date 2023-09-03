@@ -11,7 +11,7 @@
     left: 0;
     right: 0; */
     visibility: hidden;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.8);
     transition: all 0.6s;
     /* border: 1px solid red; */
     /* display: flex;
@@ -42,17 +42,51 @@
     height: 30px;
     font-size: 1.2rem;
     border: none;
-    background: white;
+    background: rgb(40, 40, 40);
+    color: rgb(255, 255, 255);
     border-radius: 5px;
     outline: none;
     padding-left: 10px;
 }
 
+.SearchField input::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: #eff1f6bf;
+}
+
+.SearchField input:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #eff1f6bf;
+    opacity: 1;
+}
+
+.SearchField input::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #eff1f6bf;
+    opacity: 1;
+}
+
+.SearchField input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #eff1f6bf;
+}
+
+.SearchField input::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #eff1f6bf;
+}
+
+.SearchField input::placeholder {
+    /* Most modern browsers support this now. */
+    color: #eff1f6bf;
+}
+
+
 .searchResult {
     margin-top: 3px;
     padding: 5px;
     width: 350px;
-    background: white;
+    background: rgb(40, 40, 40);
     display: flex;
     flex-direction: column;
     border-radius: 5px;
@@ -63,9 +97,14 @@
     display: flex;
     /* align-items: center; */
     justify-content: space-between;
-    border-bottom: 2px solid rgb(142, 142, 142);
+    /* border-bottom: 2px solid rgb(142, 142, 142); */
     padding: 10px 0;
     text-decoration: none;
+}
+
+.searchUserLink:hover {
+    background-color: #ffffff12;
+    border-radius: 5px;
 }
 
 .searchUserPic {
@@ -82,7 +121,7 @@
     /* line-height: 1; */
     display: flex;
     flex-direction: column;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 .searchUserName h3 {
@@ -95,4 +134,18 @@
     margin: 0;
     font-weight: 400;
     color: rgb(142, 142, 142);
+}
+
+@media screen and (max-width:400px) {
+    .SearchField {
+        width: 270px;
+    }
+
+    .SearchField input {
+        width: 270px;
+    }
+
+    .searchResult {
+        width: 270px;
+    }
 }

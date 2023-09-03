@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import Cookies from 'universal-cookie';
 import axios from "axios"
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 export default function Login() {
 
   const [username, setUsername] = useState("")
@@ -76,7 +76,7 @@ export default function Login() {
           </form>
           <div className='flexCenter lg-bx2 w100 '
           >
-            Don't have account?
+            Don't have account?&nbsp;<Link to={'/signin'} className='Link'> Sign in</Link>
 
           </div>
         </div>
