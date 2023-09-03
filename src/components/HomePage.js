@@ -25,6 +25,11 @@ const getPosts = async ({ pageParam = 0 }) => {
 
     const res = await axios.post(url1, {
         page: pageParam
+    }, {
+        headers: {
+            Authorization: "Bearer " + token
+
+        },
     }
 
     )
