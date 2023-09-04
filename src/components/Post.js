@@ -1,13 +1,64 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../assets/css/post.css"
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Cook from '../utilities/GetCookie';
+let token = Cook("access");
 export default function Post(props) {
-
+  const [likes, setLikes] = useState(props?.data?.likes);
+  const [likeFlag, setLikeFlag] = useState(props?.data?.isLiked);
   console.log(props.data)
   const url = process.env.REACT_APP_BACKEND_URL
   // console.log(props.data.useravatar)
+  const likePost = () => {
+    let url4;
+    if (!props?.data?.isLiked) {
+      url4 = url + "/feeds/like";
+    }
+    else {
+      url4 = url + "/feeds/unlike";
+
+    }
+    console.log(url4)
+    axios
+      .post(url4, {
+        postid: props?.data?.id,
+      },
+        {
+          headers: {
+            Authorization: "Bearer " + token
+
+          },
+        }
+
+      ).then((res) => {
+
+        console.log(res)
+        if (!likeFlag) {
+          console.log(likeFlag)
+          setLikes(likes + 1);
+          setLikeFlag(true);
+        }
+        else {
+          console.log(likeFlag)
+          setLikes(likes - 1);
+          setLikeFlag(false);
+        }
+
+        // setLiked(!liked);
+        // refetchPostData();
+        // if (res.data) {
+        // setLiked(res.data.liked)
+        // }
+        // console.log(liked)
+
+      }
+
+
+      )
+
+  }
+
 
   return (
     <div className='ps-cnt flexV'>
@@ -24,7 +75,7 @@ export default function Post(props) {
       </div>
       <img src={`${props.data.avatar}`} className="ps-im " alt="" />
       <div className='myFlex ps-f4 ps-m2'>
-        <span className='LikesBtn' >{props.data.likes} Likes</span> &emsp;<Link to={`/post/${props.data.id}`} className='CommentBtn'>{props.data.comments} Comments</Link>
+        <span className='LikesBtn' onClick={likePost} >{likes} Likes</span> &emsp;<Link to={`/post/${props.data.id}`} className='CommentBtn'>{props.data.comments} Comments</Link>
       </div>
       <div className='myFlex   alignC'>
         {/* {props.data.useravatar === "" ?
