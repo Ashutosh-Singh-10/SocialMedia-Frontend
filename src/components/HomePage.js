@@ -38,44 +38,6 @@ const getPosts = async ({ pageParam = 0 }) => {
 
 }
 
-const likePost = (isLiked, postId) => {
-    let url4;
-    if (!isLiked) {
-        url4 = url + "/feeds/like";
-    }
-    else {
-        url4 = url + "/feeds/unlike";
-
-    }
-    console.log(url4)
-    axios
-        .post(url4, {
-            postid: postId,
-        },
-            {
-                headers: {
-                    Authorization: "Bearer " + token
-
-                },
-            }
-
-        ).then((res) => {
-
-            console.log(res)
-            // setLiked(!liked);
-            // refetchPostData();
-            // if (res.data) {
-            // setLiked(res.data.liked)
-            // }
-            // console.log(liked)
-
-        }
-
-
-        )
-
-}
-
 
 
 const HomePage = () => {
@@ -184,7 +146,6 @@ const HomePage = () => {
                                 {
                                     page?.map((element, id) => {
                                         return (
-
                                             < Post data={element} i={id} key={id} className="bd-pst" />
 
                                         )
