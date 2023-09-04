@@ -13,34 +13,36 @@ import { Fragment } from 'react';
 import Cook from '../utilities/GetCookie';
 const url = process.env.REACT_APP_BACKEND_URL;
 let token = Cook("access");
+console.log(token);
 // import HomePost from './HomePost';
-const getPosts = async ({ pageParam = 0 }) => {
-    // const [position, setPosition] = useState(100)
-    console.log("ho gya load")
 
-    // console.log(this.state.page)
-    let url1 = url + "/feeds/page";
-
-    console.log("something ");
-
-    const res = await axios.post(url1, {
-        page: pageParam
-    }, {
-        headers: {
-            Authorization: "Bearer " + token
-
-        },
-    }
-
-    )
-    console.log(res.data)
-    return res.data;
-
-}
 
 
 
 const HomePage = () => {
+    const getPosts = async ({ pageParam = 0 }) => {
+        // const [position, setPosition] = useState(100)
+        console.log("ho gya load")
+
+        // console.log(this.state.page)
+        let url1 = url + "/feeds/page";
+
+        console.log("something ");
+
+        const res = await axios.post(url1, {
+            page: pageParam
+        }, {
+            headers: {
+                Authorization: "Bearer " + token
+
+            },
+        }
+
+        )
+        console.log(res.data)
+        return res.data;
+
+    }
     const { data, hasNextPage, fetchNextPage, isFetching } = useInfiniteQuery('InfinitePosts', getPosts, {
         getNextPageParam: (_lastPage, pages) => {
 
