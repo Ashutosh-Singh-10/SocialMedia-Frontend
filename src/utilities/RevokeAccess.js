@@ -20,14 +20,14 @@ export default function RevokeAccess() {
     }
     ).then((res) => {
       cookies.set('access', res.data.access, { path: '/' });
-      // console.log(Cook("access"))
-      // setX(250000);
+      console.log(Cook("access"))
+      setX(250000);
 
       return 1;
 
     }).catch((err) => {
       console.log(err)
-      // setX(110000);
+      setX(110000);
 
 
 

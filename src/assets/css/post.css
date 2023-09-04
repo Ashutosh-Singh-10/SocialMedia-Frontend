@@ -44,6 +44,11 @@
     /* background-color: red; */
     /* height: 900px; */
 }
+@media screen and (max-width:1000px) {
+    .ps-cnt{
+        width: 100%;
+    }
+}
 
 .ps-us-im {
     border-radius: 100%;
@@ -67,7 +72,6 @@
     border: 1px solid rgba(128, 128, 128, 0.321);
     border-radius: 4px;
 }
-
 .CommentBtn {
     text-decoration: none;
     color: rgb(255, 255, 255);

@@ -10,6 +10,15 @@
     border: 1px solid red;
 }
 
+@media screen and (max-width:1000px) {
+    .hl-mbx{
+        display: none;
+    }
+    .scroll-post{
+        width: 100%;
+    }
+}
+
 .hl-mcn1 {
     position: sticky;
     background-color: white;

@@ -6,6 +6,7 @@
     left: 0px; */
     top: 6.3dvh;
     background: rgb(40, 40, 40);
+    scroll-behavior: unset;
     /* border: 1px solid white; */
 }
 

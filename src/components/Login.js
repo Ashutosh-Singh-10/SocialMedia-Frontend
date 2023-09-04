@@ -45,10 +45,10 @@ export default function Login() {
     <div className='flexCenter pabsolute lg-cnt'>
 
       <div className=' flexCenter lg-cn1'>
-        <div className='w65 h100'>
+        <div className=' h100 lg-bx-lf'>
           <img src={require('../assets/images/loginlogo.png')} className="imgFull" alt="" />
         </div>
-        <div className='w35 flexVC '>
+        <div className='w35 flexVC lg-bx-rt'>
           <form className='lg-bx1 flexVC  w100' onSubmit={login}>
             <div className="lg-logo">
               Social Network
