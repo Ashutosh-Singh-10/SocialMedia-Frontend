@@ -12,8 +12,7 @@ import { useEffect } from 'react';
 import { Fragment } from 'react';
 import Cook from '../utilities/GetCookie';
 const url = process.env.REACT_APP_BACKEND_URL;
-let token = Cook("access");
-console.log(token);
+
 // import HomePost from './HomePost';
 
 
@@ -22,6 +21,8 @@ console.log(token);
 const HomePage = () => {
     const getPosts = async ({ pageParam = 0 }) => {
         // const [position, setPosition] = useState(100)
+        let token = Cook("access");
+        console.log(token);
         console.log("ho gya load")
 
         // console.log(this.state.page)

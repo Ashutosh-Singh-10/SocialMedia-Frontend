@@ -1,15 +1,16 @@
 import React from 'react'
 import { useState } from 'react'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 export default function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [message, setMessage] = useState("")
-  const [otp, setOtp] = useState(0)
+  const [otp, setOtp] = useState("");
   const [isOtpSent, setIsOtpSent] = useState(false);
 
+  const navigate = useNavigate();
   const sendOtp = () => {
     const url = process.env.REACT_APP_BACKEND_URL + "/login/otp"
     console.log("otp generation started")
@@ -39,7 +40,8 @@ export default function Signin() {
       })
       .then((res) => {
         console.log("user ban gya h ")
-        console.log(res)
+        console.log(res);
+        navigate('/login', { replace: true });
       }).catch((err) => {
         console.log("user nahi bna")
         console.log(err)

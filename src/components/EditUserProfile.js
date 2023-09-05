@@ -7,10 +7,12 @@ import Cook from '../utilities/GetCookie';
 import { useState } from 'react';
 // import { LuEdit2 } from 'react-icons/lu';
 import defaultImage from '../assets/images/images.jpg';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const EditUserProfile = () => {
+    const navigate = useNavigate();
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [desc, setDesc] = useState("");
@@ -134,6 +136,7 @@ const EditUserProfile = () => {
             }).then((res) => {
                 console.log(res);
                 refetchUserData();
+                navigate(`/users/${userData?.data?.username}`);
             })
 
         // setCurrentAvatar(res?.data?.avatar);
