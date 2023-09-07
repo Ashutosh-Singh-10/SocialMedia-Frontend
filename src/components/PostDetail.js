@@ -258,10 +258,12 @@ export default function PostDetail() {
   return (
     <div className="pp-cnt  flexCenter" ref={postDetailBgRef}>
 
-      <div className="pp-bx w80 h90 myFlex" ref={postdetailRef}>
+      <div className=" w80 h90 myFlex pp-bx" ref={postdetailRef}>
+              
         <img src={`${postData?.data.avatar}`} className="pp-im2" alt="" />
-        <div className="w40 h100">
-          <div className="h8 myFlex pp-bd-b">
+
+        <div className="w40 h100 pp-lbx">
+          <div className="h8 myFlex pp-bd-b pp-bd-sp">
             <img className="pp-im3" src={`${url}/media/${postData?.data.useravatar}`} />
             <Link to={`/users/${postData?.data.username}`} className="flexCenter pp-ul">
               {postData?.data.username}

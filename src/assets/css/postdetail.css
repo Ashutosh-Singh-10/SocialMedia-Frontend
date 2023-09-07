@@ -1,33 +1,4 @@
-/* .pp-cd{
-    width: 33%;
-    position: relative;
-    aspect-ratio: 1/1;
-    
-}
-.pp-hover{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: none;
-    background-color: rgba(0, 0, 0, 0.674);
-    
 
-}
-.pp-cd:hover .pp-hover{
-    display: flex;
-   
-    z-index: 2;
-}
-.pp-im{
-    max-width: 100%;
-    max-height: 100%;   
-}
- */
-/* body {
-    background-color: black;
-} */
 
 .pp-cnt {
     color: white;
@@ -40,12 +11,17 @@
     z-index: 5;
 }
 
+
 .pp-bx {
     width: 1200px;
     background-color: black;
     /* border: 1px solid red; */
 
 }
+.pp-lbx{
+    width: 40%;
+}
+
 
 .pp-im2 {
     width: 60%;
@@ -53,7 +29,7 @@
     object-fit: contain;
     background-color: black;
     border-right: 1px solid grey;
-
+    
 }
 
 .pp-bd-b {
@@ -96,7 +72,6 @@
     display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
 .comment-section {
     -ms-overflow-style: none;
     /* IE and Edge */
@@ -145,7 +120,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
-
+    
     /* padding-bottom: 1px; */
 }
 
@@ -237,3 +212,52 @@
         height: fit-content;
     }
 } */
+/* Hide scrollbar for IE, Edge and Firefox */
+
+
+
+@media screen and (max-width:1000px) {
+    .pp-bx{
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        /* overflow: scroll; */
+        /* height: auto; */
+    }
+    .pp-lbx{
+        width: 100%;
+        /* height: 80%; */
+        bottom: 0px;
+        background-color: black;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+
+    }
+    .AddCommentBox{
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+        padding-bottom: 20px;
+        background-color: black;
+    }
+    .closeButton{
+        display: none;
+    }
+    .pp-im2{
+        width: 100%;
+        /* height: 100%; */
+        /* min-height: 50%; */
+        height: auto;
+        margin-top: 80px;
+        /* border: 2px solid green; */
+        /* object-fit: fill; */
+    }
+    .pp-bd-sp{
+        position: absolute;
+        top: 30px;
+        width: 100%;
+        
+    }
+}

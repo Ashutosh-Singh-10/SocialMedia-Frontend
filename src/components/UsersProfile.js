@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { useInfiniteQuery, useQuery } from 'react-query'
 import "../assets/css/userprofile.css"
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams, useResolvedPath } from 'react-router-dom'
 import axios from "axios"
 import Cook from '../utilities/GetCookie';
 
@@ -170,7 +170,7 @@ const UsersProfile = () => {
 
             }
         })
-    // console.log(userPosts?.pages);
+    console.log(userPosts?.pages);
     useEffect(() => {
         const onScroll = (e) => {
             const { scrollHeight, scrollTop, clientHeight } = e.target.scrollingElement;
@@ -221,8 +221,19 @@ const UsersProfile = () => {
 
                             <img src={`${userData?.data.avatar}`} className="hpr-img" alt="" />
                         </div>
-                        <div className='hpr-f1'>{userData?.data.username + " " + userData?.data?.degree + '+'}
-                            <br />
+                        <div className='hpr-f1 hpr-in-bx'>
+
+                            <div className='myFlex'>
+                                <div className="hpr-de-fnt">&nbsp;</div>
+                            {/* &nbsp; &ensp;&nbsp;&nbsp;&nbsp; */}
+                            <div className='flexEnd'>
+                                {userData?.data.username } 
+                                </div>
+                                <div className='hpr-de-fnt'>
+                                    {userData?.data.degree<3?userData?.data?.degree:3   }{ userData.data.degree==1?"st":userData.data.degree==2?"nd":userData.data.degree==3?"rd":'+'}
+                                </div>
+                            </div>
+                                
                             {
                                 (SaveUserId !== userId) ? <><button className='hpr-btn Middle-btn' onClick={startFollowing} style={{ display: userData?.data.isFollowing ? "none" : "block" }}>Follow</button>
                                     <button className='hpr-btn2 Middle-btn' onClick={stopFollowing} style={{ display: userData?.data.isFollowing ? "block" : "none" }}>Following</button></> :
@@ -234,6 +245,13 @@ const UsersProfile = () => {
                         <hr className='w90' />
                         <div className='w85 hpr-f2'>
                             {userData?.data?.first_name + ' ' + userData?.data?.last_name}
+                            {/* {userData?.data?.last_name} */}
+                        </div>
+                        <div className='w85 hpr-f2' style={{fontSize:"0.8rem",
+                        fontWeight:"200",
+                        // color:"grey"
+                        }}>
+                            { userData?.data?.desc}
                             {/* {userData?.data?.last_name} */}
                         </div>
 
@@ -248,7 +266,7 @@ const UsersProfile = () => {
 
                         </div>
                         <div className="flexCenter w100 hpr-bx2">
-                            My Save
+                            {/* My Save */}
 
                         </div>
                     </div>
@@ -296,6 +314,10 @@ const UsersProfile = () => {
 
                 <div className="uf-cn w80">
 
+{(!postLoading &&  userPosts?.pages[0]?.feeds?.length==0 )?<div style={{backgroundColor:"red"}}>
+                        No post to display
+                    </div>:<div></div>}
+
                     {(postLoading) ? <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }} >
                         <ThreeCircles
                             height="100"
@@ -309,7 +331,6 @@ const UsersProfile = () => {
                             innerCircleColor="black"
                             middleCircleColor="black"
                         />
-
                     </div> : userPosts?.pages?.map((page, pageId) => {
 
                         // console.log(page)
