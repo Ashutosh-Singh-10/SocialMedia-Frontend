@@ -99,16 +99,46 @@ const ProfileDropDown = ({ dropDownVisible, setDropDownVisible, profileDropDownR
                 </div>
                 <div className='settingOption'>
                     <div className='middleButton'>
-                        <button onClick={handleClickOnEditProfile}><LuEdit2 style={{ fontSize: "2rem", marginBottom: "10px" }} />Edit Profile</button>
-                        <button><div style={{ fontSize: "2rem", marginBottom: "8px" }}>{userData?.data?.leader}</div>Followers</button>
+                        <button onClick={handleClickOnEditProfile}>
+                            {/* <LuEdit2 style={{ fontSize: "2rem", marginBottom: "10px" }} /> */}
+                            <img src={require("../assets/images/EditProfile/user (1).png")} alt="" 
+                            style={{width:"57%" ,height:"57%",objectFit:"contain",padding:"4px"}}
+                            />
+                            Edit Profile</button>
+                        <button>
+                            <div style={{ fontSize: "2rem", marginBottom: "8px" }}>{userData?.data?.leader}</div>
+                        {/* <img src={require("../assets/images/Followers/add-friend (1).png")} alt="" 
+                            style={{width:"57%" ,height:"57%",objectFit:"contain",padding:"4px"}}
+                            /> */}
+                        Followers
+                        </button>
                         <button><div style={{ fontSize: "2rem", marginBottom: "8px" }} >{userData?.data?.follower}</div>Following</button>
-                        <button className='firstbutton'><BsSaveFill style={{ fontSize: "2rem", marginBottom: "10px" }} />My Save</button>
-                        <button onClick={handleClickOnCreatePost}>Create Post</button>
+                        <button className='firstbutton'>
+                             {/* <BsSaveFill style={{ fontSize: "2rem", marginBottom: "10px" }} />  */}
+                            <img src={require("../assets/images/mySave/save (1).png")} alt="" 
+                            style={{width:"57%" ,height:"57%",objectFit:"contain",padding:"4px"}}
+                            />
+                            My Save
+
+                        </button>
+                        <button onClick={handleClickOnCreatePost}>
+                        <img src={require("../assets/images/Create/plus.png")} alt="" 
+                            style={{width:"57%" ,height:"57%",objectFit:"contain",padding:"4px"}}
+                            />
+                            {/* My Save */}
+                            Create Post
+                            </button>
                     </div>
 
                     <div className='downButton'>
 
-                        <button onClick={handleLogout}><FiLogOut style={{ fontSize: "2rem", marginRight: "10px" }} />Log Out</button>
+                        <button onClick={handleLogout}>
+                        <img src={require("../assets/images/logout/logout (2).png")} alt="" 
+                            style={{ height:"72%",objectFit:"contain",padding:"4px 10px"}}
+                            />
+                            {/* <FiLogOut style={{ fontSize: "2rem", marginRight: "10px" }} /> */}
+                            Log Out
+                        </button>
                     </div>
 
 

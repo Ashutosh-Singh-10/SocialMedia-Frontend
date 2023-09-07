@@ -46,7 +46,7 @@ export default function Login() {
 
       <div className=' flexCenter lg-cn1'>
         <div className=' h100 lg-bx-lf'>
-          <img src={require('../assets/images/loginlogo.png')} className="imgFull" alt="" />
+          <img src={require('../assets/images/login/Mobile login Customizable Semi Flat Illustrations _ Pana Style.png')} className="imgFull lg-im" alt="" />
         </div>
         <div className='w35 flexVC lg-bx-rt'>
           <form className='lg-bx1 flexVC  w100' onSubmit={login}>
@@ -76,7 +76,7 @@ export default function Login() {
           </form>
           <div className='flexCenter lg-bx2 w100 '
           >
-            Don't have account?&nbsp;<Link to={'/signin'} className='Link'> Sign in</Link>
+            Don't have account?&nbsp;<Link to={'/signin'} className='lg-link'> Sign in</Link>
 
           </div>
         </div>

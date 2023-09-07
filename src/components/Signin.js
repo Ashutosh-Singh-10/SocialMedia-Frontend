@@ -122,12 +122,14 @@ export default function Signin() {
           </div>
           <div className='flexCenter lg-bx2 w100 borderBlack'
           >
-            Already have  account?&nbsp;<Link to={'/login'} className='Link'>Log in</Link>
+            Already have  account?&nbsp;<Link to={'/login'} className='lg-link'>Log in</Link>
 
           </div>
         </div>
         <div className='w65 h100'>
-          <img src={require('../assets/images/loginlogo.png')} className="imgFull" alt="" />
+          <img src={require('../assets/images/signup/Sign up Customizable Isometric Illustrations _ Amico Style.png')} className="imgFull" alt="" 
+          style={{marginLeft:"20px"}}
+          />
         </div>
       </div>
 

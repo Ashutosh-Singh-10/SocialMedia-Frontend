@@ -151,7 +151,8 @@
     100% {
         /* stroke: black; */
         stroke-dashoffset: 0;
-        fill: blueviolet;
+        /* fill: rgb(255, 204, 36); */
+        fill:#EFB495;
     }
 }
 
@@ -205,7 +206,8 @@
     100% {
         /* stroke: black; */
         stroke-dashoffset: 0;
-        fill: blue;
+        fill:#EBEF95;
+        fill: rgb(0, 183, 255);
     }
 }
 
