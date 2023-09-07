@@ -53,8 +53,20 @@
     margin: 20px;
     border: 3px solid white;
     cursor: pointer;
-    /* border-radius: 100%; */
+    border-radius: 100%;
 
+}
+.hpr-de-fnt{
+    content: "";
+    font-size: 1rem;
+    /* padding-inline: 3px; */
+    font-weight: 100;
+    color: rgb(159, 159, 159);
+    /* font-style: italic; */
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .hpr-l-bd {
@@ -64,6 +76,13 @@
 .hpr-f1 {
     font-weight: 600;
     font-size: 1.2rem;
+}
+.hpr-in-bx{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
 }
 
 .hpr-f2 {
@@ -96,7 +115,7 @@
 
 .hpr-btn{
     border-radius: 4px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     font-size: 0.9em;
     border:none;
     background-color: #1fbc34;

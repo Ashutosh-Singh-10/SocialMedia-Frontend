@@ -79,7 +79,9 @@ export default function Post(props) {
 
 
   return (
-    <div className='ps-cnt flexV'>
+    <div className='ps-cnt flexV'
+    // style={{backgroundColor:"rgb(190,80,70)",borderRadius:"10px",padding:"25px 0px"}}
+    >
       <div className='flexCenter ps-m1'>
         {props.data.useravatar === "" ?
           <img src={require("../assets/images/gal.webp")} className='imgCover ps-us-im' alt="" /> :

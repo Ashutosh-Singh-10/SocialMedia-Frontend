@@ -72,6 +72,9 @@ code {
 .flexStart {
   align-items: flex-start;
 }
+.flexEnd {
+  align-items: flex-end;
+}
 
 .w100 {
   width: 100%;

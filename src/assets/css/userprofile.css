@@ -46,13 +46,14 @@
 
 .uf-cn {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    /* align-items: center; */
+    justify-content: left;
     flex-wrap: wrap;
     background-color: var(--cl1);
     /* padding-top: 50px; */
     padding-top: 6.2dvh;
     margin-left: 2px;
+    padding-bottom: 300px;
 
 }
 
