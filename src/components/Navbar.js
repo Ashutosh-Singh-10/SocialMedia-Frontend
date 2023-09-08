@@ -11,6 +11,10 @@ import { useQuery } from 'react-query'
 import Cookies from 'universal-cookie'
 import Cook from '../utilities/GetCookie'
 import axios from 'axios'
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf6438bb6a3ace5786bd86a1907c65374c8335a4
 export default function Navbar() {
   const [searchPop, setSearchPop] = useState(false);
   const [profileDropDown, setProfileDropDown] = useState(false);

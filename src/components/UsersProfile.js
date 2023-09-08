@@ -225,15 +225,15 @@ const UsersProfile = () => {
 
                             <div className='myFlex'>
                                 <div className="hpr-de-fnt">&nbsp;</div>
-                            {/* &nbsp; &ensp;&nbsp;&nbsp;&nbsp; */}
-                            <div className='flexEnd'>
-                                {userData?.data.username } 
+                                {/* &nbsp; &ensp;&nbsp;&nbsp;&nbsp; */}
+                                <div className='flexEnd'>
+                                    {userData?.data.username}
                                 </div>
                                 <div className='hpr-de-fnt'>
-                                    {userData?.data.degree<3?userData?.data?.degree:3   }{ userData.data.degree==1?"st":userData.data.degree==2?"nd":userData.data.degree==3?"rd":'+'}
+                                    {userData?.data.degree < 3 ? userData?.data?.degree : 3}{userData.data.degree == 1 ? "st" : userData.data.degree == 2 ? "nd" : userData.data.degree == 3 ? "rd" : '+'}
                                 </div>
                             </div>
-                                
+
                             {
                                 (SaveUserId !== userId) ? <><button className='hpr-btn Middle-btn' onClick={startFollowing} style={{ display: userData?.data.isFollowing ? "none" : "block" }}>Follow</button>
                                     <button className='hpr-btn2 Middle-btn' onClick={stopFollowing} style={{ display: userData?.data.isFollowing ? "block" : "none" }}>Following</button></> :
@@ -247,11 +247,12 @@ const UsersProfile = () => {
                             {userData?.data?.first_name + ' ' + userData?.data?.last_name}
                             {/* {userData?.data?.last_name} */}
                         </div>
-                        <div className='w85 hpr-f2' style={{fontSize:"0.8rem",
-                        fontWeight:"200",
-                        // color:"grey"
+                        <div className='w85 hpr-f2' style={{
+                            fontSize: "0.8rem",
+                            fontWeight: "200", marginTop: '5px'
+                            // color:"grey"
                         }}>
-                            { userData?.data?.desc}
+                            {userData?.data?.desc}
                             {/* {userData?.data?.last_name} */}
                         </div>
 
@@ -314,9 +315,9 @@ const UsersProfile = () => {
 
                 <div className="uf-cn w80">
 
-{(!postLoading &&  userPosts?.pages[0]?.feeds?.length==0 )?<div style={{backgroundColor:"red"}}>
+                    {(!postLoading && userPosts?.pages[0]?.feeds?.length == 0) ? <div style={{ backgroundColor: "red" }}>
                         No post to display
-                    </div>:<div></div>}
+                    </div> : <div></div>}
 
                     {(postLoading) ? <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }} >
                         <ThreeCircles
