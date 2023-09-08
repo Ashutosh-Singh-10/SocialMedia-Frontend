@@ -269,6 +269,7 @@ export default function PostDetail() {
               {postData?.data.username}
             </Link>
           </div>
+        <img src={`${postData?.data.avatar}`} className="pp-im4" alt="" />
           <div className="h70 pp-bd-b scroll-y comment-section" ref={ref} >
             <div className="w100 myFlex">
               <div className="w15 ">

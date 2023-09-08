@@ -38,10 +38,13 @@
 
 .pp-im3 {
 
-    margin: 2% 20px;
+    padding: 2% 2%;
+    margin-inline: 3px;
     aspect-ratio: 1/1;
     object-fit: cover;
     border-radius: 100%;
+    box-sizing: border-box;
+    height: 100%;
 }
 
 .pp-ul {
@@ -218,45 +221,70 @@
 
 @media screen and (max-width:1000px) {
     .pp-bx{
-        flex-direction: column;
+        /* flex-direction: column; */
         width: 100%;
-        height: 100%;
-        display: flex;
-        /* overflow: scroll; */
-        /* height: auto; */
+        /* margin: auto; */
+        /* height: max-content; */
+        /* height: 100%; */
+        /* display: flex; */
+
+
+    }
+    .pp-cnt{
+        height:100dvh;
+        width: 100%;
+        position: static;
+        /* top: 0px; */
     }
     .pp-lbx{
         width: 100%;
-        /* height: 80%; */
-        bottom: 0px;
         background-color: black;
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         justify-content: flex-end;
 
     }
-    .AddCommentBox{
-        position: fixed;
-        bottom: 0px;
+    .pp-im4{
         width: 100%;
-        padding-bottom: 20px;
-        background-color: black;
+    }
+    .pp-im2{
+        display: none;
     }
     .closeButton{
         display: none;
     }
-    .pp-im2{
+    .AddCommentBox{
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
         width: 100%;
+        padding-bottom: 20px;
+        background-color: black;
+    }
+
+    .comment-section{
+        height: auto;
+        justify-self: baseline;
+        order: 3;
+        /* background-color: blue; */
+        /* align-self: flex-end; */
+        
+    }
+    .pp-lbx{
+        height: max-content;
         /* height: 100%; */
-        /* min-height: 50%; */
+    }
+    /* .pp-im2{
+        width: 100%;
+
         height: auto;
         margin-top: 80px;
-        /* border: 2px solid green; */
-        /* object-fit: fill; */
-    }
+
+    } */
     .pp-bd-sp{
-        position: absolute;
-        top: 30px;
+        /* position: absolute; */
+        /* top: 30px; */
+        height: 75px;
         width: 100%;
         
     }
