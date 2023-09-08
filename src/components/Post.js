@@ -82,19 +82,19 @@ export default function Post(props) {
     <div className='ps-cnt flexV'
     // style={{backgroundColor:"rgb(190,80,70)",borderRadius:"10px",padding:"25px 0px"}}
     >
-      <div className='flexCenter ps-m1'>
+      <div className='flexCenter ps-m1' style={{ marginLeft: '10px' }}>
         {props.data.useravatar === "" ?
           <img src={require("../assets/images/gal.webp")} className='imgCover ps-us-im' alt="" /> :
           <img src={`${url}/media/${props.data.useravatar}`} className='imgCover ps-us-im' alt="" />
         }
 
-        <Link to={`/users/${props.data.username}`} className='ps-f ps-m2'>
+        <Link to={`/users/${props.data.username}`} className='ps-f ps-m2' style={{ marginLeft: '10px' }}>
           {props.data.username}
         </Link>
 
       </div>
       <img src={`${props.data.avatar}`} className="ps-im " alt="" />
-      <div className='myFlex ps-f4 ps-m2'>
+      <div className='myFlex ps-f4 ps-m2' style={{ marginLeft: '10px' }}>
         <button className='LikesBtn' onClick={likePost}  >{likes} <span>
           {
             <svg width="40" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke='black' stroke-width="1" stroke-linecap="round" stroke-linejoin="miter" ><polygon points="7 9 11 2 14 2 13 9 22 9 20 22 7 22 7 9"
@@ -122,7 +122,7 @@ export default function Post(props) {
           <img src={require("../assets/images/gal.webp")} className='imgCover ps-us-im2' alt="" /> :
           <img src={`${url}/media/${props.data.useravatar}`} className='imgCover ps-us-im2' alt="" />
         } */}
-        <div className='textS ps-m2 ps-m1'>
+        <div className='textS ps-m2 ps-m1' style={{ marginLeft: '10px' }}>
 
           <Link to={`/users/${props.data.username}`} className='ps-f'>
             {props.data.username}
@@ -133,7 +133,7 @@ export default function Post(props) {
 
 
       </div>
-      <div className='textS ps-m2 ps-m1'>
+      <div className='textS ps-m2 ps-m1' style={{ marginLeft: '10px' }}>
 
         <Link to={`/post/${props.data.id}`} className='ps-f3'>
           {props.data.comments > 0 ? `View all ${props.data.comments} comments` : `Be first one to comment`}

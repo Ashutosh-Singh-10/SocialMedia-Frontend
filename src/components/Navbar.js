@@ -7,12 +7,44 @@ import { CgProfile } from 'react-icons/cg'
 import UserSearch from './UserSearch'
 import { useRef } from 'react'
 import ProfileDropDown from './ProfileDropDown'
+import { useQuery } from 'react-query'
+import Cookies from 'universal-cookie'
+import Cook from '../utilities/GetCookie'
 
 export default function Navbar() {
   const [searchPop, setSearchPop] = useState(false);
   const [profileDropDown, setProfileDropDown] = useState(false);
   const profileDropDownRef = useRef();
   const SearchPopRef = useRef();
+  const url = process.env.REACT_APP_BACKEND_URL;
+  const cookies = new Cookies();
+  const userId = cookies.get('username', { path: '/' });
+  let token = Cook("access");
+  const { data: userData, isLoading: userLoading, refetch: refetchUserData } = useQuery(`${userId}`, () => {
+    // const url1 = url + "/profile/userfeeds"
+    // console.log('Jai');
+    const url2 = url + "/profile/userprofile"
+    return axios.post(url2,
+      {
+        "username": userId,
+
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + token
+
+        },
+      }
+
+
+    )
+  }, {
+    cacheTime: 86400000,
+    // refetchInterval: 2000
+    // refetchOnWindowFocus: false,
+  });
+
+
   const handleClick = (e) => {
     e.stopPropagation();
     e.preventDefault();
@@ -74,7 +106,7 @@ export default function Navbar() {
           </li>
           <li ref={profileDropDownRef}>
 
-            <button onClick={handlDropDown} ><CgProfile style={{ fontSize: '1.5rem', marginRight: '10px' }} /><span className='navbarSpan'>Profile</span></button>
+            <button onClick={handlDropDown} ><img src={userData?.data?.avatar} style={{ height: '30px', marginRight: '10px', aspectRatio: '1/1', borderRadius: '100%' }} /><span className='navbarSpan'>Profile</span></button>
             <ProfileDropDown dropDownVisible={profileDropDown} setDropDownVisible={setProfileDropDown} profileDropDownRef={profileDropDownRef} />
           </li>
           {/* <li><NavLink to={'/users/Jo'} preventScrollReset>Jo</NavLink></li> */}

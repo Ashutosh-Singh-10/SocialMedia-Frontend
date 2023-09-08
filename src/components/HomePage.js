@@ -98,6 +98,7 @@ const HomePage = () => {
 
     // }
     return (
+
         <div className='w100 flexCenter'>
             <div className='hm-mb '>
 
@@ -160,7 +161,7 @@ const HomePage = () => {
                     })}
 
 
-                    {isFetching && <ThreeCircles
+                    {<ThreeCircles
                         height="60"
                         width="60"
                         // color="#4fa94d"
