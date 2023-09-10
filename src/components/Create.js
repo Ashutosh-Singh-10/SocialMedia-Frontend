@@ -21,6 +21,11 @@ export default function Create() {
 
   const onImageChange = (event) => {
     setImage(event.target.files[0])
+    if(event?.target?.files[0])
+    {
+      
+      setImageURL(URL.createObjectURL(event.target.files[0]));
+    }
     // if (event.target.files && event.target.files[0]) {
     //   setImage(URL.createObjectURL(event.target.files[0]));
     // }
@@ -97,21 +102,21 @@ export default function Create() {
     <div className='pfixed w100 h100 flexCenter' >
 
       <div className='w60 h80 flexCenter cr-mcn' >
-        <div className="w100 h100 flexCenter" style={{ display: image ? "flex" : "none" }}>
-          <img src={imageURL} className="h100 w60 imgContain" alt="" />
+        <div className="w100 h100 flexCenter cr-cnt1" style={{ display: image ? "flex" : "none" }}>
+          <img src={imageURL} className="h100 w60 imgContain cr-im2" alt="" />
           <div className='w40 h100 flexV cr-cn1'>
-            <div className='myFlex alignC'>
+            <div className='myFlex alignC cr-cn2'>
               <img src={userData?.data?.avatar} className="cr-im1" alt="" />
               <div className='cr-f1'>{userData?.data?.username}</div>
 
             </div>
             <hr className='w100' />
             <textarea onChange={(e) => setDesc(e.target.value)} type="text" className='cr-in1' placeholder='Type Something' />
-            <div className='flexVC w100'>
-              <br />
-              <button className='cr-cr-bt w50' onClick={getPosts}>Create new post</button>
-              <br />
-              <button className='cr-bk-bt w50' onClick={backBtn}>Back</button>
+            <div className='flexVC w100 cr-btn-cn'>
+             
+              <button className='cr-cr-bt w90' onClick={getPosts}>Create </button>
+              <button className='cr-bk-bt w90' onClick={backBtn}>Back</button>
+              
             </div>
 
           </div>
@@ -120,7 +125,7 @@ export default function Create() {
         {/* <div className="w100 h100 flexCenter" style={{display:image?"none":"flex"}}>
       hiii */}
 
-        <Dropzone onDrop={onDrop} className="w100 h100 flexVC" style={{ display: image != null ? "none" : "flex" }} >
+        <Dropzone onDrop={onDrop} className="w100 h100 flexVC " style={{ display: image != null ? "none" : "flex" }} >
           {({ getRootProps, getInputProps }) => (
             <div {...getRootProps()} className='w100 h100 flexCenter' style={{ display: image != null ? "none" : "flex" }} >
 
@@ -134,6 +139,7 @@ export default function Create() {
 
           )}
         </Dropzone>
+          <input type="file" onChange={(e)=>onImageChange(e)} style={{ display: image != null ? "none" : "flex" }}/>
         {/* </div> */}
 
       </div>

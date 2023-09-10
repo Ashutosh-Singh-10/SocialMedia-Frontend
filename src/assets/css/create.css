@@ -33,10 +33,12 @@
 
 .cr-im1 {
     margin: 10px 10px;
-    height: 50px;
+    height: 40px;
     aspect-ratio: 1/1;
     object-fit: cover;
-    border-radius: 2px;
+    border-radius: 100%;
+    box-sizing: border-box;
+    border: 1px solid white;
 }
 
 .cr-in1 {
@@ -69,11 +71,12 @@
     color: white;
     background-color: var(--c7);
     border: none;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     padding-block: 8px;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
+    margin-top: 20px;
 
 }
 
@@ -81,9 +84,57 @@
     color: white;
     background-color: var(--c8);
     border: none;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     padding: 8px 30px;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 20px;
+}
+
+@media screen and (max-width:1000px) {
+
+.cr-mcn{
+    width: 100%;
+    /* background-color: blue; */
+    /* background-color: gold; */
+    background-color: rgb(28,28,28);
+    height: 100%;
+    margin-top: calc(70px + 6dvh);
+
+}
+.cr-cnt1{
+    flex-direction: column;
+}
+.cr-cn1{
+    width: 100%;
+    box-sizing: border-box;
+    border-left: none   ;
+}
+.cr-im2{
+    width:100%;
+    aspect-ratio: 1/1;
+    max-height: 60dvh;
+}
+.cr-cn2{
+    position: absolute;
+    top:6dvh;
+    width: 100%;
+    background-color: rgb(28,28,28);
+
+}
+.cr-btn-cn{
+    justify-content: space-evenly;
+    flex-direction: row-reverse;
+    box-sizing: border-box;
+    padding-top: 20px;
+    
+}
+.cr-cr-bt{
+    width: 40%;
+}
+.cr-bk-bt{
+    width: 40%;
+}
+
 }

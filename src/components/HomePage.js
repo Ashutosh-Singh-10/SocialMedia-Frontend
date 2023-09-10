@@ -11,6 +11,8 @@ import { ThreeCircles } from 'react-loader-spinner'
 import { useEffect } from 'react';
 import { Fragment } from 'react';
 import Cook from '../utilities/GetCookie';
+import { Link } from "react-router-dom";
+
 const url = process.env.REACT_APP_BACKEND_URL;
 
 // import HomePost from './HomePost';
@@ -240,10 +242,10 @@ const HomePage = () => {
                         {Activity1Data?.data?.map((element, id) => {
 
                             return (
-                                <div className='w100 hr-cn2' key={id}>
+                                <Link to={`/users/${element?.username}`} className='w100 hr-cn2' key={id}>
                                     <img src={`${url}${element.avatar}`} className="hr-img" alt="" />
                                     <div>{element.username}</div>
-                                </div>
+                                </Link>
 
 
                             );
@@ -276,10 +278,10 @@ const HomePage = () => {
                         {Activity2Data?.data?.map((element, id) => {
 
                             return (
-                                <div className='w100 hr-cn2' key={id}>
+                                <Link to={`/users/${element?.username}`} className='w100 hr-cn2' key={id}>
                                     <img src={`${url}${element.avatar}`} className="hr-img" alt="" />
                                     <div>{element.username}</div>
-                                </div>
+                                </Link>
 
 
                             );

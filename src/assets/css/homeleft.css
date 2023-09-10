@@ -8,6 +8,7 @@
     /* overflow: hidden; */
     /* position: fixed; */
     border: 1px solid red;
+    visibility: hidden;
 }
 
 @media screen and (max-width:1000px) {
