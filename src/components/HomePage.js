@@ -19,56 +19,54 @@ const url = process.env.REACT_APP_BACKEND_URL;
 
 
 const HomePage = () => {
-    const [activity, setActivity] = useState([]);
-    const getActivity=()=>{
+    // const [activity, setActivity] = useState([]);
+    // const getActivity = 
+    // const [activity2, setActivity2] = useState([]);
+    // const getActivity2 = 
+
+    const { data: Activity1Data } = useQuery('Activity1', async () => {
         let token = Cook("access");
         let url1 = url + "/follow/recentfollowings";
 
-        axios.post(url1,{},
+        return await axios.post(url1, {},
             {
                 headers: {
                     Authorization: "Bearer " + token
-    
+
                 },
             }
-            ).then((res)=>{
-                setActivity(res.data);
-                console.log("the activity is",activity);
-            }).catch((err)=>{
-                console.log(err)
-            })
-            
-        }
-        const [activity2,setActivity2]=useState([]);
-        const getActivity2=()=>{
+        )
+
+    }, {
+        cacheTime: 86400000,
+        refetchOnWindowFocus: false
+    })
+    const { data: Activity2Data } = useQuery('Activity2', async () => {
         let token = Cook("access");
         let url1 = url + "/follow/recentfollowers";
 
-        axios.post(url1,{},
+        return await axios.post(url1, {},
             {
                 headers: {
                     Authorization: "Bearer " + token
-                    
+
                 },
             }
-            ).then((res)=>{
-                setActivity2(res.data);
-                // console.log("the activity is",activity);
-            }).catch((err)=>{
-                console.log(err)
-            })
-            
-        }
-        
-        getActivity()
-        getActivity2()
+        );
+
+    }, {
+        cacheTime: 86400000,
+        refetchOnWindowFocus: false
+    })
+    console.log(Activity1Data);
+    console.log(Activity2Data);
 
 
     const getPosts = async ({ pageParam = 0 }) => {
         // const [position, setPosition] = useState(100)
         let token = Cook("access");
 
-        
+
 
         let url1 = url + "/feeds/page";
 
@@ -239,19 +237,19 @@ const HomePage = () => {
 
                         </div>
 
-                        {activity?.map((element, id) => {
+                        {Activity1Data?.data?.map((element, id) => {
 
-                        return (
-                            <div className='w100 hr-cn2' key={id}>
-                            <img src={`${url}${element.avatar}`} className="hr-img" alt="" />
-                            <div>{element.username}</div>
-                        </div>
-                            
+                            return (
+                                <div className='w100 hr-cn2' key={id}>
+                                    <img src={`${url}${element.avatar}`} className="hr-img" alt="" />
+                                    <div>{element.username}</div>
+                                </div>
 
-                        );
-                    })}
 
-                     
+                            );
+                        })}
+
+
                         {/* <div className='w100 hr-cn2'>
                             <img src={require("../assets/images/gal.webp")} className="hr-img" alt="" />
                             <div>gal_godot-1</div>
@@ -274,18 +272,18 @@ const HomePage = () => {
                             Recent Followers
 
                         </div>
-                        
-                        {activity2?.map((element, id) => {
 
-return (
-    <div className='w100 hr-cn2' key={id}>
-    <img src={`${url}${element.avatar}`} className="hr-img" alt="" />
-    <div>{element.username}</div>
-</div>
-    
+                        {Activity2Data?.data?.map((element, id) => {
 
-);
-})}
+                            return (
+                                <div className='w100 hr-cn2' key={id}>
+                                    <img src={`${url}${element.avatar}`} className="hr-img" alt="" />
+                                    <div>{element.username}</div>
+                                </div>
+
+
+                            );
+                        })}
                         {/* <div className='w100 hr-cn2'>
                             <img src={require("../assets/images/gal.webp")} className="hr-img" alt="" />
                             <div>gal_godot-1</div>
