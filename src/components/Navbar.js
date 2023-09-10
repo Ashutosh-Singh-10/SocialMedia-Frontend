@@ -106,7 +106,7 @@ export default function Navbar() {
           </li>
           <li ref={profileDropDownRef}>
 
-            <button onClick={handlDropDown} ><img src={userData?.data?.avatar} style={{ height: '30px', marginRight: '10px', aspectRatio: '1/1', borderRadius: '100%' }} /><span className='navbarSpan'>Profile</span></button>
+            <button onClick={handlDropDown} ><img src={userData?.data?.avatar} style={{ height: '30px', marginRight: '10px', aspectRatio: '1/1', borderRadius: '100%',objectFit:"cover" }} /><span className='navbarSpan'>Profile</span></button>
             <ProfileDropDown dropDownVisible={profileDropDown} setDropDownVisible={setProfileDropDown} profileDropDownRef={profileDropDownRef} />
           </li>
           {/* <li><NavLink to={'/users/Jo'} preventScrollReset>Jo</NavLink></li> */}

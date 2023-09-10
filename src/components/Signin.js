@@ -55,7 +55,7 @@ export default function Signin() {
 
       <div className=' flexCenter lg-cn1'>
 
-        <div className='w35 flexVC '>
+        <div className='w35 flexVC  lg-bx-rt'>
           <div className='lg-bx1 flexVC borderBlack w100'
             // onSubmit={login}
             style={{ display: isOtpSent === false ? "flex" : "none" }}
@@ -126,7 +126,7 @@ export default function Signin() {
 
           </div>
         </div>
-        <div className='w65 h100'>
+        <div className='w65 h100 lg-bx-lf'>
           <img src={require('../assets/images/signup/Sign up Customizable Isometric Illustrations _ Amico Style.png')} className="imgFull" alt="" 
           style={{marginLeft:"20px"}}
           />

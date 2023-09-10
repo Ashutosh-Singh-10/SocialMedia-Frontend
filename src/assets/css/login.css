@@ -61,27 +61,7 @@
 
 
 }
-.lg-bx-lf{
-    width: 65%;
-}
 
-@media screen and (max-width:1000px) {
-    .lg-bx-lf{
-        display: none;
-    }
-}
-.lg-bx-rt{
-    width: 35%;
-}
-
-@media screen and (max-width:1000px) {
-    .lg-bx-rt{
-        width: 90%;
-        max-width: 500px;
-        position:  fixed;
-        top:12%;
-    }
-}
 .lg-im{
     /* mix-blend-mode:; */
 }
@@ -127,4 +107,29 @@
 
 .lg-link:hover {
     color: red;
+}
+
+
+
+
+.lg-bx-lf{
+    width: 65%;
+}
+
+@media screen and (max-width:1000px) {
+    .lg-bx-lf{
+        display: none;
+    }
+}
+.lg-bx-rt{
+    width: 35%;
+}
+
+@media screen and (max-width:1000px) {
+    .lg-bx-rt{
+        width: 90%;
+        max-width: 500px;
+        position:  fixed;
+        top:12%;
+    }
 }
