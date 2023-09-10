@@ -34,7 +34,7 @@ const UserSearch = ({ isVisible, setVisible, buttonref }) => {
     //         <h1>Loading</h1>
     //     )
     // }
-    console.log(data);
+    // console.log(data);
     // const search = () => {
 
     // }

@@ -19,16 +19,59 @@ const url = process.env.REACT_APP_BACKEND_URL;
 
 
 const HomePage = () => {
+    const [activity, setActivity] = useState([]);
+    const getActivity=()=>{
+        let token = Cook("access");
+        let url1 = url + "/follow/recentfollowings";
+
+        axios.post(url1,{},
+            {
+                headers: {
+                    Authorization: "Bearer " + token
+    
+                },
+            }
+            ).then((res)=>{
+                setActivity(res.data);
+                console.log("the activity is",activity);
+            }).catch((err)=>{
+                console.log(err)
+            })
+            
+        }
+        const [activity2,setActivity2]=useState([]);
+        const getActivity2=()=>{
+        let token = Cook("access");
+        let url1 = url + "/follow/recentfollowers";
+
+        axios.post(url1,{},
+            {
+                headers: {
+                    Authorization: "Bearer " + token
+                    
+                },
+            }
+            ).then((res)=>{
+                setActivity2(res.data);
+                // console.log("the activity is",activity);
+            }).catch((err)=>{
+                console.log(err)
+            })
+            
+        }
+        
+        getActivity()
+        getActivity2()
+
+
     const getPosts = async ({ pageParam = 0 }) => {
         // const [position, setPosition] = useState(100)
         let token = Cook("access");
-        console.log(token);
-        console.log("ho gya load")
 
-        // console.log(this.state.page)
+        
+
         let url1 = url + "/feeds/page";
 
-        console.log("something ");
 
         const res = await axios.post(url1, {
             page: pageParam
@@ -40,7 +83,6 @@ const HomePage = () => {
         }
 
         )
-        console.log(res.data)
         return res.data;
 
     }
@@ -53,10 +95,9 @@ const HomePage = () => {
     useEffect(() => {
         const onScroll = (e) => {
             const { scrollHeight, scrollTop, clientHeight } = e.target.scrollingElement;
-            // console.log(scrollTop);
+
             if (scrollHeight - scrollTop <= clientHeight * 1.5) {
                 if (hasNextPage) {
-                    // console.log("azad")
                     fetchNextPage();
                 }
             }
@@ -197,7 +238,21 @@ const HomePage = () => {
                             Recent Following
 
                         </div>
-                        <div className='w100 hr-cn2'>
+
+                        {activity?.map((element, id) => {
+
+                        return (
+                            <div className='w100 hr-cn2' key={id}>
+                            <img src={`${url}${element.avatar}`} className="hr-img" alt="" />
+                            <div>{element.username}</div>
+                        </div>
+                            
+
+                        );
+                    })}
+
+                     
+                        {/* <div className='w100 hr-cn2'>
                             <img src={require("../assets/images/gal.webp")} className="hr-img" alt="" />
                             <div>gal_godot-1</div>
                         </div>
@@ -208,11 +263,7 @@ const HomePage = () => {
                         <div className='w100 hr-cn2'>
                             <img src={require("../assets/images/gal.webp")} className="hr-img" alt="" />
                             <div>gal_godot-1</div>
-                        </div>
-                        <div className='w100 hr-cn2'>
-                            <img src={require("../assets/images/gal.webp")} className="hr-img" alt="" />
-                            <div>gal_godot-1</div>
-                        </div>
+                        </div> */}
 
                     </div>
                     <br /><br />
@@ -223,7 +274,19 @@ const HomePage = () => {
                             Recent Followers
 
                         </div>
-                        <div className='w100 hr-cn2'>
+                        
+                        {activity2?.map((element, id) => {
+
+return (
+    <div className='w100 hr-cn2' key={id}>
+    <img src={`${url}${element.avatar}`} className="hr-img" alt="" />
+    <div>{element.username}</div>
+</div>
+    
+
+);
+})}
+                        {/* <div className='w100 hr-cn2'>
                             <img src={require("../assets/images/gal.webp")} className="hr-img" alt="" />
                             <div>gal_godot-1</div>
                         </div>
@@ -238,7 +301,7 @@ const HomePage = () => {
                         <div className='w100 hr-cn2'>
                             <img src={require("../assets/images/gal.webp")} className="hr-img" alt="" />
                             <div>gal_godot-1</div>
-                        </div>
+                        </div> */}
 
                     </div>
 

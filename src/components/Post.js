@@ -10,14 +10,14 @@ export default function Post(props) {
   // const [comment, setComment] = useState(4)
   // console.log(props.comment);
   useEffect(() => {
-    console.log('jai');
+    // console.log('jai');
     setLikes(props?.data?.likes);
     setLikeFlag(props?.data?.isLiked);
   }, [props.data.likes]);
-  console.log(likes);
-  console.log(likeFlag);
+  // console.log(likes);
+  // console.log(likeFlag);
   // console.log(comment);
-  console.log(props.data)
+  // console.log(props.data)
   const url = process.env.REACT_APP_BACKEND_URL
   // console.log(props.data.useravatar)
   const likePost = () => {
@@ -29,7 +29,7 @@ export default function Post(props) {
       url4 = url + "/feeds/unlike";
 
     }
-    console.log(url4)
+    // console.log(url4)
     axios
       .post(url4, {
         postid: props?.data?.id,
@@ -43,7 +43,7 @@ export default function Post(props) {
 
       ).then((res) => {
 
-        console.log(res)
+        // console.log(res)
         if (!likeFlag) {
           setLikes(likes + 1);
           setLikeFlag(!likeFlag);

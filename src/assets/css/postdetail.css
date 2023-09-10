@@ -4,6 +4,7 @@
     color: white;
     position: absolute;
     background-color: rgba(199, 195, 195, 0.123);
+    
     top: 3dvh;
     /* left: 0px; */
     width: 100%;
@@ -14,7 +15,10 @@
 
 .pp-bx {
     width: 1200px;
-    background-color: black;
+    /* background-color: black; */
+    background-color: rgb(14,14,14);
+    
+    /* background-color: red; */
     /* border: 1px solid red; */
 
 }
@@ -28,6 +32,7 @@
     height: 100%;
     object-fit: contain;
     background-color: black;
+    
     border-right: 1px solid grey;
     
 }
@@ -79,6 +84,8 @@
     -ms-overflow-style: none;
     /* IE and Edge */
     scrollbar-width: none;
+    padding-bottom: 200px;
+    box-sizing: border-box;
     /* Firefox */
 }
 
@@ -123,6 +130,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
+    background-color: black;
     
     /* padding-bottom: 1px; */
 }
@@ -175,16 +183,16 @@
     font-size: 1.05rem;
 }
 
-.AddCommentBox button.flexCenter {
+/* .AddCommentBox button.flexCenter {
     color: black;
     font-size: 0.8rem;
     padding: 5px 5px;
-}
+} */
 
-.AddCommentBox button.flexCenter:disabled {
+/* .AddCommentBox button.flexCenter:disabled {
     color: white;
-    /* font-size: 1rem; */
-}
+    font-size: 1rem;
+} */
 
 /* .replyShowBox {
     height: 20%;
@@ -218,7 +226,32 @@
 /* Hide scrollbar for IE, Edge and Firefox */
 
 
+.pp-im4{
+    display: none;
+    background-color: black;
+}
+.cm-cm-cnt{
+    background-color: black;
+}
 
+.pp-cm-cb{
+    font-weight: 500;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    background-color: green;
+    color: white;
+    height: 100%;
+    border-radius: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pp-cm-cb:disabled{
+    background-color: rgba(41, 196, 41, 0.409);
+    color: grey;
+}
 @media screen and (max-width:1000px) {
     .pp-bx{
         /* flex-direction: column; */
@@ -227,18 +260,27 @@
         /* height: max-content; */
         /* height: 100%; */
         /* display: flex; */
-
-
+        
+        
+    }
+    .pp-cm-cb{
+        background-color: transparent;
+        color: green;
+    }
+    .pp-cm-cb:disabled{
+        background-color: transparent;
+        color: rgba(41, 196, 41, 0.409);
     }
     .pp-cnt{
         height:100dvh;
         width: 100%;
+        background-color: rgb(14,14,14);
         position: static;
         /* top: 0px; */
     }
     .pp-lbx{
         width: 100%;
-        background-color: black;
+        /* background-color: rgb(28,28,28); */
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -246,6 +288,7 @@
     }
     .pp-im4{
         width: 100%;
+        display: initial;
     }
     .pp-im2{
         display: none;
@@ -266,6 +309,7 @@
         height: auto;
         justify-self: baseline;
         order: 3;
+        background-color: rgb(14,14,14);
         /* background-color: blue; */
         /* align-self: flex-end; */
         
@@ -284,8 +328,10 @@
     .pp-bd-sp{
         /* position: absolute; */
         /* top: 30px; */
-        height: 75px;
+        height: 9dvh;
         width: 100%;
+        box-sizing: border-box;
+        padding-top: 9px;
         
     }
 }

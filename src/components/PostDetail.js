@@ -342,13 +342,13 @@ export default function PostDetail() {
                 <><div>Replying To {replyUserData.username} </div> <button onClick={handleCloseReply}></button></>}
             </div>
 
-            <div className=" flexCenter ">
-              <input className="w85 h90 cm-in"
+            <div className=" flexCenter cm-cm-cnt">
+              <input className="w80 h90 cm-in"
                 onChange={(e) => { setComment(e.target.value) }}
                 value={comment}
                 placeholder={replyInput ? 'Add a Reply' : ' Add a Comment'} />
 
-              <button className=" w15 flexCenter cm-cb" onClick={replyInput ? addReply : addComment} disabled={(comment === '') ? true : false}>
+              <button className=" w20 flexCenter pp-cm-cb" onClick={replyInput ? addReply : addComment} disabled={(comment === '') ? true : false}>
                 {replyInput ? 'Reply' : 'Comment'}
 
 
