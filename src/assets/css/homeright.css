@@ -58,6 +58,9 @@
         .hr-cn2:active{
             color:white
         }
+        .hr-cn2:link{
+            color:white
+        }
         .hr-img{
             border-radius: 100%;
             aspect-ratio: 1/1;
