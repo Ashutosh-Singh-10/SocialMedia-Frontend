@@ -1,10 +1,8 @@
-
-
 .pp-cnt {
     color: white;
     position: absolute;
     background-color: rgba(199, 195, 195, 0.123);
-    
+
     top: 3dvh;
     /* left: 0px; */
     width: 100%;
@@ -16,13 +14,14 @@
 .pp-bx {
     width: 1200px;
     /* background-color: black; */
-    background-color: rgb(14,14,14);
-    
+    background-color: rgb(14, 14, 14);
+
     /* background-color: red; */
     /* border: 1px solid red; */
 
 }
-.pp-lbx{
+
+.pp-lbx {
     width: 40%;
 }
 
@@ -32,9 +31,9 @@
     height: 100%;
     object-fit: contain;
     background-color: black;
-    
+
     border-right: 1px solid grey;
-    
+
 }
 
 .pp-bd-b {
@@ -131,7 +130,7 @@
     align-items: center;
     padding: 0 10px;
     background-color: black;
-    
+
     /* padding-bottom: 1px; */
 }
 
@@ -209,7 +208,7 @@
 }
 
 .postNumberOfLikeAndComment {
-    margin-top: 15px;
+    margin-top: 10px;
     display: flex;
     gap: 10px;
     /* border: 1px solid red; */
@@ -226,15 +225,16 @@
 /* Hide scrollbar for IE, Edge and Firefox */
 
 
-.pp-im4{
+.pp-im4 {
     display: none;
     background-color: black;
 }
-.cm-cm-cnt{
+
+.cm-cm-cnt {
     background-color: black;
 }
 
-.pp-cm-cb{
+.pp-cm-cb {
     font-weight: 500;
     box-sizing: border-box;
     padding: 10px;
@@ -248,37 +248,43 @@
     justify-content: center;
     align-items: center;
 }
-.pp-cm-cb:disabled{
+
+.pp-cm-cb:disabled {
     background-color: rgba(41, 196, 41, 0.409);
     color: grey;
 }
+
 @media screen and (max-width:1000px) {
-    .pp-bx{
+    .pp-bx {
         /* flex-direction: column; */
         width: 100%;
         /* margin: auto; */
         /* height: max-content; */
         /* height: 100%; */
         /* display: flex; */
-        
-        
+
+
     }
-    .pp-cm-cb{
+
+    .pp-cm-cb {
         background-color: transparent;
         color: green;
     }
-    .pp-cm-cb:disabled{
+
+    .pp-cm-cb:disabled {
         background-color: transparent;
         color: rgba(41, 196, 41, 0.409);
     }
-    .pp-cnt{
-        height:100dvh;
+
+    .pp-cnt {
+        height: 100dvh;
         width: 100%;
-        background-color: rgb(14,14,14);
+        background-color: rgb(14, 14, 14);
         position: static;
         /* top: 0px; */
     }
-    .pp-lbx{
+
+    .pp-lbx {
         width: 100%;
         /* background-color: rgb(28,28,28); */
         display: flex;
@@ -286,17 +292,21 @@
         justify-content: flex-end;
 
     }
-    .pp-im4{
+
+    .pp-im4 {
         width: 100%;
         display: initial;
     }
-    .pp-im2{
+
+    .pp-im2 {
         display: none;
     }
-    .closeButton{
+
+    .closeButton {
         display: none;
     }
-    .AddCommentBox{
+
+    .AddCommentBox {
         position: fixed;
         bottom: 0px;
         left: 0px;
@@ -305,19 +315,21 @@
         background-color: black;
     }
 
-    .comment-section{
+    .comment-section {
         height: auto;
         justify-self: baseline;
         order: 3;
-        background-color: rgb(14,14,14);
+        background-color: rgb(14, 14, 14);
         /* background-color: blue; */
         /* align-self: flex-end; */
-        
+
     }
-    .pp-lbx{
+
+    .pp-lbx {
         height: max-content;
         /* height: 100%; */
     }
+
     /* .pp-im2{
         width: 100%;
 
@@ -325,13 +337,13 @@
         margin-top: 80px;
 
     } */
-    .pp-bd-sp{
+    .pp-bd-sp {
         /* position: absolute; */
         /* top: 30px; */
         height: 9dvh;
         width: 100%;
         box-sizing: border-box;
         padding-top: 9px;
-        
+
     }
 }

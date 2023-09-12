@@ -259,7 +259,7 @@ export default function PostDetail() {
     <div className="pp-cnt  flexCenter" ref={postDetailBgRef}>
 
       <div className=" w80 h90 myFlex pp-bx" ref={postdetailRef}>
-              
+
         <img src={`${postData?.data.avatar}`} className="pp-im2" alt="" />
 
         <div className="w40 h100 pp-lbx">
@@ -269,7 +269,7 @@ export default function PostDetail() {
               {postData?.data.username}
             </Link>
           </div>
-        <img src={`${postData?.data.avatar}`} className="pp-im4" alt="" />
+          <img src={`${postData?.data.avatar}`} className="pp-im4" alt="" />
           <div className="h70 pp-bd-b scroll-y comment-section" ref={ref} >
             <div className="w100 myFlex">
               <div className="w15 ">
@@ -325,9 +325,20 @@ export default function PostDetail() {
             {/* <div className="h33"></div> */}
             <div className="h33 flexV pp-d1">
               <div className="postNumberOfLikeAndComment">
-                <button onClick={likePost}>{postData?.data?.likes} Likes </button>
+                <button onClick={likePost} style={{ display: 'flex', alignItems: 'flex-end', fontSize: '1.1rem' }}>{postData?.data?.likes} <svg width={40} height={30} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="black" fill='transparent' strokeWidth={1} strokeLinecap="round" strokeLinejoin="miter"><polygon points="7 9 11 2 14 2 13 9 22 9 20 22 7 22 7 9" fill={postData?.data?.isLiked ? '#EFB495' : 'white'} style={{ transitionProperty: 'all', transitionDuration: '0.5s' }} /><rect x={2} y={9} width={5} height={13} fill={postData?.data?.isLiked ? 'rgb(0, 183, 255)' : 'white'} style={{ transitionProperty: 'all', transitionDuration: '0.5s' }} /></svg> </button>
                 {/* Likes&emsp; */}
-                {postData?.data?.comments} Comments
+                <span style={{ fontSize: '1.1rem', display: 'flex', alignItems: 'flex-end' }}>
+                  {postData?.data?.comments} <svg height={30} width={40} version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" space="preserve" fill="white">
+                    <path d="M92.574,294.24V124.336H43.277C19.449,124.336,0,144.213,0,168.467v206.44
+		c0,24.254,19.449,44.133,43.277,44.133h62v45.469c0,3.041,1.824,5.777,4.559,6.932c2.736,1.154,5.957,0.486,8.023-1.641
+		l49.844-50.76h106.494c23.828,0,43.279-19.879,43.279-44.133v-0.061H172.262C128.314,374.846,92.574,338.676,92.574,294.24z" />
+                    <path d="M462.717,40H172.26c-27.105,0-49.283,22.59-49.283,50.197v204.037c0,27.61,22.178,50.199,49.283,50.199
+		h164.668l75.348,76.033c2.399,2.442,6.004,3.172,9.135,1.852c3.133-1.322,5.176-4.434,5.176-7.887v-69.998h36.131
+		c27.106,0,49.283-22.59,49.283-50.199V90.197C512,62.59,489.822,40,462.717,40z M369.156,280.115H195.92v-24.316h173.236V280.115z
+		 M439.058,204.129H195.92v-24.314h243.138V204.129z M439.058,128.143H195.92v-24.315h243.138V128.143z" />
+                  </svg>
+                </span>
+
                 <br />
               </div>
 

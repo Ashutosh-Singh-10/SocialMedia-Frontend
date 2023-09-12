@@ -137,7 +137,7 @@
     0% {
         stroke: white;
         stroke-dashoffset: 70;
-        fill: transparent;
+        fill: white;
     }
 
     40% {
