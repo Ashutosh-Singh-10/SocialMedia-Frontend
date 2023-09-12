@@ -21,9 +21,8 @@ export default function Create() {
 
   const onImageChange = (event) => {
     setImage(event.target.files[0])
-    if(event?.target?.files[0])
-    {
-      
+    if (event?.target?.files[0]) {
+
       setImageURL(URL.createObjectURL(event.target.files[0]));
     }
     // if (event.target.files && event.target.files[0]) {
@@ -113,10 +112,10 @@ export default function Create() {
             <hr className='w100' />
             <textarea onChange={(e) => setDesc(e.target.value)} type="text" className='cr-in1' placeholder='Type Something' />
             <div className='flexVC w100 cr-btn-cn'>
-             
+
               <button className='cr-cr-bt w90' onClick={getPosts}>Create </button>
               <button className='cr-bk-bt w90' onClick={backBtn}>Back</button>
-              
+
             </div>
 
           </div>
@@ -139,7 +138,7 @@ export default function Create() {
 
           )}
         </Dropzone>
-          <input type="file" onChange={(e)=>onImageChange(e)} style={{ display: image != null ? "none" : "flex" }}/>
+        <input type="file" onChange={(e) => onImageChange(e)} style={{ display: image != null ? "none" : "flex" }} />
         {/* </div> */}
 
       </div>
