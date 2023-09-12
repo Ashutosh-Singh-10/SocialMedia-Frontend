@@ -92,6 +92,20 @@
     margin-top: 20px;
 }
 
+.cr-inpt {
+    /* border: 1px solid red; */
+    width: 35%;
+    height: 35px;
+    color: white;
+    font-weight: 500;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3ace30;
+}
+
 @media screen and (max-width:1000px) {
 
     .cr-mcn {

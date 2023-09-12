@@ -138,7 +138,8 @@ export default function Create() {
 
           )}
         </Dropzone>
-        <input type="file" onChange={(e) => onImageChange(e)} style={{ display: image != null ? "none" : "flex" }} />
+        <label htmlFor='cr-input' className='cr-inpt' style={{ display: image != null ? "none" : "flex" }}>Browse</label>
+        <input type="file" id='cr-input' accept="image/*" onChange={(e) => onImageChange(e)} style={{ display: 'none' }} />
         {/* </div> */}
 
       </div>
