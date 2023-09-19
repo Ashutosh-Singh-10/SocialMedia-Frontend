@@ -58,7 +58,31 @@ export default function Login() {
   }
 
 
+  const testLogin = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const url = process.env.REACT_APP_BACKEND_URL + "/login/"
+    axios.post(url,
+      {
+        "username": "Ashu",
+        "password": "ashutosh"
+      }
 
+    ).then((res) => {
+
+      // console.log(res)
+      const cookies = new Cookies();
+      // cookies.set('accesstoken', res.data.access);
+      cookies.set('refresh', res.data.refresh, { path: '/' });
+      cookies.set('access', res.data.access, { path: '/' });
+      cookies.set('username', "Ashu", { path: '/' });
+      // console.log(uri);
+      // window.location = uri
+      navigate(uri, { replace: true });
+
+      // <Navigate to={`${uri}`} replace={true} />
+    }).catch((res) => { console.log(res) })
+  }
 
   return (
     <>
@@ -93,6 +117,8 @@ export default function Login() {
               </div>
               <button className='lg-btn lg-ft1 br-rd4'>
                 Login</button>
+              <button className='lg-btn lg-ft1 br-rd4 lg-tt-bt' onClick={testLogin}>
+                Take a Test</button>
 
 
             </form>

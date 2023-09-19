@@ -115,6 +115,10 @@
 .lg-bx-lf{
     width: 65%;
 }
+.lg-tt-bt{
+    background-color: rgb(255, 76, 60);
+    margin-top: 5px;
+}
 
 @media screen and (max-width:1000px) {
     .lg-bx-lf{
