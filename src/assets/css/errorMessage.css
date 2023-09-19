@@ -1,0 +1,17 @@
+.errorBox {
+    width: 250px;
+    background-color: white;
+    /* transform: translateY(-300px); */
+    /* display: none; */
+}
+
+.errorBox:focus-within {
+    display: block;
+    transform: translateY(10);
+}
+
+.ErrorMessage {
+    color: black;
+    /* display: none; */
+    /* transform: translateY(-300px); */
+}

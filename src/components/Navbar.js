@@ -11,6 +11,7 @@ import { useQuery } from 'react-query'
 import Cookies from 'universal-cookie'
 import Cook from '../utilities/GetCookie'
 import axios from 'axios'
+import ErrorMessage from './ErrorMessage'
 export default function Navbar() {
   const [searchPop, setSearchPop] = useState(false);
   const [profileDropDown, setProfileDropDown] = useState(false);
@@ -106,7 +107,7 @@ export default function Navbar() {
           </li>
           <li ref={profileDropDownRef}>
 
-            <button onClick={handlDropDown} ><img src={userData?.data?.avatar} style={{ height: '30px', marginRight: '10px', aspectRatio: '1/1', borderRadius: '100%',objectFit:"cover" }} /><span className='navbarSpan'>Profile</span></button>
+            <button onClick={handlDropDown} ><img src={userData?.data?.avatar} style={{ height: '30px', marginRight: '10px', aspectRatio: '1/1', borderRadius: '100%', objectFit: "cover" }} /><span className='navbarSpan'>Profile</span></button>
             <ProfileDropDown dropDownVisible={profileDropDown} setDropDownVisible={setProfileDropDown} profileDropDownRef={profileDropDownRef} />
           </li>
           {/* <li><NavLink to={'/users/Jo'} preventScrollReset>Jo</NavLink></li> */}
@@ -115,6 +116,7 @@ export default function Navbar() {
 
       </nav>
       <UserSearch isVisible={searchPop} setVisible={setSearchPop} buttonref={SearchPopRef} />
+      {/* <ErrorMessage /> */}
     </header>
 
   )

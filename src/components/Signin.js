@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import ErrorMessage from './ErrorMessage';
+import { useContext } from 'react';
+import ErrorContext from '../context/ErrorProvider';
 export default function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -10,6 +13,11 @@ export default function Signin() {
   const [otp, setOtp] = useState("");
   const [isOtpSent, setIsOtpSent] = useState(false);
 
+  const { errMsg, setErrMsg, errRef } = useContext(ErrorContext);
+  // console.log(errRef.current);
+  useEffect(() => {
+    setErrMsg('');
+  }, [email, password, username]);
   const navigate = useNavigate();
   const sendOtp = () => {
     const url = process.env.REACT_APP_BACKEND_URL + "/login/otp"
@@ -19,10 +27,24 @@ export default function Signin() {
         "email": email
       })
       .then((res) => {
-        setIsOtpSent(true)
+        setIsOtpSent(true);
+        if (res.status == 200) {
+          setErrMsg("OTP Send");
+        }
         console.log(res)
       }).catch((err) => {
-        console.log(err)
+        console.log(err);
+        if (!err?.response) {
+          console.log("jai")
+          setErrMsg('No Server Response');
+        }
+        else {
+          console.log(err?.response)
+          setErrMsg(err?.response?.data?.message);
+          // errRef.current.focus();
+          // console.log(error?.response?.data?.message);
+        }
+        // errRef.current.focus();
       })
 
   }
@@ -44,123 +66,138 @@ export default function Signin() {
         navigate('/login', { replace: true });
       }).catch((err) => {
         console.log("user nahi bna")
+        if (!err?.response) {
+          // console.log("jai")
+          setErrMsg('No Server Response');
+        }
+        else {
+          console.log(err?.response)
+          setErrMsg(err?.response?.data?.message);
+          // errRef.current.focus();
+          // console.log(error?.response?.data?.message);
+        }
         console.log(err)
       })
 
 
   }
   return (
+    <>
 
-    <div className='flexCenter pabsolute lg-cnt'>
+      <div className='flexCenter pabsolute lg-cnt'>
 
-      <div className=' flexCenter lg-cn1'>
+        <div className=' flexCenter lg-cn1'>
 
-        <div className='w35 flexVC  lg-bx-rt'>
-          <div className='lg-bx1 flexVC borderBlack w100'
-            // onSubmit={login}
-            style={{ display: isOtpSent === false ? "flex" : "none" }}
-          >
-            <div className="lg-logo">
-              Social Network
-            </div>
-            <div className='flexVC lg-wd1' >
-              <div className='w100 textS'
-              >Enter username</div>
-              <input type="text " className='w100 lg-in br-rd4'
-                value={username} onChange={(e) => { setUsername(e.target.value) }}
-              // onChange={(e) => setUsername(e.target.value)}
-              // value={username}
-              />
-            </div>
-            <div className='flexVC lg-wd1' >
-              <div className='w100 textS'
-              >Enter Email</div>
-              <input type="text " className='w100 lg-in br-rd4'
-                value={email} onChange={(e) => { setEmail(e.target.value) }}
-
-              // onChange={(e) => setUsername(e.target.value)}
-              // value={username}
-              />
-            </div>
-            <div className='flexVC lg-wd1'>
-              <div className='w100 textS '>Password</div>
-              <input type="text " className='w100 lg-in br-rd4'
-                value={password} onChange={(e) => { setPassword(e.target.value) }}
-              // onChange={(e) => setPassword(e.target.value)}
-              // value={password}
-              />
-            </div>
-            <button className='lg-btn lg-ft1 br-rd4' onClick={sendOtp}>
-              Generate OTP</button>
-
-
-          </div>
-          <div className='lg-bx1 flexVC borderBlack w100'
-            // onSubmit={login}
-            style={{ display: isOtpSent === true ? "flex" : "none" }}
-          >
-            <div className="lg-logo">
-              Social Network
-            </div>
-            <div className='flexVC lg-wd1' >
-              <div className='w100 textS'
-              >Enter OTP</div>
-              <input type="number " className='w100 lg-in br-rd4'
-                value={otp} onChange={(e) => { setOtp(e.target.value) }}
-              // onChange={(e) => setUsername(e.target.value)}
-              // value={username}
-              />
-            </div>
-
-
-            <button className='lg-btn lg-ft1 br-rd4'
-              onClick={createUser}
+          <div className='w35 flexVC  lg-bx-rt'>
+            <div className='lg-bx1 flexVC borderBlack w100'
+              // onSubmit={login}
+              style={{ display: isOtpSent === false ? "flex" : "none" }}
             >
-              Create User</button>
+              <div className="lg-logo">
+                Social Network
+              </div>
+              <div style={{ margin: '0' }}>{errMsg}</div>
+              <div className='flexVC lg-wd1' >
+                <div className='w100 textS'
+                >Enter username</div>
+                <input type="text " className='w100 lg-in br-rd4'
+                  value={username} onChange={(e) => { setUsername(e.target.value) }}
+                // onChange={(e) => setUsername(e.target.value)}
+                // value={username}
+                />
+              </div>
+              <div className='flexVC lg-wd1' >
+                <div className='w100 textS'
+                >Enter Email</div>
+                <input type="text " className='w100 lg-in br-rd4'
+                  value={email} onChange={(e) => { setEmail(e.target.value) }}
+
+                // onChange={(e) => setUsername(e.target.value)}
+                // value={username}
+                />
+              </div>
+              <div className='flexVC lg-wd1'>
+                <div className='w100 textS '>Password</div>
+                <input type="text " className='w100 lg-in br-rd4'
+                  value={password} onChange={(e) => { setPassword(e.target.value) }}
+                // onChange={(e) => setPassword(e.target.value)}
+                // value={password}
+                />
+              </div>
+              <button className='lg-btn lg-ft1 br-rd4' onClick={sendOtp} disabled={(email && password && username) ? false : true}>
+                Generate OTP</button>
 
 
+            </div>
+            <div className='lg-bx1 flexVC borderBlack w100'
+              // onSubmit={login}
+              style={{ display: isOtpSent === true ? "flex" : "none" }}
+            >
+              <div className="lg-logo">
+                Social Network
+              </div>
+              <div className='flexVC lg-wd1' >
+                <div className='w100 textS'
+                >Enter OTP</div>
+                <input type="number " className='w100 lg-in br-rd4'
+                  value={otp} onChange={(e) => { setOtp(e.target.value) }}
+                // onChange={(e) => setUsername(e.target.value)}
+                // value={username}
+                />
+              </div>
+
+
+              <button className='lg-btn lg-ft1 br-rd4'
+                onClick={createUser} disabled={otp ? false : true}
+              >
+                Create User</button>
+
+
+            </div>
+            <div className='flexCenter lg-bx2 w100 borderBlack'
+            >
+              Already have  account?&nbsp;<Link to={'/login'} className='lg-link'>Log in</Link>
+
+            </div>
           </div>
-          <div className='flexCenter lg-bx2 w100 borderBlack'
-          >
-            Already have  account?&nbsp;<Link to={'/login'} className='lg-link'>Log in</Link>
-
+          <div className='w65 h100 lg-bx-lf'>
+            <img src={require('../assets/images/signup/Sign up Customizable Isometric Illustrations _ Amico Style.png')} className="imgFull" alt=""
+              style={{ marginLeft: "20px" }}
+            />
           </div>
         </div>
-        <div className='w65 h100 lg-bx-lf'>
-          <img src={require('../assets/images/signup/Sign up Customizable Isometric Illustrations _ Amico Style.png')} className="imgFull" alt="" 
-          style={{marginLeft:"20px"}}
-          />
-        </div>
+
+
+
+
+        {/* <div>
+< div style={{backgroundColor:"white",display:isOtpSent===false?"block":"none"}}>
+  <input type="email" placeholder='email' value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
+  <input type="username" placeholder='username' value={username} onChange={(e)=>{setUsername(e.target.value)}}/>
+  <input type="password" placeholder='password'value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
+  <br />
+  <button onClick={sendOtp}>
+    Send OTP
+  </button>
+  <br />  
+  {message}
+  </div>
+  <br /><br />
+  <div style={{display:isOtpSent===true?"block":"none"}}>
+    otp
+    <input type="number" placeholder='otp' value={otp} onChange={(e)=>{setOtp(e.target.value)}}/>
+    <button onClick={createUser}>
+      Create user
+    </button>
+  </div>
+
+
+</div> */}
+
       </div>
 
 
-
-
-      {/* <div>
-    < div style={{backgroundColor:"white",display:isOtpSent===false?"block":"none"}}>
-      <input type="email" placeholder='email' value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
-      <input type="username" placeholder='username' value={username} onChange={(e)=>{setUsername(e.target.value)}}/>
-      <input type="password" placeholder='password'value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
-      <br />
-      <button onClick={sendOtp}>
-        Send OTP
-      </button>
-      <br />  
-      {message}
-      </div>
-      <br /><br />
-      <div style={{display:isOtpSent===true?"block":"none"}}>
-        otp
-        <input type="number" placeholder='otp' value={otp} onChange={(e)=>{setOtp(e.target.value)}}/>
-        <button onClick={createUser}>
-          Create user
-        </button>
-      </div>
-
-    
-    </div> */}
-
-    </div>
+    </>
 
   )
 }

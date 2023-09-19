@@ -1,16 +1,23 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import "./../assets/css/login.css"
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import Cookies from 'universal-cookie';
 import axios from "axios"
 import { Link, Navigate, useNavigate } from 'react-router-dom';
+import ErrorMessage from './ErrorMessage';
+import ErrorContext from '../context/ErrorProvider';
 export default function Login() {
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const navigate = useNavigate();
 
+  const { errMsg, setErrMsg, errRef } = useContext(ErrorContext);
+
+  useEffect(() => {
+    setErrMsg('');
+  }, [username, password]);
   const uri = useSelector(state => state.uri)
   const login = (e) => {
     e.preventDefault();
@@ -35,55 +42,72 @@ export default function Login() {
       navigate(uri, { replace: true });
 
       // <Navigate to={`${uri}`} replace={true} />
-    }).catch((res) => { console.log(res) })
+    }).catch((err) => {
+      console.log(err)
+      if (!err?.response) {
+        console.log("jai")
+        setErrMsg('No Server Response');
+      }
+      else {
+        console.log(err?.response)
+        setErrMsg(err?.response?.data?.detail);
+        // errRef.current.focus();
+        // console.log(error?.response?.data?.message);
+      }
+    })
   }
 
 
 
 
   return (
-    <div className='flexCenter pabsolute lg-cnt'>
+    <>
+      {/* <ErrorMessage /> */}
+      <div className='flexCenter pabsolute lg-cnt'>
 
-      <div className=' flexCenter lg-cn1'>
-        <div className=' h100 lg-bx-lf'>
-          <img src={require('../assets/images/login/Mobile login Customizable Semi Flat Illustrations _ Pana Style.png')} className="imgFull lg-im" alt="" />
-        </div>
-        <div className='w35 flexVC lg-bx-rt'>
-          <form className='lg-bx1 flexVC  w100' onSubmit={login}>
-            <div className="lg-logo">
-              Social Network
+        <div className=' flexCenter lg-cn1'>
+          <div className=' h100 lg-bx-lf'>
+            <img src={require('../assets/images/login/Mobile login Customizable Semi Flat Illustrations _ Pana Style.png')} className="imgFull lg-im" alt="" />
+          </div>
+          <div className='w35 flexVC lg-bx-rt'>
+            <form className='lg-bx1 flexVC  w100' onSubmit={login}>
+              <div className="lg-logo">
+                Social Network
+              </div>
+              <div>{errMsg}</div>
+              <div className='flexVC lg-wd1' >
+                <div className='w100 textS'
+                >Enter username</div>
+                <input type="text " className='w100 lg-in br-rd4'
+
+                  onChange={(e) => setUsername(e.target.value)}
+                  value={username}
+                />
+              </div>
+              <div className='flexVC lg-wd1'>
+                <div className='w100 textS '>Password</div>
+                <input type="text " className='w100 lg-in br-rd4'
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                />
+              </div>
+              <button className='lg-btn lg-ft1 br-rd4'>
+                Login</button>
+
+
+            </form>
+            <div className='flexCenter lg-bx2 w100 '
+            >
+              Don't have account?&nbsp;<Link to={'/signin'} className='lg-link'> Sign in</Link>
+
             </div>
-            <div className='flexVC lg-wd1' >
-              <div className='w100 textS'
-              >Enter username</div>
-              <input type="text " className='w100 lg-in br-rd4'
-
-                onChange={(e) => setUsername(e.target.value)}
-                value={username}
-              />
-            </div>
-            <div className='flexVC lg-wd1'>
-              <div className='w100 textS '>Password</div>
-              <input type="text " className='w100 lg-in br-rd4'
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-              />
-            </div>
-            <button className='lg-btn lg-ft1 br-rd4'>
-              Login</button>
-
-
-          </form>
-          <div className='flexCenter lg-bx2 w100 '
-          >
-            Don't have account?&nbsp;<Link to={'/signin'} className='lg-link'> Sign in</Link>
-
           </div>
         </div>
+
+
       </div>
+    </>
 
-
-    </div>
 
   )
 }
