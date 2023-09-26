@@ -122,7 +122,7 @@ export default function Login() {
 
 
             </form>
-            <div className='flexCenter lg-bx2 w100 '
+            <div className='flexCenter lg-bx2 w100'
             >
               Don't have account?&nbsp;<Link to={'/signin'} className='lg-link'> Sign in</Link>
 
