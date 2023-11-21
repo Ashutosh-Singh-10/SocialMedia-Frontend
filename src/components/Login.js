@@ -96,7 +96,13 @@ export default function Login() {
           <div className='w35 flexVC lg-bx-rt'>
             <form className='lg-bx1 flexVC  w100' onSubmit={login}>
               <div className="lg-logo">
-                Social Network
+
+          <span style={{color:'red'}}>S</span>
+          <span style={{color:'yellow'}}>o</span>
+          <span style={{color:'lime'}}>c</span>
+          <span style={{color:'orange'}}>i</span>
+          <span style={{color:'pink'}}>a</span>
+          <span style={{color:'cyan'}}>l</span>
               </div>
               <div>{errMsg}</div>
               <div className='flexVC lg-wd1' >

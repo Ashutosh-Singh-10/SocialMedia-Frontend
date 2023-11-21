@@ -82,7 +82,14 @@
 
 
 .lg-logo {
-    height: 100px
+    /* height: 100px; */
+    margin-block: 35px 10px;
+    margin-right: 20px;
+    font-size: 2rem;
+    font-family: 'Playpen Sans', cursive;
+    font-weight: 800;
+    
+
 }
 
 .lg-in {

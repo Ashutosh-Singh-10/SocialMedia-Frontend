@@ -94,7 +94,12 @@ export default function Signin() {
               style={{ display: isOtpSent === false ? "flex" : "none" }}
             >
               <div className="lg-logo">
-                Social Network
+              <span style={{color:'red'}}>S</span>
+          <span style={{color:'yellow'}}>o</span>
+          <span style={{color:'lime'}}>c</span>
+          <span style={{color:'orange'}}>i</span>
+          <span style={{color:'pink'}}>a</span>
+          <span style={{color:'cyan'}}>l</span>
               </div>
               <div style={{ margin: '0' }}>{errMsg}</div>
               <div className='flexVC lg-wd1' >
