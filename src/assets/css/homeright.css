@@ -1,76 +1,109 @@
     .hr-mbx{
+        box-sizing: border-box;
         z-index: 50;
-            width: 300px;
-            /* position: absolute; */
-            left: 0px;
+            width: 350px;
+            position: relative;
+            right: calc(33% - 400px);
             top: 0px; 
             overflow: hidden;
+            border-radius: 10px;
+            justify-self: center;
         }
 
 
-        @media screen and (max-width:1000px) {
+        @media screen and (max-width:1249px) {
             .hr-mbx{
                 display: none;
             }
         }
 
-        .hr-mcn1{
-            margin-top: 10px;
-            border-radius: 4px  ;
-            z-index: 100;
-            background-color: white;
-            background-color: rgb(40,40,40);
-            box-sizing: border-box;
-            border: 1px solid rgba(128, 128, 128, 0.379);
-            box-shadow: 1px 1px 20px rgba(100,100,100,0.2);
-            color: white;
-            position: sticky;
-            left:50px;
-            top: 20px;
-        }
-        
-        .hr-cn1{
-            padding-block: 10px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-align: start;
-            /* padding-left: 100px; */
-        }
+.hr-mcn1{
+    margin-top: 10px;
+    border-radius: 10px  ;
+    z-index: 100;
+    background-color: white;
+    /* background-color: rgb(40,40,40); */
+    box-sizing: border-box;
+    border: 1px solid rgba(128, 128, 128, 0.379);
+    box-shadow: 1px 1px 20px rgba(100,100,100,0.2);
+    /* color: white; */
+    color:black;
+    position: sticky;
+    left:50px;
+    top: 20px;
     
-        .hr-cn2{
-            display: flex;
-            align-items: center;
-            border-top: 1px solid gray;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
+}
 
-            
-            
-        }
-        .hr-cn2:hover{
-            background-color: rgb(218, 128, 32);
-        }
-        .hr-cn2:visited{
-            color: white;
-        }
-        .hr-cn2:active{
-            color:white
-        }
-        .hr-cn2:link{
-            color:white
-        }
-        .hr-img{
-            border-radius: 100%;
-            aspect-ratio: 1/1;
-            object-fit: cover;
-            height: 30px;
-            margin:10px  20px ;
-            border: 1px solid black;
-            cursor: pointer;
-            
-        }
+.hr-cn1{
+    padding-block: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: start;
+    /* padding-left: 100px; */
+}
+
+.hr-cn2{
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+    /* border-top: 1px solid gray; */
+    font-size: 1rem;
+    font-weight: 600;
+    /* cursor: pointer; */
+    text-decoration: none;
 
     
+    
+}
+/* .hr-cn2:hover{
+    background-color: rgb(218, 128, 32);
+} */
+.hr-cn2:visited{
+    /* color: white; */
+    color: black;
+}
+.hr-cn2:active{
+    color:black;
+}
+.hr-cn2:link{
+    color:black;
+}
+.hr-img{
+    border-radius: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    height: 30px;
+    margin:10px  20px ;
+    border: 1px solid black;
+    /* cursor: pointer; */
+    
+}
+
+.hr-fl-btn{
+    justify-self: flex-start;
+    background-color: white;
+    margin-right: 20px;
+    border : 1px solid black ;
+    border-radius:  5px;
+    cursor: pointer;
+    padding: 5px 20px;
+    /* align-self: flex-end; */
+    /* border:none; */
+}
+
+.hr-fn-1{
+    text-decoration: none;
+}
+.hr-fn-1:visited{
+ color: black;
+}
+.hr-fn-1:active{
+ color: black;
+}
+.hr-fn-1:link{
+ color: black;
+}
+
+
 

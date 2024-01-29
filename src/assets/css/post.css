@@ -1,8 +1,8 @@
 .ps-f {
-    font-size: 0.9rem;
-    font-weight: 800;
+    /* font-size: 0.9rem; */
+    font-weight: 500;
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 .ps-f2 {
@@ -14,15 +14,16 @@
     font-size: 1rem;
     font-weight: 400;
     text-decoration: none;
-    color: grey;
+    color: black;
 }
 
 .ps-f4 {
     font-size: 0.9rem;
     font-weight: 400;
     text-decoration: none;
-    color: white;
+    color: black;
 }
+
 
 .ps-m1 {
     margin-block: 5px;
@@ -35,17 +36,25 @@
 
 .ps-cnt {
     width: 500px;
-    color: white;
-    background-color: rgb(26, 26, 26);
+    box-sizing: border-box;
+    /* color: white; */
+    color: black;   
+    /* background-color: rgb(26, 26, 26); */
+    background-color: white;
+    /* background-color: green;
+    background-color: LIME; */
 
     border-bottom: 1px solid rgba(128, 128, 128, 0.248);
     margin-top: 40px;
+    padding-inline: 30px;
     padding-bottom: 10px;
     /* background-color: red; */
     /* height: 900px; */
+    /* border: 1px solid black; */
+    border-radius: 15px;
 }
 
-@media screen and (max-width:1000px) {
+@media screen and (max-width:1249px) {
     .ps-cnt {
         width: 100%;
     }
@@ -66,17 +75,20 @@
 
 .ps-im {
     width: 100%;
-    max-height: 65vh;
-    min-height: 35vh;
+    max-width: 100%;;
+    max-height: 45vh;
+    /* min-height: 35vh; */
     object-fit: contain;
-    background-color: black;
-    border: 1px solid rgba(128, 128, 128, 0.321);
-    border-radius: 4px;
+    align-self: center;
+    /* background-color: black; */
+    border: 2px solid rgba(128, 128, 128, 0.321);
+    border-radius: 10px;
 }
 
 .CommentBtn {
     text-decoration: none;
-    color: rgb(255, 255, 255);
+    /* color: rgb(255, 255, 255); */
+    color: black;
     font-size: 1.1rem;
     display: flex;
     align-items: center;
@@ -90,7 +102,7 @@
     align-items: center;
     background-color: transparent;
     border: none;
-    color: white;
+    color: blue;
     /* border: 1px solid red; */
 }
 
@@ -121,10 +133,22 @@
     stroke: black;
     /* stroke: black; */
     fill: white;
+
     animation: animate-like4 1s linear backwards;
     /* stroke-dashoffset: 36; */
 }
 
+.ps-n-cn1{
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.ps-n-cn2{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 /* .LikesBtn svg rect {
     
 } */
