@@ -3,11 +3,17 @@
     width: 300px;
 
     left: 0px;
-    top: 0px;
+    top: 10px;
 
-    border: 1px solid red;
+    /* border: 1px solid red; */
+    background-color: #fff;
+    
     justify-self: left; 
-    position: sticky;   
+    position: fixed;
+    height: 100%;
+    z-index: -1;
+    /* background-color: red; */
+
 
 }
 
@@ -18,4 +24,22 @@
     .scroll-post{
         width: 100%;
     }
+}
+.hl-cnt1{
+ 
+    margin-top: 50px;
+
+}
+.hl-cnt2{
+ 
+    margin-top: 10px;
+
+}
+
+.hl-dv1{
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+.hl-dv2{
+ margin-top: 20px;
 }

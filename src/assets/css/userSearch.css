@@ -12,6 +12,7 @@
     right: 0; */
     visibility: hidden;
     background: rgba(0, 0, 0, 0.8);
+    /* background: rgba(255, 255, 255, 0.326); */
     transition: all 0.6s;
     /* border: 1px solid red; */
     /* display: flex;
@@ -42,8 +43,10 @@
     height: 30px;
     font-size: 1.2rem;
     border: none;
-    background: rgb(40, 40, 40);
-    color: rgb(255, 255, 255);
+    /* background: rgb(40, 40, 40); */
+    /* color: rgb(255, 255, 255); */
+    background-color: white;
+    color: black;
     border-radius: 5px;
     outline: none;
     padding-left: 10px;
@@ -51,34 +54,35 @@
 
 .SearchField input::-webkit-input-placeholder {
     /* WebKit, Blink, Edge */
-    color: #eff1f6bf;
+    /* color: #eff1f6bf; */
+    color: black;
 }
 
 .SearchField input:-moz-placeholder {
     /* Mozilla Firefox 4 to 18 */
-    color: #eff1f6bf;
+    color: black;
     opacity: 1;
 }
 
 .SearchField input::-moz-placeholder {
     /* Mozilla Firefox 19+ */
-    color: #eff1f6bf;
+    color: black;
     opacity: 1;
 }
 
 .SearchField input:-ms-input-placeholder {
     /* Internet Explorer 10-11 */
-    color: #eff1f6bf;
+    color:black;
 }
 
 .SearchField input::-ms-input-placeholder {
     /* Microsoft Edge */
-    color: #eff1f6bf;
+    color: black;
 }
 
 .SearchField input::placeholder {
     /* Most modern browsers support this now. */
-    color: #eff1f6bf;
+    color: black;
 }
 
 
@@ -86,7 +90,7 @@
     margin-top: 3px;
     padding: 5px;
     width: 350px;
-    background: rgb(40, 40, 40);
+    background: white;
     display: flex;
     flex-direction: column;
     border-radius: 5px;
@@ -122,7 +126,8 @@
     /* line-height: 1; */
     display: flex;
     flex-direction: column;
-    color: rgb(255, 255, 255);
+    /* color: rgb(255, 255, 255); */
+    color: black;
 }
 
 .searchUserName h3 {

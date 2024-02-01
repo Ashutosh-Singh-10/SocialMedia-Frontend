@@ -141,7 +141,7 @@ const HomePage = () => {
     return (
 
         <div className='w100 flexCenter'>
-            <div className='hm-mb '>
+            <div className='hm-mb ' >
 
 
 
@@ -151,15 +151,16 @@ const HomePage = () => {
                     <div className=' flexVC'>
 
 
-                            <div className='w80 '>
-                                <div className='w100 textS'>
+                            <div className='w80 hl-cnt1'>
+                                <div className='w100 textS hl-dv1'>
 
                         Menu
                                 </div>
-                        <div className=' flexVC  w100'>
-                            <div className='w80 b textS'>home</div>
-                            <div className='w80 b textS'>home</div>
-                            <div className='w80 b textS'>home</div>
+                        <div className=' flexVC  w100 hl-cnt2'>
+                            <div className='w80 b textS hl-dv2'>Home</div>
+                            <div className='w80 b textS hl-dv2'>Home</div>
+                            <div className='w80 b textS hl-dv2'>Home</div>
+                            <div className='w80 b textS hl-dv2'>Home</div>
                             
                             
                         </div>

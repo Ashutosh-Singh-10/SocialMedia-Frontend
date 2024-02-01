@@ -1,8 +1,10 @@
 .hm-mb {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding-top: 50px;
+    box-sizing: border-box;
+    
 
 
 }
