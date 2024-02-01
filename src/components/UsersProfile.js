@@ -212,7 +212,7 @@ const UsersProfile = () => {
     return (
 
         <div className='flexVC'>
-            <div className='uf-cnt'>
+            {/* <div className='uf-cnt'>
 
                 <div className='userInfoBox hpr-mbx w30 '>
                     <div className="hpr-mcn1 flexVC">
@@ -225,7 +225,6 @@ const UsersProfile = () => {
 
                             <div className='myFlex'>
                                 <div className="hpr-de-fnt">&nbsp;</div>
-                                {/* &nbsp; &ensp;&nbsp;&nbsp;&nbsp; */}
                                 <div className='flexEnd'>
                                     {userData?.data.username}
                                 </div>
@@ -245,15 +244,13 @@ const UsersProfile = () => {
                         <hr className='w90' />
                         <div className='w85 hpr-f2'>
                             {userData?.data?.first_name + ' ' + userData?.data?.last_name}
-                            {/* {userData?.data?.last_name} */}
                         </div>
                         <div className='w85 hpr-f2' style={{
                             fontSize: "0.8rem",
                             fontWeight: "200", marginTop: '5px'
-                            // color:"grey"
+
                         }}>
                             {userData?.data?.desc}
-                            {/* {userData?.data?.last_name} */}
                         </div>
 
                     </div>
@@ -267,52 +264,13 @@ const UsersProfile = () => {
 
                         </div>
                         <div className="flexCenter w100 hpr-bx2">
-                            {/* My Save */}
+                   
 
                         </div>
                     </div>
 
                 </div>
-                {/* <div className="uf-pr myFlex">
-                    <div className='w40'>
-                        <br />
-                        <img src={`${url}${userData?.data.avatar}`} className='uf-pf-im' />
-
-                        
-                        <br />
-                        <br />
-                    </div>
-                    <div className='w60'>
-                        <br />
-                        <div className='myFlex uf-f1'>
-                            {userData?.data.username}
-                        </div>
-                        <hr />
-                        <div className='myFlex uf-f2'>
-                            <div >123 Likes &emsp;&emsp;</div>
-
-                            <div >23posts</div>
-
-
-                        </div>
-
-                        <div className='myFlex uf-f3'>
-                            {userData?.data.first_name} {userData?.data.last_name}
-                        </div>
-                        <div className='uf-ds myFlex'>
-
-                            {userData?.data.desc}
-                        </div>
-                        <Link to="" className='uf-lnk myFlex'>
-                            {userData?.data.link}
-
-                        </Link>
-
-                    </div>
-                </div> */}
-
-                {/* <button  onClick={getPosts}>get the data</button> */}
-
+            
                 <div className="uf-cn w80">
 
                     {(!postLoading && userPosts?.pages[0]?.feeds?.length == 0) ? <div style={{ backgroundColor: "red" }}>
@@ -323,7 +281,6 @@ const UsersProfile = () => {
                         <ThreeCircles
                             height="100"
                             width="100"
-                            // color="#4fa94d"
                             wrapperStyle={{}}
                             wrapperClass=""
                             visible={true}
@@ -359,7 +316,34 @@ const UsersProfile = () => {
 
 
                 </div>
+            </div> */}
+            <div className='uff-cnt1'>
+                {/* <div className="uff-pf-bim"> */}
+                    <img src={require("../assets/images/mountain.png")} className='uff-pf-bim' alt="" />
+
+                {/* </div> */}
+                <div className='uff-cnt2'>
+                    <div className='uff-dv1'>
+                        <div className='uff-ch1'>
+                            {/* <img src={require("../assets/images/gal.webp")}  className="uff-pf-sim" alt="" /> */}
+
+                        </div>
+                        <div></div>
+
+                    </div>
+                    <div></div>
+                    
+
+
+
+                    
+                </div>
+
+
+
             </div>
+
+
 
 
 
